@@ -904,4 +904,118 @@
     ];
 
   }());
+
+    this.selectedTimeSlot = function (e) {
+        e.classList.toggle("ivoryia-chip-selected");
+        $("#timeslot").val('');
+
+
+
+        if (e.classList.contains("ivoryia-chip-selected")) {
+            $("#timeslot").val(e.children[0].outerText);
+
+            $( "div.ivoryia-chip").each(function() {
+                if(!$(this).hasClass("ivoryia-chip-selected")){
+                    $(this).addClass("un-clickable");
+                    $(this).attr('onclick', null);
+                }
+            });
+
+            $("#scheduletimeslot").empty();
+            $("#scheduletimeslot").html(e.children[0].outerText);
+
+            $("#duration").empty();
+            $("#duration").html("60 Min");
+
+            getScheduleCount();
+
+        }else{
+            $( "div.ivoryia-chip").each(function() {
+                $(this).removeClass("un-clickable");
+                $(this).attr('onclick', "selectedTimeSlot(this);");
+            });
+
+            $("#timeslot").empty();
+            $("#timeslot").html("Not Selected");
+
+            $("#duration").empty();
+            $("#duration").html("0");
+        }
+
+
+
+
+    }
+
+    this.getInstructorName= function (){
+        let instructorname = $("#dpdIndtructor").find(":selected").text();
+        if(instructorname !== 'Select'){
+            $("#instructorname").empty();
+            $("#instructorname").html(instructorname);
+            getScheduleCount();
+        }else {
+            $("#instructorname").empty();
+            $("#instructorname").html('Not Selected');
+        }
+
+    }
+
+    this.getScheduleDate= function (){
+        let appinmentdate = $("#scheduledate").val();
+
+        if(appinmentdate !== ''){
+            $("#appinmentdate").empty();
+            $("#appinmentdate").html(appinmentdate);
+            getScheduleCount();
+        }else {
+            $("#appinmentdate").empty();
+            $("#appinmentdate").html('Not Selected');
+        }
+
+    }
+
+    this.getSession= function (){
+        let session = $("#session").find(":selected").text();
+        if(session !== ''){
+            $("#timesession").empty();
+            $("#timesession").html(session);
+            getScheduleCount();
+        }else {
+            $("#timesession").empty();
+            $("#timesession").html('Not Selected');
+        }
+
+    }
+
+    this.getScheduleCount = function (){
+        let request= {};
+        request.instructor = $("#dpdIndtructor").val();
+        request.schedulesession = $("#session").val();
+        request.scheduledate=$("#scheduledate").val();
+        request.timeslot=$("#timeslot").val();
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $.ajax({
+            url: '/schedule/getschdulecount',
+            type: 'POST',
+            async: false,
+            data: request,
+            before:function (){
+                $("#headcount").empty();
+                $("#headcount").html(0);
+            },
+            success: function (res) {
+              $("#headcount").empty();
+              $("#headcount").html(res.data);
+            },
+            error(e) {
+                console.log(e);
+            }
+        });
+    }
 })(jQuery);

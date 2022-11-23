@@ -1,7 +1,7 @@
 <!-- <style>
     .active{
         background: #323232 !important;
-    }    
+    }
 </style> -->
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
@@ -37,10 +37,10 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{url('/students/sheduleclass')}}" aria-expanded="false"
+            <a class="nav-link" href="{{url('/student/appointment')}}" aria-expanded="false"
                 aria-controls="students">
                 <i class="icon-head menu-icon"></i>
-                <span class="menu-title">Class Sheduling</span>
+                <span class="menu-title">Class Schedule</span>
             </a>
         </li>
         <li class="nav-item">

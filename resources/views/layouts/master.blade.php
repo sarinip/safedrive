@@ -5,6 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Driving School</title>
     <!-- datatables:css -->
     <link href=//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css>
@@ -193,6 +194,7 @@
     <!-- Custom js for this page-->
     <script src="{{asset('/js/dashboard.js')}}"></script>
     <script src="{{asset('/js/Chart.roundedBarCharts.js')}}"></script>
+    <script src="{{asset('/js/db.js')}}"></script>
     <!-- End custom js for this page-->
 
 

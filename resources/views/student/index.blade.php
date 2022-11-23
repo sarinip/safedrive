@@ -90,7 +90,7 @@
                     <table class="table table-striped table-borderless">
                         <thead>
                             <tr>
-                                <th>Lesson</th>
+                                <th>Session</th>
                                 <th>Date</th>
                                 <th>Time</th>
                                 <th>Status</th>
