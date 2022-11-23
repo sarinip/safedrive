@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Payment extends Model
 {
     protected $guarded = [];
-    
+
     public function payment(){
-        return $this->hasMany('App/Student', 'student_id', 'id');
+        return $this->hasOne('App/Student', 'student_id', 'id');
     }
 }

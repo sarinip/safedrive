@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Instructor extends Model
 {
-    use HasFactory;
+    protected $guarded = [];
+
+    public function instructor(){
+        return $this->hasMany('App/Vehicle', 'vehicle_id', 'id');
+}
 }
