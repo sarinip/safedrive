@@ -71,5 +71,9 @@ class StudentServiceImpl implements StudentService
     public function getStudent($id)
     {
         // TODO: Implement getStudent() method.
+       
+    $student = Student::where('id',$id)->first();
+    return view('student.profile', array('student'=>$student));
     }
+
 }

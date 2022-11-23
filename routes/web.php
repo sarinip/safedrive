@@ -34,4 +34,19 @@ Route::post('/student/store', function (\App\Http\Requests\StudentRequest $reque
     return (new \App\Http\Controllers\StudentController)->store($request);
 });
 
+Route::get('/student/profile/{id}', function ($id){
+    return (new \App\Http\Controllers\StudentController)->show($id);
+});
 
+Route::get('/payment', function () {
+    return view('student.payment');
+});
+
+
+Route::post('/payment/store', function (\App\Http\Requests\PaymentRequest $request) {
+    return (new \App\Http\Controllers\PaymentController() )->store($request);
+});
+
+Route::get('/reciept', function () {
+    return view('student.reciept');
+})->name('reciept');

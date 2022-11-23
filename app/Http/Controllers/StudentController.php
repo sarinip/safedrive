@@ -55,9 +55,9 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function show(StudentRe $student)
+    public function show($id)
     {
-        //
+         return $this->service->getStudent($id);
     }
 
     /**
