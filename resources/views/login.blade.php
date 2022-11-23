@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.core')
 
 @section('content')
 <div class="container-scroller">

@@ -97,22 +97,16 @@
                             </tr>
                         </thead>
                         <tbody>
+                        @foreach($schedules as $schdule)
                             <tr>
-                                <td>Practical</td>
-                                <td class="font-weight-bold">21 Sep 2018</td>
-                                <td>2.00 PM</td>
+                                <td>{{ $schdule->session }}</td>
+                                <td class="font-weight-bold">{{ $schdule->schedule_date }}</td>
+                                <td>{{ $schdule->session_from_time }}</td>
                                 <td class="font-weight-medium">
-                                    <div class="badge badge-success">Completed</div>
+                                    <div class="badge badge-success">{{ $schdule->status }}</div>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>Theoretical</td>
-                                <td class="font-weight-bold">21 Sep 2018</td>
-                                <td>8.00 AM</td>
-                                <td class="font-weight-medium">
-                                    <div class="badge badge-warning">Pending</div>
-                                </td>
-                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

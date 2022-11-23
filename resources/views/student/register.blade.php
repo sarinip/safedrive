@@ -13,85 +13,137 @@
                         <h4>New here?</h4>
                         <h6 class="font-weight-light">Signing up is easy. It only takes a few steps</h6>
                         <form class="pt-3" action="{{ url('student/store') }}" method="post">
-                        @csrf
-                            <div class="form-group">
-                                <input type="text" name="fname" class="form-control form-control-lg" placeholder="First Name" value="{{old('fname')}}">
-                                @error('fname')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                                @endif
+                            @csrf
+                            <div class="row">
+                                <div class="col-lg-6 ">
+                                    <div class="form-group">
+                                        <input type="text" name="fname" class="form-control form-control-lg"
+                                            placeholder="First Name" value="{{old('fname')}}">
+                                        @error('fname')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 ">
+                                    <div class="form-group">
+                                        <input type="text" name="lname" class=" form-control form-control-lg"
+                                            placeholder="Last Name" value="{{old('lname')}}">
+                                        @error('lname')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <input type="text" name="lname" class=" form-control form-control-lg" placeholder="last name" value="{{old('lname')}}">
-                                @error('lname')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                                @endif
+                            <div class="row">
+                                <div class="col-lg-6 ">
+                                    <div class="form-group">
+                                        <input type="date" name="dob" class=" form-control form-control-lg"
+                                            placeholder="Date of Birth">
+                                        @error('dob')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 ">
+                                    <div class="form-group">
+                                        <input type="text" name="nic" class=" form-control form-control-lg"
+                                            placeholder="NIC No.">
+                                        @error('nic')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <input type="date" name="dob" class=" form-control form-control-lg" placeholder="dob">
-                                @error('dob')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                                @endif
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <input type="text" name="addressNo" class=" form-control form-control-lg"
+                                            placeholder="Addresss No.">
+                                        @error('addressNo')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <input type="text" name="nic" class=" form-control form-control-lg" placeholder="nic">
-                                @error('nic')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                                @endif
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input type="text" name="address1" class=" form-control form-control-lg"
+                                            placeholder="Addresss Line 1">
+                                        @error('address1')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input type="text" name="address2" class=" form-control form-control-lg"
+                                            placeholder="Addresss Line 2">
+                                        @error('address2')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
-
-                            <div class="form-group">
-                                <input type="text" name="addressNo" class=" form-control form-control-lg" placeholder="adrs no">
-                                @error('addressNo')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                                @endif
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input type="text" name="city" class=" form-control form-control-lg"
+                                            placeholder="City">
+                                        @error('city')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input type="text" name="postcode" class=" form-control form-control-lg"
+                                            placeholder="Postal Code">
+                                        @error('postcode')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <input type="text" name="address1" class=" form-control form-control-lg" placeholder="adr 1">
-                                @error('address1')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                                @endif
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input type="text" name="telephone" class=" form-control form-control-lg"
+                                            placeholder="Telephone">
+                                        @error('telephone')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input type="email" name="email" class=" form-control form-control-lg"
+                                            placeholder="Email">
+                                        @error('email')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <input type="text" name="address2" class=" form-control form-control-lg" placeholder="adr 2">
-                                @error('address2')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                                @endif
-                            </div>
-                            <div class="form-group">
-                                <input type="text" name="city" class=" form-control form-control-lg" placeholder="city">
-                                @error('city')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                                @endif
-                            </div>
-                            <div class="form-group">
-                                <input type="text" name="postcode" class=" form-control form-control-lg" placeholder="post code">
-                                @error('postcode')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                                @endif
-                            </div>
-                            <div class="form-group">
-                                <input type="text" name="telephone" class=" form-control form-control-lg" placeholder="tel">
-                                @error('telephone')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                                @endif
-                            </div>
-                            <div class="form-group">
-                                <input type="email" name="email" class=" form-control form-control-lg" placeholder="email">
-                                @error('email')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                                @endif
-                            </div>
-                            <div class="form-group">
-                                <input type="password" name="password" class=" form-control form-control-lg" placeholder="Password">
-                                @error('password')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                                @endif
-                            </div>
-                            <div class="form-group">
-                                <input type="password" name="password_confirmation" class=" form-control form-control-lg" placeholder="Confirm Password">
-                                @error('password_confirmation')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                                @endif
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input type="password" name="password" class=" form-control form-control-lg"
+                                            placeholder="Password">
+                                        @error('password')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input type="password" name="password_confirmation"
+                                            class=" form-control form-control-lg" placeholder="Confirm Password">
+                                        @error('password_confirmation')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="mb-4">
@@ -103,7 +155,8 @@
                                 </div>
                             </div>
                             <div class="mt-3">
-                                <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN UP</button>
+                                <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN
+                                    UP</button>
                             </div>
                             <div class="text-center mt-4 font-weight-light">
                                 Already have an account? <a href="{{asset('/login')}}" class="text-primary">Login</a>

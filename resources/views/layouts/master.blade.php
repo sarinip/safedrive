@@ -13,8 +13,7 @@
     <link href=//cdn.datatables.net/buttons/1.7.1/css/buttons.bootstrap4.min.css>
     <!-- DataTables -->
     <link rel="stylesheet" href="{{asset('/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
-    <link rel="stylesheet"
-        href="{{asset('/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{asset('/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
     <!-- notification:css -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
@@ -29,8 +28,10 @@
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="{{asset('/css/vertical-layout-light/style.css')}}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">s
     <!-- endinject -->
     <link rel="shortcut icon" href="{{asset('/images/favicon.png')}}" />
+
 
 
 </head>

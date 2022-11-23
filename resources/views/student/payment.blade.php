@@ -1,113 +1,83 @@
-<!------ Include the above in your HEAD tag ---------->
-@extends('student::layouts.master')
+@extends('layouts.core')
 
 @section('content')
-
-<div class="row">
-    <div class="col-md-7 grid-margin stretch-card">
-        <div class="card">
-            <div class="card-body">
-                <p class="card-title">Payment Details</p>
-                <div class="table-responsive">
-                    <table class="table table-striped table-borderless">
-                        <thead>
-                            <tr>
-                                <th>Installment</th>
-                                <th>Price</th>
-                                <th>Date</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Installment 1</td>
-                                <td class="font-weight-bold">$362</td>
-                                <td>21 Sep 2018</td>
-                                <td class="font-weight-medium">
-                                    <div class="badge badge-success">Completed</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Installment 2</td>
-                                <td class="font-weight-bold">$551</td>
-                                <td>28 Sep 2018</td>
-                                <td class="font-weight-medium">
-                                    <div class="badge badge-warning">Pending</div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-5 grid-margin stretch-card">
-        <div class="card">
-            <div class="card-body">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            Card Details
-                        </h4>
-                    </div>
-                    <div class="panel-body">
-                        <form role="form">
+<div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+        <div class="content-wrapper d-flex align-items-center auth px-0">
+            <div class="row w-100 mx-0">
+                <div class="col-lg-3 mx-auto">
+                    <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+                        <h3 class="text-center">Payment Details</h3>
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
+                        <form class="pt-3" method="post" action="{{url('/payment/store')}}">
+                            @csrf
                             <div class="form-group">
-                                <label for="cardNumber">
-                                    Card Holder Name</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="cardNumber"
-                                        placeholder="Valid Card Number" required autofocus />
-                                    <span class="input-group-addon"><span
-                                            class="glyphicon glyphicon-lock"></span></span>
-                                </div>
+                                <input type="text" class="form-control form-control-lg" id="txtStudentID"
+                                    placeholder="Student ID" name="studentid" required>
+                                @error('studentid')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @endif
                             </div>
                             <div class="form-group">
-                                <label for="cardNumber">
-                                    Card Number</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="cardNumber"
-                                        placeholder="Valid Card Number" required autofocus />
-                                    <span class="input-group-addon"><span
-                                            class="glyphicon glyphicon-lock"></span></span>
-                                </div>
+                                <input type="text" class="form-control form-control-lg" id="txtAmount"
+                                    placeholder="Amount LKR" name="amount" required>
+                                @error('amount')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-lg" id="txtCardName"
+                                    placeholder="Name on Card" name="cardname" required>
+                                @error('cardname')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-lg" id="txtCardNo"
+                                    placeholder="Card Number" name="cardnumber" required>
+                                @error('cardnumber')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @endif
                             </div>
                             <div class="row">
-                                <div class="col-xs-7 col-md-7">
+                                <div class="col-lg-6 ">
                                     <div class="form-group">
-                                        <label for="expityMonth">
-                                            Expiry Date</label>
-                                        <input type="text" class="form-control" id="expityMonth" placeholder="MM/YY"
-                                            required />
+                                        <input type="texy" class="form-control form-control-lg" id="txtExpDate"
+                                            placeholder="Expiry Date (MM/YY)" name="expdate" required>
+                                        @error('expdate')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @endif
                                     </div>
                                 </div>
-                                <div class="col-xs-5 col-md-5 pull-right">
+                                <div class="col-lg-6 ">
                                     <div class="form-group">
-                                        <label for="cvCode">
-                                            CVV</label>
-                                        <input type="password" class="form-control" id="cvCode" placeholder="CVV"
-                                            required />
+                                        <input type="text" class="form-control form-control-lg" id="txtcvv"
+                                            placeholder="CVV" name="cvv" required>
+                                        @error('cvv')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @endif
                                     </div>
                                 </div>
+                            </div>
+                            <div class="mt-3">
+                                <button class=" btn btn-block btn-success btn-lg font-weight-medium auth-form-btn"
+                                    type="submit">PAY></button>
                             </div>
                         </form>
                     </div>
                 </div>
-                <button type="button" class="btn btn-info btn-lg btn-block">
-                    Amount LKR
-                    <lable class=" float-right">4200.00</lable>
-                </button>
-                <!-- <ul class="nav nav-pills nav-stacked"> -->
-                <!-- <li class="active"><a href="#"><span class="badge pull-right"><span -->
-                <!-- class="glyphicon glyphicon-usd"></span>4200</span>Payment</a> -->
-                <!-- </li> -->
-                <!-- </ul> -->
-                <br />
-                <a href="http://www.jquery2dotnet.com" class="btn btn-success btn-lg btn-block" role="button">Pay</a>
             </div>
         </div>
+        <!-- content-wrapper ends -->
     </div>
+    <!-- page-body-wrapper ends -->
 </div>
-
-
 @endsection
