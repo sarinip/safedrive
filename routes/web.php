@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 /*Route::get('/', function () {
-    return view('welcome');
+return view('welcome');
 });*/
 
 
@@ -26,6 +26,7 @@ Route::get('/login', function () {
     return view('login');
 })->name('login');
 
+// Student Routes
 Route::get('/student/register', function () {
     return view('student.register');
 });
@@ -34,19 +35,41 @@ Route::post('/student/store', function (\App\Http\Requests\StudentRequest $reque
     return (new \App\Http\Controllers\StudentController)->store($request);
 });
 
-Route::get('/student/profile/{id}', function ($id){
+Route::get('/student/profile/{id}', function ($id) {
     return (new \App\Http\Controllers\StudentController)->show($id);
 });
 
+// Instructor Routes
+Route::get('/instructor/register', function () {
+    return view('instructor.register');
+});
+
+Route::post('/instructor/store', function (\App\Http\Requests\InstructorRequest $request) {
+    return (new \App\Http\Controllers\InstructorController())->store($request);
+});
+
+Route::get('/instructor/profile/{id}', function ($id) {
+    return (new \App\Http\Controllers\InstructorController)->show($id);
+});
+
+// Payment Routes
 Route::get('/payment', function () {
     return view('student.payment');
 });
 
-
 Route::post('/payment/store', function (\App\Http\Requests\PaymentRequest $request) {
-    return (new \App\Http\Controllers\PaymentController() )->store($request);
+    return (new \App\Http\Controllers\PaymentController())->store($request);
 });
 
 Route::get('/reciept', function () {
     return view('student.reciept');
 })->name('reciept');
+
+Route::get('/reciept/{id}', function ($id) {
+    return (new \App\Http\Controllers\PaymentController())->show($id);
+});
+
+// Vehicle Routes
+Route::get('/instructor/vehicle', function () {
+    return view('instructor.vehiclenew');
+});

@@ -12,15 +12,15 @@
                         </div>
                         <h4>New here?</h4>
                         <h6 class="font-weight-light">Signing up is easy. It only takes a few steps</h6>
-                        <form class="pt-3" action="{{ url('student/store') }}" method="post">
+                        <form class="pt-3" action="{{ url('instructor/store') }}" method="post">
                             @csrf
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-6 ">
                                     <div class="form-group">
                                         <input type="text" name="fname" class="form-control form-control-lg"
                                             placeholder="First Name" value="{{old('fname')}}">
-                                        @error('fname') <div class="alert alert-danger">{{ $message }}
-                                        </div>
+                                        @error('fname')
+                                        <div class="alert alert-danger">{{ $message }}</div>
                                         @endif
                                     </div>
                                 </div>

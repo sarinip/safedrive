@@ -15,8 +15,13 @@ class PaymentController extends Controller
      $this->service = new PaymentServiceImpl();
  }
  
- public function store(PaymentRequest $request)
- {
-    return $this->service->store($request);
-}
+    public function store(PaymentRequest $request)
+    {
+        return $this->service->store($request);
+    }
+ 
+    public function show($id)
+    {
+        return $this->service->getPayment($id);
+    }
 }

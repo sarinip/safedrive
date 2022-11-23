@@ -9,15 +9,19 @@
                     <div class="auth-form-light text-left py-5 px-4 px-sm-5">
                         <h2 class="text-center text-primary">Thank You!</h2>
                         <h4 class="text-center">Payment done Successfully</h4>
-                        <form class="pt-3" method="get" action="{{url('/reciept')}}">
-                            @csrf
-
+                        <form class="pt-3" method="get" action="">
                             <h5 class="text-center"><span class="text-black">Invoice No:</span>
-                                12345</h5>
+                                <span class="text-black" name="invoiceno" value="{{ $payment->id }}">
+                                </span>
+                            </h5>
                             <h5 class="text-center"><span class="text-black">Student ID:</span>
-                                12345</h5>
+                                <span class="text-black" name="studentid" value="{{ $payment->student_id }}">
+                                </span>
+                            </h5>
                             <h5 class="text-center"><span class="text-black">Paid Amount: LKR</span>
-                                10000</h5>
+                                <span class="text-black" name="amount" value="{{ $payment->amount }}">
+                                </span>
+                            </h5>
                             <div class="mt-3 text-center">
                                 <button class="btn btn-primary btn-lg font-weight-medium auth-form-btn"
                                     href="#">Home</button>
