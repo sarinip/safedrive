@@ -8,9 +8,9 @@
                     <h4 class="card-title">Vehicle Information</h4>
                     <form class="form-sample" method="post" action="{{ url('/vehicle/store') }}">
                         @csrf
-                        @if ($message = Session::get('success'))
+                        @if (session()->has('success'))
                             <div class="alert alert-success">
-                                <p>{{ $message }}</p>
+                                {{ session()->get('success') }}
                             </div>
                         @endif
                         <div class="row">
@@ -88,7 +88,7 @@
                                                 <div class="row">
                                                     <div class="col-md-12 text-right">
                                                         <div class="form-group">
-                                                            <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                                                            <button type="submit" class="btn btn-primary btn-text">Submit</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -144,16 +144,12 @@
                                                             {{ $vehicle->insurance_up_to }}
                                                         </td>
                                                         <td>
-                                                            <form action="{{ route('vehicle.new', $vehicle->id) }}" method="POST">
-                                                                <button
-                                                                    class="btn btn-warning btn-rounded btn-icon"href="{{ url('instructors/vehicles/' . $vehicle->id) }}"><i
-                                                                        class="ti-pencil-alt"></i></button>
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button type="button" class="btn btn-danger btn-rounded btn-icon">
-                                                                    <i class="ti-trash"></i>
-                                                                </button>
-                                                            </form>
+                                                            <a class="btn btn-warning btn-icon-text"
+                                                                href="{{ url('/vehicle/edit/' . $vehicle->id) }}"><i class="ti-pencil-alt"></i></a>
+                                                            <a type="button" class="btn btn-danger btn-icon-text"
+                                                                href="{{ url('/vehicle/delete/' . $vehicle->id) }}">
+                                                                <i class="ti-trash"></i>
+                                                            </a>
                                                         </td>
                                                     </tr>
                                                 @endforeach

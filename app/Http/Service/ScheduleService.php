@@ -21,4 +21,6 @@ interface ScheduleService
 
     public static function getStudentScheduleData();
 
+    public function viewTable();
+
 }

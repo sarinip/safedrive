@@ -49,31 +49,24 @@ class ExamServiceImpl implements ExamService
             return redirect()->route($path);
     }
 
-    public function getVehicle($id)
+    public function getExam($id)
     {
         // TODO: Implement getVehicle() method.
 
         $exam = Exam::where('id',$id)->first();
-            return view('Vehicle.vehicleupdate', array('exam'=>$exam));
+            return view('admin.examupdate', array('exam'=>$exam));
         }
 
-        /**
-    * Show the specified resource.
-    * @param int $id
-    * @return Response
-     */
-        public function viewExam(Vehicle $vehicle)
-        {
-            $exam= Exam::(all);
-            return view('/Examupdate')-> with('exam',$exam);
-        }
-        /**
-    * Remove the specified resource from storage.
-    *  @param int $id
-    * @return Response
-    */
+
         public function deletexam(Exam $exam){
             $exam->delete();
             return redirect('/exam');
+        }
+
+
+        public function viewTable()
+        {
+        $exams=Exam::all();
+        return view('admin.reportexam',['exams'=>$exams]);
         }
 }

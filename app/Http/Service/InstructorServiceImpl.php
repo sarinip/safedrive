@@ -31,6 +31,7 @@ class InstructorServiceImpl implements InstructorService
                 $user->name = $request->fname;
                 $user->email = $request->email;
                 $user->password = $newPassword;
+                $user->role = "INSTRUCTOR";
                 $user->save();
                 $instructor = new Instructor();
             }
@@ -63,4 +64,12 @@ class InstructorServiceImpl implements InstructorService
         $instructor = Instructor::where('id', $id)->first();
         return view('instructor.profile', array('instructor' => $instructor));
     }
+
+    public function viewTable()
+    {
+        $instructors=Instructor::all();
+        return view('admin.reportpayment',['instructors'=>$instructors]);
+    }
+
+
 }

@@ -22,10 +22,10 @@ class VehicleServiceImpl implements VehicleService
 
                     if(!empty($request->id)){
                     $vehicle = Vehicle::where('id',$request->id)->first();
-                    $path = '/vehicle/edit';
+
                     }
 
-                if(empty($student)){
+                if(empty($vehicle)){
 
                     $vehicle = new Vehicle();
                 }
@@ -77,7 +77,14 @@ public function viewVehicle()
     */
 public function deleteVehicle($id)
 {
+    $vehicle = Vehicle::where('id',$id)->first();
     $vehicle->delete();
     return redirect()->back()->with('success', "Record deleted Successfully!!");
 }
+
+  public function viewTable()
+ {
+  $vehicles=Vehicles::all();
+  return view('admin.reportvehicle',['vehicles'=>$vehicles]);
+ }
 }

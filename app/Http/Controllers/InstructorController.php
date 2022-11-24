@@ -64,5 +64,10 @@ class InstructorController extends Controller
     {
         return $this->service->getInstructor($id);
     }
-}
 
+    //report table
+    public function viewTable()
+    {
+    return $this->service->viewTable();
+    }
+}

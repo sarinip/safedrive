@@ -31,6 +31,10 @@ Route::post('/authentication', function (\Illuminate\Http\Request $request) {
     return (new \App\Http\Controllers\AuthController())->login($request);
 });
 
+Route::post('/student/store', function (\App\Http\Requests\StudentRequest $request) {
+    return (new \App\Http\Controllers\StudentController)->store($request);
+});
+
 Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/dashboard', function () {
@@ -42,11 +46,6 @@ Route::group(['middleware' => ['auth']], function () {
         $instructors = \App\Models\Instructor::orderBy('id', 'DESC')->get();
         return view('student.sheduleclass', array('instructors' => $instructors));
     });
-
-    Route::post('/student/store', function (\App\Http\Requests\StudentRequest $request) {
-        return (new \App\Http\Controllers\StudentController)->store($request);
-    });
-
 
     Route::post('/schedule/store', function (\App\Http\Requests\ScheduleRequest $request) {
         return (new \App\Http\Controllers\ScheduleController())->store($request);
@@ -133,13 +132,29 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 // Vehicle Routes
-
 Route::get('/vehicle/new', function () {
      return (new \App\Http\Controllers\VehicleController())->showTable();
 })->name('vehicle.new');
 
-//  Route::get('/vehicle/edit/{id}', function ($id) {
-    //  return (new \App\Http\Controllers\VehicleController)->show($id);
-//  });
+ Route::get('/vehicle/edit/{id}', function ($id) {
+     return (new \App\Http\Controllers\VehicleController)->show($id);
+ });
+
+ Route::get('/vehicle/delete/{id}', function ($id) {
+    return (new \App\Http\Controllers\VehicleController)->destroy($id);
+});
+
+    Route::get('/logout', function () {
+        return (new \App\Http\Controllers\AuthController())->logout();
+    });
+
+    // Reports
+Route::get('/report/classschedule', function () {
+    return (new \App\Http\Controllers\ScheduleController())->viewTable();
+})->name('reportschedule');
+
+Route::get('/report/vehicle', function () {
+    return (new \App\Http\Controllers\VehicleController())->viewTable();
+})->name('reportvehicle');
 
 });

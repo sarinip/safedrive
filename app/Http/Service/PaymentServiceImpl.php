@@ -11,8 +11,8 @@ class PaymentServiceImpl implements PaymentService
     public function store(PaymentRequest $request): \Illuminate\Http\RedirectResponse
         {
         $payment=null;
-        $path = 'reciept';                  
-              
+        $path = 'reciept';
+
             $payment = new Payment();
             $payment->student_id =$request->studentid;
             $payment->amount = $request->amount;
@@ -20,19 +20,24 @@ class PaymentServiceImpl implements PaymentService
             $payment->card_number= $request->cardnumber;
             $payment->exp_date= $request->cardnumber;
             $payment->cvv= $request->cvv;
-            
+
             $payment->save();
 
         return redirect()->route($path);
         }
-        
+
 
     public function getPayment($id)
         {
       // TODO: Implement getPayment() method.
-     
+
             $payment = Payment::where('id',$id)->first();
             return view('student.reciept', array('payment'=>$payment));
         }
+
+        public function viewTable()
+        {
+        $payments=Payment::all();
+        return view('admin.reportpayment',['payments'=>$payments]);
+        }
 }
-?>

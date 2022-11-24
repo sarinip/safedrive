@@ -32,6 +32,7 @@ class AuthController extends Controller
 
             $request->session()->regenerate();
             $request->session()->push('user', $user);
+
             if(!empty($student)){
                 $request->session()->push('student_id', $student->id);
             }
@@ -40,7 +41,9 @@ class AuthController extends Controller
                 $request->session()->push('instructor_id', $instructor->id);
             }
 
-
+            if ($user->role == 'INSTRUCTOR'){
+            return redirect()->route("instructor.schedule");
+            }
 
             return redirect()->route("dashboard");
 
@@ -48,6 +51,18 @@ class AuthController extends Controller
 
         return redirect()->back()->with('auth_error_message','Authentication failed !');
 
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+
+        session()->invalidate();
+        session()->flush();
+
+        session()->regenerateToken();
+
+        return redirect('/');
     }
 
 }

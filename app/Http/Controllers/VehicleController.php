@@ -98,11 +98,18 @@ class VehicleController extends Controller
     // }
     public function destroy($id){
 
-        return $this->service->viewVehicle();
+        return $this->service->deleteVehicle($id);
     }
 
+    //update form table
     public function showTable()
     {
      return $this->service->viewVehicle();
+    }
+
+    //report table
+    public function viewTable()
+    {
+    return $this->service->viewTable();
     }
 }
