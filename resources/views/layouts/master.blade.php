@@ -5,6 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Driving School</title>
     <!-- datatables:css -->
     <link href=//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css>
@@ -27,7 +28,8 @@
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="{{asset('/css/vertical-layout-light/style.css')}}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">s
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('/css/fullcalender.min.css')}}">
     <!-- endinject -->
     <link rel="shortcut icon" href="{{asset('/images/favicon.png')}}" />
 
@@ -104,6 +106,7 @@
     <script src="{{asset('/js/file-upload.js')}}"></script>
     <script src="{{asset('/js/typeahead.js')}}"></script>
     <script src="{{asset('/js/select2.js')}}"></script>
+    <script src="{{asset('/js/fullcalender.min.js')}}"></script>
     <!-- End custom js for this page-->
     <!-- Notification js-->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -194,6 +197,7 @@
     <!-- Custom js for this page-->
     <script src="{{asset('/js/dashboard.js')}}"></script>
     <script src="{{asset('/js/Chart.roundedBarCharts.js')}}"></script>
+    <script src="{{asset('/js/db.js')}}"></script>
     <!-- End custom js for this page-->
 
 

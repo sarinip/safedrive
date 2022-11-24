@@ -1,27 +1,46 @@
 <!-- <style>
+<<<<<<< HEAD
+    .active{
+        background: #323232 !important;
+    }
+=======
 .active {
 background: #323232 !important;}
+>>>>>>> 1206456e382227c8ac04cb4283f11ebf409aff2e
 </style> -->
 
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
         <li class="nav-item">
-            <a class="nav-link" href="{{ url('/student') }}" aria-expanded="false" aria-controls="students">
+
+            <a class="nav-link" href="{{url('/dashboard')}}" aria-expanded="false" aria-controls="students">
+
                 <i class="icon-head menu-icon"></i>
                 <span class="menu-title">Dashboard</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ url('/student/profile') }}" aria-expanded="false" aria-controls="students">
+
+            <a class="nav-link" href="{{url('/student/profile/'.session()->get('student_id')[0])}}" aria-expanded="false" aria-controls="students">
+
                 <i class="icon-head menu-icon"></i>
                 <span class="menu-title">Profile</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ url('/student/sheduleclass') }}" aria-expanded="false"
+
+            <a class="nav-link" href="{{url('/student/appointment')}}" aria-expanded="false"
+
                 aria-controls="students">
                 <i class="icon-head menu-icon"></i>
-                <span class="menu-title">Class Sheduling</span>
+                <span class="menu-title">Class Schedule</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url('/student/calenderview/') }}" aria-expanded="falae" aria-controls="students">
+                <i class="icon-head menu-icon"></i>
+                <span class="menu-title">Student Calender</span>
             </a>
         </li>
         <li class="nav-item">
@@ -46,9 +65,23 @@ background: #323232 !important;}
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ url('/instructor/profile/') }}" aria-expanded="falae" aria-controls="students">
+            <a class="nav-link" href="{{ url('/instructor/profile/') }}" aria-expanded="falae" aria-controls="instructor">
                 <i class="icon-head menu-icon"></i>
                 <span class="menu-title">Instructor Profile</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url('/instructor/schedule/') }}" aria-expanded="falae" aria-controls="instructor">
+                <i class="icon-head menu-icon"></i>
+                <span class="menu-title">Instructor Schedule</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url('/instructor/calenderview/') }}" aria-expanded="falae" aria-controls="instructor">
+                <i class="icon-head menu-icon"></i>
+                <span class="menu-title">Instructor Calender</span>
             </a>
         </li>
         <!-- <li class="nav-item"> -->

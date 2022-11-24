@@ -12,16 +12,12 @@
                         </div>
                         <h4>Welcome to Driving School!</h4>
                         <h6 class="font-weight-light">Sign in to continue.</h6>
-                        @if ($errors->any())
+                        @if(session()->has('auth_error_message'))
                         <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
+                            {{ session()->get('auth_error_message') }}
                         </div>
                         @endif
-                        <form class="pt-3" method="post" action="{{url('/login')}}">
+                        <form class="pt-3" method="post" action="{{url('/authentication')}}">
                             @csrf
                             <div class="form-group">
                                 <input type="email" class="form-control form-control-lg" id="exampleInputEmail1"
@@ -46,7 +42,7 @@
                             </div>
 
                             <div class="text-center mt-4 font-weight-light">
-                                Don't have an account? <a href="{{asset('/register')}} " class=" text-primary">Create
+                                Don't have an account? <a href="{{url('/student/register')}} " class=" text-primary">Create
                                     your student account</a>
                             </div>
                         </form>
