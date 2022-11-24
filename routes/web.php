@@ -134,8 +134,12 @@ Route::group(['middleware' => ['auth']], function () {
 
 // Vehicle Routes
 
-Route::get('/report/vehicle', function () {
+Route::get('/vehicle/new', function () {
      return (new \App\Http\Controllers\VehicleController())->showTable();
-})->name('vehicle.report');
+})->name('vehicle.new');
+
+//  Route::get('/vehicle/edit/{id}', function ($id) {
+    //  return (new \App\Http\Controllers\VehicleController)->show($id);
+//  });
 
 });

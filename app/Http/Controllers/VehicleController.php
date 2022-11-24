@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Service\VehicleService;
 use App\Http\Service\VehicleServiceImpl;
 use App\Http\Requests\VehicleRequest;
+use App\Models\Vehicle;
 use Illuminate\Http\Request;
 
 
@@ -90,10 +91,14 @@ class VehicleController extends Controller
      * @param \App\Models\Student $student
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-            return $this->service->deleteVehicle($id);
+    // public function destroy($id)
+    // {
+            // return $this->service->deleteVehicle($id);
 
+    // }
+    public function destroy($id){
+
+        return $this->service->viewVehicle();
     }
 
     public function showTable()

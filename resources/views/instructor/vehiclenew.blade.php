@@ -8,6 +8,11 @@
                     <h4 class="card-title">Vehicle Information</h4>
                     <form class="form-sample" method="post" action="{{ url('/vehicle/store') }}">
                         @csrf
+                        @if ($message = Session::get('success'))
+                            <div class="alert alert-success">
+                                <p>{{ $message }}</p>
+                            </div>
+                        @endif
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group row">
@@ -139,30 +144,13 @@
                                                             {{ $vehicle->insurance_up_to }}
                                                         </td>
                                                         <td>
-                                                            <button type="button" class="btn btn-warning btn-rounded btn-icon">
-                                                                <a href="{{ url('instructors/vehicles/' . $vehicle->id) }}"><i
-                                                                        class="ti-pencil-alt"></i></a>
-
-                                                            </button>
-                                                            <form method="post" id="delete{{ $vehicle['id'] }}"
-                                                                action="{{ url('instructors/vehicles/' . $vehicle['id']) }}">
+                                                            <form action="{{ route('vehicle.new', $vehicle->id) }}" method="POST">
+                                                                <button
+                                                                    class="btn btn-warning btn-rounded btn-icon"href="{{ url('instructors/vehicles/' . $vehicle->id) }}"><i
+                                                                        class="ti-pencil-alt"></i></button>
                                                                 @csrf
-                                                                <input type="hidden" name="_method" value="delete" />
-                                                                <button type="button" onclick="return clicked();"
-                                                                    class="btn btn-danger btn-rounded btn-icon">
-                                                                    <script type="text/javascript">
-                                                                        function clicked() {
-                                                                            if (confirm('Are you sure?')) {
-                                                                                delete {
-                                                                                    {
-                                                                                        $vehicle['id']
-                                                                                    }
-                                                                                }.submit();
-                                                                            } else {
-                                                                                return false;
-                                                                            }
-                                                                        }
-                                                                    </script>
+                                                                @method('DELETE')
+                                                                <button type="button" class="btn btn-danger btn-rounded btn-icon">
                                                                     <i class="ti-trash"></i>
                                                                 </button>
                                                             </form>
