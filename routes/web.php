@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 /*Route::get('/', function () {
-    return view('welcome');
+return view('welcome');
 });*/
 
 Route::get('/', function () {
@@ -22,6 +22,7 @@ Route::get('/', function () {
 })->name('login');
 
 
+// Student Routes
 Route::get('/student/register', function () {
     return view('student.register');
 });
@@ -45,6 +46,7 @@ Route::post('/student/store', function (\App\Http\Requests\StudentRequest $reque
     return (new \App\Http\Controllers\StudentController)->store($request);
 });
 
+
 Route::post('/schedule/store', function (\App\Http\Requests\ScheduleRequest $request) {
     return (new \App\Http\Controllers\ScheduleController())->store($request);
 });
@@ -53,18 +55,71 @@ Route::post('/schedule/getschdulecount', function (\Illuminate\Http\Request $req
     return (new \App\Http\Controllers\ScheduleController())->getScheduleCount($request);
 });
 
+Route::get('/schedule/approve/{id}', function ($id){
+    return (new \App\Http\Controllers\ScheduleController())->scheduleApprove($id);
+});
+
+Route::get('/schedule/reject/{id}', function ($id){
+    return (new \App\Http\Controllers\ScheduleController())->scheduleReject($id);
+});
+
+Route::get('/instructor/calenderview', function () {
+    $schedules = \App\Http\Service\ScheduleServiceImpl::getInstructorScheduleData();
+    return view('instructor.calender',array('schedules'=>$schedules->toJson()));
+});
+
+Route::get('/student/calenderview', function () {
+    $schedules = \App\Http\Service\ScheduleServiceImpl::getStudentScheduleData();
+    return view('instructor.calender',array('schedules'=>$schedules->toJson()));
+});
+
+
 Route::get('/student/profile/{id}', function ($id){
     return (new \App\Http\Controllers\StudentController)->show($id);
 });
 
+
+
+// Instructor Routes
+Route::get('/instructor/register', function () {
+    return view('instructor.register');
+});
+
+Route::post('/instructor/store', function (\App\Http\Requests\InstructorRequest $request) {
+    return (new \App\Http\Controllers\InstructorController())->store($request);
+});
+
+Route::get('/instructor/profile/{id}', function ($id) {
+    return (new \App\Http\Controllers\InstructorController)->show($id);
+});
+
+Route::get('/instructor/schedule', function () {
+    $schedules = \App\Models\Schedule::where('instructor_id',session()->get('instructor_id')[0] )->get();
+    return view('instructor.approval',array('schedules'=>$schedules));
+})->name('instructor.schedule');
+
+// Payment Routes
 Route::get('/payment', function () {
+
     return view('student.payment');
 });
 
+
+
 Route::post('/payment/store', function (\App\Http\Requests\PaymentRequest $request) {
-    return (new \App\Http\Controllers\PaymentController() )->store($request);
+    return (new \App\Http\Controllers\PaymentController())->store($request);
 });
 
 Route::get('/reciept', function () {
     return view('student.reciept');
 })->name('reciept');
+
+
+Route::get('/reciept/{id}', function ($id) {
+    return (new \App\Http\Controllers\PaymentController())->show($id);
+});
+
+// Vehicle Routes
+Route::get('/instructor/vehicle', function () {
+    return view('instructor.vehiclenew');
+});

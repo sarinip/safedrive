@@ -13,4 +13,12 @@ interface ScheduleService
 
     public function getScheduleCount(Request $request);
 
+    public function scheduleApprove($id);
+
+    public function scheduleReject($id);
+
+    public static function getInstructorScheduleData();
+
+    public static function getStudentScheduleData();
+
 }

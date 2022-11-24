@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Instructor;
 use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -27,10 +28,19 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
 
             $student = Student::where('user_id',$user->id)->first();
+            $instructor = Instructor::where('user_id',$user->id)->first();
 
             $request->session()->regenerate();
             $request->session()->push('user', $user);
-            $request->session()->push('student_id', $student->id);
+            if(!empty($student)){
+                $request->session()->push('student_id', $student->id);
+            }
+
+            if(!empty($instructor)){
+                $request->session()->push('instructor_id', $instructor->id);
+            }
+
+
 
             return redirect()->route("dashboard");
 

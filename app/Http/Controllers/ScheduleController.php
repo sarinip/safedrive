@@ -101,4 +101,12 @@ class ScheduleController extends Controller
     public function getScheduleCount(Request $request){
         return response()->json(['data' => $this->service->getScheduleCount($request)], 200);
     }
+
+    public function scheduleApprove($id){
+        return $this->service->scheduleApprove($id);
+    }
+
+    public function scheduleReject($id){
+        return $this->service->scheduleReject($id);
+    }
 }

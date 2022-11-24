@@ -30623,6 +30623,26 @@ div.tagsinput span.tag a {
 }
 
 
+.fc .fc-list-table tr>* {
+    border-left: 0;
+    border-right: 0;
+    background-color: #248afd;
+}
+
+.fc .fc-event {
+    border: 0;
+    color: #ffffff;
+    padding: 0.5rem;
+    background-color: #248afd;
+}
+
+
+.fc .fc-button-group .fc-button {
+    background-color: #282f3a;
+    margin: 0;
+}
+
+
 @media (max-width: 991px) {
   #settings-trigger {
     display: none;

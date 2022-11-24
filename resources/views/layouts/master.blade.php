@@ -28,7 +28,8 @@
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="{{asset('/css/vertical-layout-light/style.css')}}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">s
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('/css/fullcalender.min.css')}}">
     <!-- endinject -->
     <link rel="shortcut icon" href="{{asset('/images/favicon.png')}}" />
 
@@ -105,6 +106,7 @@
     <script src="{{asset('/js/file-upload.js')}}"></script>
     <script src="{{asset('/js/typeahead.js')}}"></script>
     <script src="{{asset('/js/select2.js')}}"></script>
+    <script src="{{asset('/js/fullcalender.min.js')}}"></script>
     <!-- End custom js for this page-->
     <!-- Notification js-->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>

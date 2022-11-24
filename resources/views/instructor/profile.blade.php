@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-md-3 grid-margin stretch-card">
         <div class="card">
-            <div class="card-body text-center" method="post" action="">
+            <div class="card-body text-center" method="post" action="{{url('instructor/profile')}}">
                 <form class=" form-sample">
                     <div class="form-group">
                         <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle text-center"
@@ -33,8 +33,8 @@
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">First Name</label>
                                 <div class="col-sm-9">
-                                    <input type="text" name="fname" value="{{ $student->fname }}" class=" form-control"
-                                        readonly />
+                                    <input type="text" name="fname" value="{{ $instructor->fname }}"
+                                        class=" form-control" readonly />
                                 </div>
                             </div>
                         </div>
@@ -42,7 +42,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Last Name</label>
                                 <div class="col-sm-9">
-                                    <input type="text" id="lname" class="form-control" value="{{ $student->lname }}"
+                                    <input type="text" id="lname" class="form-control" value="{{ $instructor->lname }}"
                                         readonly />
                                 </div>
                             </div>
@@ -53,7 +53,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Date of Birth</label>
                                 <div class="col-sm-9">
-                                    <input class="form-control" type="date" name="dob" value="{{ $student->dob }}"
+                                    <input class="form-control" type="date" name="dob" value="{{ $instructor->dob }}"
                                         placeholder="dd/mm/yyyy" readonly />
                                 </div>
                             </div>
@@ -62,7 +62,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">NIC</label>
                                 <div class="col-sm-9">
-                                    <input type="text" name="nic" value="{{ $student->nic }}" class="form-control"
+                                    <input type="text" name="nic" value="{{ $instructor->nic }}" class="form-control"
                                         readonly />
                                 </div>
                             </div>
@@ -77,7 +77,7 @@
                                 <label class="col-sm-3 col-form-label">Address No.</label>
                                 <div class="col-sm-9">
                                     <input type="text" id="addressNo" class="form-control"
-                                        value="{{ $student->addressNo }}" readonly />
+                                        value="{{ $instructor->addressNo }}" readonly />
                                 </div>
                             </div>
                         </div>
@@ -86,7 +86,7 @@
                                 <label class="col-sm-3 col-form-label">Address Line 1</label>
                                 <div class="col-sm-9">
                                     <input type="text" id="address1" class="form-control"
-                                        value="{{ $student->address1 }}" readonly />
+                                        value="{{ $instructor->address1 }}" readonly />
                                 </div>
                             </div>
                         </div>
@@ -97,7 +97,7 @@
                                 <label class="col-sm-3 col-form-label">Address Line 2</label>
                                 <div class="col-sm-9">
                                     <input type="text" id="address2" class="form-control"
-                                        value="{{ $student->address2 }}" readonly />
+                                        value="{{ $instructor->address2 }}" readonly />
                                 </div>
                             </div>
                         </div>
@@ -105,7 +105,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">City</label>
                                 <div class="col-sm-9">
-                                    <input type="text" id="city" class="form-control" value="{{ $student->city }}"
+                                    <input type="text" id="city" class="form-control" value="{{ $instructor->city }}"
                                         readonly />
                                 </div>
                             </div>
@@ -117,7 +117,7 @@
                                 <label class="col-sm-3 col-form-label">Postal Code</label>
                                 <div class="col-sm-9">
                                     <input type="text" id="postcode" class="form-control"
-                                        value="{{ $student->postcode }}" readonly />
+                                        value="{{ $instructor->postcode }}" readonly />
                                 </div>
                             </div>
                         </div>
@@ -126,7 +126,7 @@
                                 <label class="col-sm-3 col-form-label">Telephone</label>
                                 <div class="col-sm-9">
                                     <input type="text" id="telephone" class="form-control"
-                                        value="{{ $student->telephone }}" readonly />
+                                        value="{{ $instructor->telephone }}" readonly />
                                 </div>
                             </div>
                         </div>

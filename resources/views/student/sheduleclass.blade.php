@@ -62,19 +62,19 @@
                             <p class="font-weight-bold text-info">
                                 Morning Sessions
                             </p>
-                            <div class="chip ivoryia-chip m-2 px-2 " onclick="selectedTimeSlot(this);"><span class="p-2"><em class="bi bi-clock"></em> 09 AM</div>
-                            <div class="chip ivoryia-chip m-2 px-2 " onclick="selectedTimeSlot(this);"><span class="p-2"><em class="bi bi-clock"></em> 10 AM</div>
-                            <div class="chip ivoryia-chip m-2 px-2 " onclick="selectedTimeSlot(this);"><span class="p-2"><em class="bi bi-clock"></em> 11 AM</div>
-                            <div class="chip ivoryia-chip m-2 px-2 " onclick="selectedTimeSlot(this);"><span class="p-2"><em class="bi bi-clock"></em> 12 AM</div>
+                            <div class="chip ivoryia-chip m-2 px-2 " onclick="selectedTimeSlot(this);"><span class="p-2"><em class="bi bi-clock"></em> 09:00 AM</div>
+                            <div class="chip ivoryia-chip m-2 px-2 " onclick="selectedTimeSlot(this);"><span class="p-2"><em class="bi bi-clock"></em> 10:00 AM</div>
+                            <div class="chip ivoryia-chip m-2 px-2 " onclick="selectedTimeSlot(this);"><span class="p-2"><em class="bi bi-clock"></em> 11:00 AM</div>
+                            <div class="chip ivoryia-chip m-2 px-2 " onclick="selectedTimeSlot(this);"><span class="p-2"><em class="bi bi-clock"></em> 12:00 AM</div>
                         </div>
                         <div class="col-sm-6">
                             <p class="font-weight-bold text-info">
                                 Evening Sessions
                             </p>
-                            <div class="chip ivoryia-chip m-2 px-2 " onclick="selectedTimeSlot(this);"><span class="p-2"><em class="bi bi-clock"></em> 01 PM</div>
-                            <div class="chip ivoryia-chip m-2 px-2 " onclick="selectedTimeSlot(this);"><span class="p-2"><em class="bi bi-clock"></em> 02 PM</div>
-                            <div class="chip ivoryia-chip m-2 px-2 " onclick="selectedTimeSlot(this);"><span class="p-2"><em class="bi bi-clock"></em> 03 PM</div>
-                            <div class="chip ivoryia-chip m-2 px-2 " onclick="selectedTimeSlot(this);"><span class="p-2"><em class="bi bi-clock"></em> 04 PM</div>
+                            <div class="chip ivoryia-chip m-2 px-2 " onclick="selectedTimeSlot(this);"><span class="p-2"><em class="bi bi-clock"></em> 01:00 PM</div>
+                            <div class="chip ivoryia-chip m-2 px-2 " onclick="selectedTimeSlot(this);"><span class="p-2"><em class="bi bi-clock"></em> 02:00 PM</div>
+                            <div class="chip ivoryia-chip m-2 px-2 " onclick="selectedTimeSlot(this);"><span class="p-2"><em class="bi bi-clock"></em> 03:00 PM</div>
+                            <div class="chip ivoryia-chip m-2 px-2 " onclick="selectedTimeSlot(this);"><span class="p-2"><em class="bi bi-clock"></em> 04:00 PM</div>
                         </div>
                         @error('timeslot')
                         <div class="alert alert-danger">{{ $message }}</div>
