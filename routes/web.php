@@ -133,9 +133,13 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 // Vehicle Routes
+    Route::get('/report/vehicle', function () {
+        return (new \App\Http\Controllers\VehicleController())->showTable();
+    })->name('vehicle.report');
 
-Route::get('/report/vehicle', function () {
-     return (new \App\Http\Controllers\VehicleController())->showTable();
-})->name('vehicle.report');
+    Route::get('/logout', function () {
+        return (new \App\Http\Controllers\AuthController())->logout();
+    });
+
 
 });
