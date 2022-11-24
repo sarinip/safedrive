@@ -56,7 +56,7 @@ class VehicleServiceImpl implements VehicleService
         // TODO: Implement getVehicle() method.
 
         $vehicle = Vehicle::where('id',$id)->first();
-            return view('Vehicle.vehicleupdate', array('vehicle'=>$vehicle));
+            return view('instructor.vehicleupdate', array('vehicle'=>$vehicle));
         }
 
         /**
@@ -64,10 +64,10 @@ class VehicleServiceImpl implements VehicleService
     * @param int $id
     * @return Response
      */
-public function viewVehicle(Vehicle $vehicle)
+public function viewVehicle()
 {
-    $vehicles= Vehicle::(all);
-    return view('/vehicleupdate')-> with('vehicles',$veicles);
+    $vehicles= Vehicle::all();
+    return view('instructor.vehiclenew', array('vehicles'=>$vehicles));
 }
         /**
     * Remove the specified resource from storage.

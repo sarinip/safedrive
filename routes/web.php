@@ -135,5 +135,5 @@ Route::post('/vehicle/store', function (\App\Http\Requests\VehicleRequest $reque
 
 // Vehicle Routes
 Route::get('/report/vehicle', function () {
-    return view('admin.reportvehicle',compact('vehicles'));
+     return (new \App\Http\Controllers\VehicleController())->viewTable();
 });

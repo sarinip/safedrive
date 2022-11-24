@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Service\VehicleServiceImpl;
+use Illuminate\Http\Service\VehicleService;
+
 
 class VehicleController extends Controller
 {
-    class StudentController extends Controller
-{
 
-    private StudentService $service;
+    private VehicleService $service;
 
     public function __construct()
     {
@@ -87,17 +88,15 @@ class VehicleController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Student $student)
+    public function destroy($id)
     {
-        public function show($id)
-        {
+
             return $this->service->deleteVehicle($id);
-        }
+
     }
 
-    public function showTable($vehicle)
+    public function showTable()
     {
-     return $this->service->viewVehicle($vehicle);
+     return $this->service->viewVehicle();
     }
-}
 }
