@@ -24,7 +24,7 @@ class ScheduleServiceImpl implements ScheduleService
             }
 
             $schedule = new Schedule();
-            $schedule->student_id = $user->id;
+            $schedule->student_id = session()->get('student_id')[0];
             $schedule->instructor_id = $request->instructor;
             $schedule->session = $request->schedulesession;
             $schedule->schedule_date = $request->scheduledate;

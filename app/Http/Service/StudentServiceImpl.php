@@ -36,6 +36,7 @@ class StudentServiceImpl implements StudentService
                 $user->name  = $request->fname;
                 $user->email = $request->email;
                 $user->password = $newPassword;
+                $user->role = "STUDENT";
 
                 $user->save();
 
@@ -71,7 +72,7 @@ class StudentServiceImpl implements StudentService
     public function getStudent($id)
     {
         // TODO: Implement getStudent() method.
-       
+
     $student = Student::where('id',$id)->first();
     return view('student.profile', array('student'=>$student));
     }
