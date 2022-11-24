@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Service\VehicleService;
+use App\Http\Service\VehicleServiceImpl;
+use App\Http\Requests\VehicleRequest;
 use Illuminate\Http\Request;
-use Illuminate\Http\Service\VehicleServiceImpl;
-use Illuminate\Http\Service\VehicleService;
+
 
 
 class VehicleController extends Controller
 {
 
-    private VehicleService $service;
+  private VehicleService $service;
 
     public function __construct()
     {
@@ -40,7 +42,7 @@ class VehicleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(VehicleRequest $request)
@@ -51,18 +53,18 @@ class VehicleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Student  $student
+     * @param \App\Models\Student $student
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-         return $this->service->getVehicle($id);
+        return $this->service->getVehicle($id);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Student  $student
+     * @param \App\Models\Student $student
      * @return \Illuminate\Http\Response
      */
     public function edit(Student $student)
@@ -73,8 +75,8 @@ class VehicleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Student  $student
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Student $student
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Student $student)
@@ -85,12 +87,11 @@ class VehicleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Student  $student
+     * @param \App\Models\Student $student
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-
             return $this->service->deleteVehicle($id);
 
     }

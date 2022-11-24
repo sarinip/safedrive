@@ -13,5 +13,5 @@ interface VehicleService
 
     public function viewVehicle();
 
-    public function deleteVehicle ($veicle);
+    public function deleteVehicle($id);
 }

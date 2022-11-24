@@ -6,14 +6,13 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Vehicle Information</h4>
-                    <form class="form-sample" method="post" action="{{ url('instructors/vehicles') }}">
+                    <form class="form-sample" method="post" action="{{ url('/vehicle/store') }}">
                         @csrf
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Registration No.</label>
                                     <div class="col-sm-9">
-
                                         <input type="text" name="reg_no" class="form-control" />
                                         @error('reg_no')
                                             <div class="alert alert-danger">{{ $message }}</div>
@@ -122,7 +121,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($vehicles as  $vehicle)
+                                                @foreach ($vehicles as $vehicle)
                                                     <tr>
                                                         <td>
                                                             {{ $vehicle->id }}

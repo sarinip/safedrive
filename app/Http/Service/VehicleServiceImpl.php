@@ -2,10 +2,10 @@
 
 namespace App\Http\Service;
 
-use App\Http\Requests\VehicleRequest
+use App\Http\Requests\VehicleRequest;
 use App\Models\Vehicle;
 use App\Models\Instructor;
-use Illuminate\Contracts\Hashing\Hasher
+use Illuminate\Contracts\Hashing\Hasher;
 use Illuminate\Support\Facades\Hash;
 
 class VehicleServiceImpl implements VehicleService
@@ -14,7 +14,7 @@ class VehicleServiceImpl implements VehicleService
     public function store(VehicleRequest $request): \Illuminate\Http\RedirectResponse
 {
         // TODO: Implement store() method.
-            $path = 'login';
+            $path = 'vehicle.report';
 
             try {
 
@@ -29,7 +29,7 @@ class VehicleServiceImpl implements VehicleService
 
                     $vehicle = new Vehicle();
                 }
-                $vehicle->instructor_id= $instructor->id;
+                $vehicle->instructor_id= session()->get('instructor_id')[0];
                 $vehicle->reg_no= $request->reg_no;
                 $vehicle->owner_name = $request->owner_name;
                 $vehicle->reg_date = $request->reg_date;
@@ -74,7 +74,7 @@ public function viewVehicle()
     *  @param int $id
     * @return Response
     */
-public function deleteVehicle(Vehicle $vehicle)
+public function deleteVehicle($id)
 {
     $vehicle->delete();
     return redirect('/vehicle');
