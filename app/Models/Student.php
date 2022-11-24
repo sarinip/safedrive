@@ -13,5 +13,10 @@ class Student extends Model
 
     public function student(){
         return $this->hasMany('App/Student', 'student_id', 'id');
-}
+    }
+
+    public function studentExam(){
+        return $this->hasMany('App/Exam', 'student_id', 'id');
+    }
+
 }

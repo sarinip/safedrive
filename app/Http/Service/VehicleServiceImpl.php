@@ -29,7 +29,7 @@ class VehicleServiceImpl implements VehicleService
 
                     $vehicle = new Vehicle();
                 }
-                $student->instructor_id= $instructor->id;
+                $vehicle->instructor_id= $instructor->id;
                 $vehicle->reg_no= $request->reg_no;
                 $vehicle->owner_name = $request->owner_name;
                 $vehicle->reg_date = $request->reg_date;

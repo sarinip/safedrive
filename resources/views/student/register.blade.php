@@ -155,11 +155,11 @@
                                 </div>
                             </div>
                             <div class="mt-3">
-                                <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN
+                                <button tupe="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN
                                     UP</button>
                             </div>
                             <div class="text-center mt-4 font-weight-light">
-                                Already have an account? <a href="{{asset('/login')}}" class="text-primary">Login</a>
+                                Already have an account? <a href="{{url('/login')}}" class="text-primary">Login</a>
                             </div>
                         </form>
                     </div>

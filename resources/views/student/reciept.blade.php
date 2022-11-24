@@ -28,7 +28,7 @@
                             </div>
                             <div class="text-center" style="margin-top: 50px;">
                                 <a><u class="text-info">Print Reciept</u></a>
-                                <p>SafeDrive driving School. </p>
+                                <p>Copyright © 2022. Driving School Management System. All rights reserved.</p>
                             </div>
                         </form>
                     </div>
