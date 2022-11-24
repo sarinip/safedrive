@@ -120,6 +120,15 @@ Route::get('/reciept/{id}', function ($id) {
 });
 
 // Vehicle Routes
-Route::get('/instructor/vehicle', function () {
+Route::get('/vehicle', function () {
     return view('instructor.vehiclenew');
 });
+
+Route::post('/vehicle/store', function (\App\Http\Requests\VehicleRequest $request) {
+    return (new \App\Http\Controllers\VehicleController())->store($request);
+});
+
+// Route::get('/instructor/profile/{id}', function ($id) {
+    // return (new \App\Http\Controllers\VehicleController)->show($id);
+// });
+
