@@ -97,10 +97,10 @@
                                 @foreach ($schedules as $schdule)
                                     <tr>
                                         <td>{{ $schdule->session }}</td>
-                                        <td class="font-weight-bold">{{ $schdule->schedule_date }}</td>
+                                        <td>{{ $schdule->schedule_date }}</td>
                                         <td>{{ $schdule->session_from_time }}</td>
                                         <td class="font-weight-medium">
-                                            <div class="badge badge-success">{{ $schdule->status }}</div>
+                                            <div class="badge badge-info">{{ $schdule->status }}</div>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -133,22 +133,20 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Search Engine Marketing</td>
-                                    <td class="font-weight-bold">$362</td>
-                                    <td>21 Sep 2018</td>
-                                    <td class="font-weight-medium">
-                                        <div class="badge badge-success">Completed</div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Display Advertising</td>
-                                    <td class="font-weight-bold">$551</td>
-                                    <td>28 Sep 2018</td>
-                                    <td class="font-weight-medium">
-                                        <div class="badge badge-warning">Pending</div>
-                                    </td>
-                                </tr>
+                                @foreach ($payments as $payment)
+                                    <tr>
+                                        <td>{{ $payment->id }}</td>
+                                        <td>{{ $payment->amount }}</td>
+                                        <td>{{ $payment->created_at }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Display Advertising</td>
+                                        <td class="font-weight-bold">$551</td>
+                                        <td>28 Sep 2018</td>
+                                        <td class="font-weight-medium">
+                                            <div class="badge badge-warning">Pending</div>
+                                        </td>
+                                    </tr>
                             </tbody>
                         </table>
                     </div>

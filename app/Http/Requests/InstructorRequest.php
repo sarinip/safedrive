@@ -24,18 +24,18 @@ class InstructorRequest extends FormRequest
     public function rules()
     {
         return [
-            'fname' => ['required', 'string'],
-            'lname' => ['required'],
-            'dob' => ['required'],
-            'nic' => ['required', 'unique:instructors,nic'],
+            'fname' => ['required', 'string','max:255'],
+            'lname' => ['required', 'string','max:255'],
+            'dob' => ['required','date'],
+            'nic' => ['required', 'unique:instructors,nic','max:255'],
             'addressNo' => ['required'],
             'address1' => ['required'],
             'address2' => ['string'],
-            'city' => ['required'],
-            'postcode' => ['required'],
-            'telephone' => ['required'],
+            'city' => ['required','max:255'],
+            'postcode' => ['required','max:255'],
+            'telephone' => ['required','numeric'],
             'email' => ['required', 'email', 'unique:users,email'],
-            'password' => ['required', 'confirmed'],
+            'password' => ['required', 'confirmed','min:6'],
         ];
     }
 }

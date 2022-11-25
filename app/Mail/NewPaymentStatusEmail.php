@@ -59,4 +59,8 @@ class NewPaymentStatusEmail extends Mailable
     {
         return [];
     }
-}
+
+    public function build()
+    {
+    return $this->from('sample@ivoryia.com','Safe Drive')->subject('New Payment Status Email')->view('emails.new_schedule_status_email_template')->with('data', $this->data);
+    }

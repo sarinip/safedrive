@@ -25,11 +25,11 @@ class PaymentRequest extends FormRequest
     {
         return [
             // 'studentid' => ['required'],
-            'amount' => ['required'],
-            'cardname' => ['required'],
-            'cardnumber' => ['required'],
-            'expdate' => ['required'],
-            'cvv' => ['required'],
+            'amount' => ['required','numeric','max:255'],
+            'cardname' => ['required','string'],
+            'cardnumber' => ['required','numeric','max:255'],
+            'expdate' => ['required','string'],
+            'cvv' => ['required','numeric','max:200'],
         ];
     }
 }
