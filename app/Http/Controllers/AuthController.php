@@ -45,7 +45,15 @@ class AuthController extends Controller
             return redirect()->route("instructor.schedule");
             }
 
+            if ($user->role == 'STUDENT'){
             return redirect()->route("dashboard");
+            }
+
+            if ($user->role == 'ADMIN'){
+            return redirect()->route("admin.dashboard");
+            }
+
+
 
         }
 

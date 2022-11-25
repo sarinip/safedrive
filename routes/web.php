@@ -97,12 +97,15 @@ Route::group(['middleware' => ['auth']], function () {
         return view('instructor.approval', array('schedules' => $schedules));
     })->name('instructor.schedule');
 
+    // Route::get('/instructor/profile/{id}', function ($id) {
+    // return (new \App\Http\Controllers\VehicleController)->show($id);
+// });
+
 // Payment Routes
     Route::get('/payment', function () {
 
         return view('student.payment');
     });
-
 
     Route::post('/payment/store', function (\App\Http\Requests\PaymentRequest $request) {
         return (new \App\Http\Controllers\PaymentController())->store($request);
@@ -122,55 +125,76 @@ Route::group(['middleware' => ['auth']], function () {
         return view('instructor.vehiclenew');
     });
 
+    Route::get('/vehicle/new', function () {
+        return (new \App\Http\Controllers\VehicleController())->showTable();
+    })->name('vehicle.new');
+
     Route::post('/vehicle/store', function (\App\Http\Requests\VehicleRequest $request) {
-        return (new \App\Http\Controllers\VehicleController())->store($request);
+    return (new \App\Http\Controllers\VehicleController())->store($request);
     });
 
-// Route::get('/instructor/profile/{id}', function ($id) {
-    // return (new \App\Http\Controllers\VehicleController)->show($id);
-// });
+    Route::get('/vehicle/edit/{id}', function ($id) {
+        return (new \App\Http\Controllers\VehicleController)->show($id);
+    });
+
+    Route::get('/vehicle/delete/{id}', function ($id) {
+        return (new \App\Http\Controllers\VehicleController)->destroy($id);
+    });
 
 
-// Vehicle Routes
-Route::get('/vehicle/new', function () {
-     return (new \App\Http\Controllers\VehicleController())->showTable();
-})->name('vehicle.new');
+    // Exam Routes
+     Route::get('/exam', function () {
+     return view('amind.examnew');
+    });
 
- Route::get('/vehicle/edit/{id}', function ($id) {
-     return (new \App\Http\Controllers\VehicleController)->show($id);
- });
+    Route::get('/exam/new', function () {
+        return (new \App\Http\Controllers\ExamController())->showTable();
+    })->name('exam.new');
 
- Route::get('/vehicle/delete/{id}', function ($id) {
-    return (new \App\Http\Controllers\VehicleController)->destroy($id);
-});
+     Route::post('/exam/store', function (\App\Http\Requests\ExamRequest $request) {
+    return (new \App\Http\Controllers\ExamController())->store($request);
+    });
 
+    Route::get('/exam/edit/{id}', function ($id) {
+        return (new \App\Http\Controllers\ExamController)->show($id);
+    });
+
+    Route::get('/exam/delete/{id}', function ($id) {
+        return (new \App\Http\Controllers\ExamController)->destroy($id);
+    });
+
+
+        // Reports
+    Route::get('/report/classschedule', function () {
+        return (new \App\Http\Controllers\ScheduleController())->viewTable();
+    })->name('reportschedule');
+
+    Route::get('/report/vehicle', function () {
+        return (new \App\Http\Controllers\VehicleController())->viewTable();
+    })->name('reportvehicle');
+
+    Route::get('/report/student', function () {
+        return (new \App\Http\Controllers\StudentController())->viewTable();
+    })->name('reportstudent');
+
+    Route::get('/report/instructor', function () {
+        return (new \App\Http\Controllers\InstructorController())->viewTable();
+    })->name('reportinstructor');
+
+    Route::get('/report/payment', function () {
+        return (new \App\Http\Controllers\PaymentController())->viewTable();
+    })->name('reportpayment');
+
+    Route::get('/report/exam', function () {
+        return (new \App\Http\Controllers\ExamController())->viewTable();
+    })->name('reportexam');
+
+    //log out
     Route::get('/logout', function () {
-        return (new \App\Http\Controllers\AuthController())->logout();
+    return (new \App\Http\Controllers\AuthController())->logout();
     });
 
-    // Reports
-Route::get('/report/classschedule', function () {
-    return (new \App\Http\Controllers\ScheduleController())->viewTable();
-})->name('reportschedule');
 
-Route::get('/report/vehicle', function () {
-    return (new \App\Http\Controllers\VehicleController())->viewTable();
-})->name('reportvehicle');
 
-Route::get('/report/student', function () {
-    return (new \App\Http\Controllers\StudentController())->viewTable();
-})->name('reportstudent');
-
-Route::get('/report/instructor', function () {
-    return (new \App\Http\Controllers\InstructorController())->viewTable();
-})->name('reportinstructor');
-
-Route::get('/report/payment', function () {
-    return (new \App\Http\Controllers\PaymentController())->viewTable();
-})->name('reportpayment');
-
-Route::get('/report/exam', function () {
-    return (new \App\Http\Controllers\ExamController())->viewTable();
-})->name('reportexam');
 
 });

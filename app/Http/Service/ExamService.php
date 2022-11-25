@@ -11,5 +11,9 @@ interface ExamService
 
     public function getExam($id);
 
+    public function viewExam();
+
+   public function deleteExam($id);
+
     public function viewTable();
 }

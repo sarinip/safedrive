@@ -17,6 +17,26 @@ class ExamController extends Controller
     $this->service = new ExamServiceImpl();
     }
 
+    public function store(VehicleRequest $request)
+    {
+        return $this->service->store($request);
+    }
+
+    public function show($id)
+    {
+    return $this->service->getExam($id);
+    }
+
+    public function destroy($id){
+    return $this->service->deleteExam($id);
+    }
+
+    //update form table
+    public function showTable()
+    {
+    return $this->service->viewExam();
+    }
+
     //report table
     public function viewTable()
     {

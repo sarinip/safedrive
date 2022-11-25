@@ -14,7 +14,7 @@ class ExamServiceImpl implements ExamService
     public function store(ExamRequest $request): \Illuminate\Http\RedirectResponse
 {
         // TODO: Implement store() method.
-            $path = 'login';
+            $path = 'exam.new';
 
             try {
 
@@ -22,7 +22,6 @@ class ExamServiceImpl implements ExamService
 
                     if(!empty($request->id)){
                     $exam = Exam::where('id',$request->id)->first();
-                    $path = '/instructor/vehicle';
                     }
 
                 if(empty($exam)){
@@ -32,7 +31,7 @@ class ExamServiceImpl implements ExamService
                 $exam->student_id= $student->id;
                 $exam->exam_type= $request->examtype;
                 $exam->date = $request->date;
-                $exam->reg_datetime = $request->time;
+                $exam->time = $request->time;
                 $exam->status = $request->status;
 
                 $exam->save();
@@ -42,7 +41,7 @@ class ExamServiceImpl implements ExamService
 
                 throw new \Exception($e->getMessage());
 
-            return redirect()->back();
+            return redirect()->back()->with('success', "Record saved Successfully!!");
             }
 
 
@@ -51,18 +50,24 @@ class ExamServiceImpl implements ExamService
 
     public function getExam($id)
     {
-        // TODO: Implement getVehicle() method.
+        // TODO: Implement getExam() method.
 
         $exam = Exam::where('id',$id)->first();
             return view('admin.examupdate', array('exam'=>$exam));
         }
 
-
-        public function deletexam(Exam $exam){
-            $exam->delete();
-            return redirect('/exam');
+        public function viewExam()
+        {
+            $exams= Exam::all();
+            return view('admin.examnew', array('exams'=>$exams));
         }
 
+        public function deleteExam($id)
+        {
+        $exam = Exam::where('id',$id)->first();
+        $exam->delete();
+            return redirect()->back()->with('success', "Record deleted Successfully!!");
+        }
 
         public function viewTable()
         {

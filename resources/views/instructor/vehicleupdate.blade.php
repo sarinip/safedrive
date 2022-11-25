@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Vehicle Information</h4>
-                    <form class="form-sample" method="post" action="{{ url('vehicle/store') }}">
+                    <div class="form-sample" method="post" action="{{ url('vehicle/store') }}">
                         @csrf
                         <input type="hidden" name="id" value="{{ $vehicle['id'] }}" />
                         <div class="row">
@@ -95,7 +95,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
