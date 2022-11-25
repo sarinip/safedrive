@@ -7,6 +7,7 @@ use App\Mail\NewScheduleStatusEmail;
 use App\Models\Instructor;
 use App\Models\Schedule;
 use App\Models\Student;
+use App\Models\Payment;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 
@@ -26,7 +27,7 @@ class EmailServiceImpl implements EmailService
 
         $user = User::where('id',$instructor->user_id)->first();
 
-        Mail::to($user->email)->bcc('123456789ymail@gmail.com')->send(new NewScheduleEmail($data));
+        Mail::to($user->email)->bcc('sarini.piyawardana@gmail.com')->send(new NewScheduleEmail($data));
 
     }
 
@@ -44,6 +45,18 @@ class EmailServiceImpl implements EmailService
 
         $user = User::where('id',$student->user_id)->first();
 
-        Mail::to($user->email)->bcc('123456789ymail@gmail.com')->send(new NewScheduleStatusEmail($data));
+        Mail::to($user->email)->bcc('sarini.piyawardana@gmail.com')->send(new NewScheduleStatusEmail($data));
+    }
+
+    public function sendPaymentStatusEmail(Payment $payment, Student $student)
+    {
+    // TODO: Implement sendPaymentStatusEmail() method.
+    $data = array(
+        'id' => $payment->id,
+        'amount' => $payment->amount,
+        'created_at' => $payment->created_at,
+        );
+    $user = User::where('id',$student->user_id)->first();
+    Mail::to($user->email)->bcc('sarini.piyawardana@gmail.com')->send(new NewScheduleStatusEmail($data));
     }
 }

@@ -6,8 +6,9 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Exam Information</h4>
-                    <form class="form-sample" method="post" action="{{ url('exam/store') }}">
+                    <div class="form-sample" method="post" action="{{ url('exam/store') }}">
                         @csrf
+                        <input type="hidden" name="id" value="{{ $exam['id'] }}" />
                         <div class="form-sample">
                             <div class="row">
                                 <div class="col-md-6">
@@ -73,9 +74,8 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-@endsection
+    @endsection

@@ -15,6 +15,7 @@ class ExamServiceImpl implements ExamService
 {
         // TODO: Implement store() method.
             $path = 'exam.new';
+             throw new \Exception();
 
             try {
 
@@ -28,20 +29,20 @@ class ExamServiceImpl implements ExamService
 
                     $exam = new Exam();
                 }
-                $exam->student_id= $student->id;
+                $exam->student_id= $request->studentid;
                 $exam->exam_type= $request->examtype;
                 $exam->date = $request->date;
                 $exam->time = $request->time;
                 $exam->status = $request->status;
 
                 $exam->save();
-
+                return redirect()->back()->with('success', "Record saved Successfully!!");
 
             }catch (\Exception $e){
 
                 throw new \Exception($e->getMessage());
 
-            return redirect()->back()->with('success', "Record saved Successfully!!");
+
             }
 
 

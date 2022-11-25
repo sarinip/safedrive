@@ -10,15 +10,11 @@ class PaymentServiceImpl implements PaymentService
 
     public function store(PaymentRequest $request): \Illuminate\Http\RedirectResponse
 
+        {
         $path = 'reciept';
 
-        {
-
-        $payment=null;
-
-
             $payment = new Payment();
-            $payment->student_id =$request->studentid;
+            $payment->student_id =session()->get('student_id')[0];
             $payment->amount = $request->amount;
             $payment->card_name= $request->cardname;
             $payment->card_number= $request->cardnumber;
@@ -27,7 +23,7 @@ class PaymentServiceImpl implements PaymentService
 
             $payment->save();
 
-        return redirect()->route($path);
+        return redirect('/reciept/'.$payment->id);
         }
 
 

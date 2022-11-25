@@ -17,7 +17,7 @@ class ExamController extends Controller
     $this->service = new ExamServiceImpl();
     }
 
-    public function store(VehicleRequest $request)
+    public function store(ExamRequest $request)
     {
         return $this->service->store($request);
     }

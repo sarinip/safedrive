@@ -9,28 +9,26 @@
                         <div class="auth-form-light text-left py-5 px-4 px-sm-5">
                             <h2 class="text-center text-primary">Thank You!</h2>
                             <h4 class="text-center">Payment done Successfully</h4>
-                            <form class="pt-3" method="post" action="{{ url('reciept/') }}">
-                                <h5 class="text-center"><span class="text-black">Invoice No: SD</span>
-                                    <span class="text-black" name="invoiceno" value="{{ $payment['id'] }}">
-                                    </span>
-                                </h5>
-                                <h5 class="text-center"><span class="text-black">Student ID:</span>
-                                    <span class="text-black" name="studentid" value="{{ $payment['student_id'] }}">
-                                    </span>
-                                </h5>
-                                <h5 class="text-center"><span class="text-black">Paid Amount: LKR</span>
-                                    <span class="text-black" name="amount" value="{{ $payment['amount'] }}">
-                                    </span>
-                                </h5>
-                                <div class="mt-3 text-center">
-                                    <button class="btn btn-primary btn-lg font-weight-medium auth-form-btn"
-                                        href="#">Home</button>
-                                </div>
-                                <div class="text-center" style="margin-top: 50px;">
-                                    <a><u class="text-info">Print Reciept</u></a>
-                                    <p>Copyright © 2022. Driving School Management System. All rights reserved.</p>
-                                </div>
-                            </form>
+                            <h5 class="text-center"><span class="text-black">Invoice No: SD</span>
+                                <span class="text-black" name="invoiceno">{{ $payment['id'] }}
+                                </span>
+                            </h5>
+                            <h5 class="text-center"><span class="text-black">Student ID:</span>
+                                <span class="text-black" name="studentid">{{ $payment['student_id'] }}
+                                </span>
+                            </h5>
+                            <h5 class="text-center"><span class="text-black">Paid Amount: LKR</span>
+                                <span class="text-black" name="amount">{{ $payment['Amount'] }}
+                                </span>
+                            </h5>
+                            <div class="mt-3 text-center">
+                                <a class="btn btn-primary btn-lg font-weight-medium auth-form-btn"
+                                    href="{{ url('/dashboard') }}">Home</a>
+                            </div>
+                            <div class="text-center" style="margin-top: 50px;">
+                                <a><u class="text-info">Print Reciept</u></a>
+                                <p>Copyright © 2022. Driving School Management System. All rights reserved.</p>
+                            </div>
                         </div>
                     </div>
                 </div>

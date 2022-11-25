@@ -32,14 +32,14 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('/student/calenderview/') }}" aria-expanded="falae"
+                <a class="nav-link" href="{{ url('/student/calenderview/') }}" aria-expanded="false"
                     aria-controls="students">
                     <i class="icon-head menu-icon"></i>
                     <span class="menu-title">Student Calender</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('/payment') }}" aria-expanded="falae" aria-controls="students">
+                <a class="nav-link" href="{{ url('/payment') }}" aria-expanded="false" aria-controls="students">
                     <i class="icon-head menu-icon"></i>
                     <span class="menu-title">Payments</span>
                 </a>
@@ -48,7 +48,7 @@
 
         @if (session()->get('user')[0]->role == 'INSTRUCTOR')
             <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="icons">
+                <a class="nav-link" data-toggle="collapse" href="#icons" aria-expanded="true" aria-controls="icons">
                     <i class="icon-paper  menu-icon"></i>
                     <span class="menu-title">Vehicle Info</span>
                     <i class="menu-arrow"></i>
@@ -88,12 +88,12 @@
         @endif
 
         @if (session()->get('user')[0]->role == 'ADMIN')
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/core-dashboard') }}" aria-expanded="false" aria-controls="students">
-                        <i class="icon-head menu-icon"></i>
-                        <span class="menu-title">Dashboard</span>
-                    </a>
-                </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('/core-dashboard') }}" aria-expanded="false" aria-controls="students">
+                    <i class="icon-head menu-icon"></i>
+                    <span class="menu-title">Dashboard</span>
+                </a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#icons" aria-expanded="true" aria-controls="icons">
                     <i class="icon-paper  menu-icon"></i>
@@ -109,7 +109,8 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="true" aria-controls="tables">
+                <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="true"
+                    aria-controls="tables">
                     <i class="icon-bar-graph menu-icon"></i>
                     <span class="menu-title">Reports</span>
                     <i class="menu-arrow"></i>
