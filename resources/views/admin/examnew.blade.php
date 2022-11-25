@@ -19,8 +19,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-3 col-form-label">Student ID</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" name="studentid"
-                                                value="{{ old('studentid') }}" />
+                                            <input type="text" class="form-control" name="studentid" />
                                             @error('studentid') <div class="alert alert-danger">{{ $message }}
                                                 </div>
                                                 @endif
@@ -31,7 +30,7 @@
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Exam Type</label>
                                             <div class="col-sm-9">
-                                                <select class="form-control" name="examtype" value="{{ old('examtype') }}">
+                                                <select class="form-control" name="examtype">
                                                     <option>Writing</option>
                                                     <option>Practical</option>
                                                 </select>
@@ -48,7 +47,7 @@
                                                 <label class="col-sm-3 col-form-label">Exam Date</label>
                                                 <div class="col-sm-9">
                                                     <input class="form-control" type="date" placeholder="dd/mm/yyyy"
-                                                        name="date" value="{{ old('date') }}" />
+                                                        name="date" />
                                                     @error('date') <div class="alert alert-danger">{{ $message }}
                                                         </div>
                                                         @endif
@@ -59,8 +58,7 @@
                                                 <div class="form-group row">
                                                     <label class="col-sm-3 col-form-label">Exam Time</label>
                                                     <div class="col-sm-9">
-                                                        <input type="time" class="form-control" name="time"
-                                                            value="{{ old('time') }}" />
+                                                        <input type="time" class="form-control" name="time" />
                                                         @error('time') <div class="alert alert-danger">{{ $message }}
                                                             </div>
                                                             @endif
@@ -73,7 +71,7 @@
                                                     <div class="form-group row">
                                                         <label class="col-sm-3 col-form-label">Status</label>
                                                         <div class="col-sm-9">
-                                                            <select class="form-control" name="status" value="{{ old('status') }}">
+                                                            <select class="form-control" name="status">
                                                                 <option>Scheduled</option>
                                                                 <option>Completed</option>
                                                                 <option>cancelled</option>
