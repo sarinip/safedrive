@@ -12,4 +12,9 @@ class Payment extends Model
     public function payment(){
         return $this->hasOne('App/Student', 'student_id', 'id');
     }
+
+    public function student()
+    {
+    return $this->belongsTo(Student::class);
+    }
 }

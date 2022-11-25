@@ -136,4 +136,11 @@ class ScheduleServiceImpl implements ScheduleService
 
         return Schedule::where('student_id', session()->get('student_id')[0])->where('status', 'APPROVED')->select('session AS title', DB::raw('CAST(CONCAT(DATE_FORMAT(schedule_date, ' . $datepattern . '),' . $seperator . ',STR_TO_DATE(session_from_time, ' . $timepattern . '))AS DATETIME) start'), DB::raw('DATE_ADD(CAST(CONCAT(DATE_FORMAT(schedule_date, ' . $datepattern . '), ' . $seperator . ',STR_TO_DATE(session_from_time, ' . $timepattern . '))AS DATETIME),INTERVAL 60 MINUTE) end'), 'status as description')->get();
     }
+
+    public function viewTable()
+    {
+        $schedules = Schedule::all();
+        return view('admin.reportschedule', ['schedules' => $schedules]);
+    }
 }
+

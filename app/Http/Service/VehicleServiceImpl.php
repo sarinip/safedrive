@@ -14,7 +14,7 @@ class VehicleServiceImpl implements VehicleService
     public function store(VehicleRequest $request): \Illuminate\Http\RedirectResponse
 {
         // TODO: Implement store() method.
-            $path = 'vehicle.report';
+            $path = 'vehicle.new';
 
             try {
 
@@ -22,10 +22,10 @@ class VehicleServiceImpl implements VehicleService
 
                     if(!empty($request->id)){
                     $vehicle = Vehicle::where('id',$request->id)->first();
-                    $path = '/instructor/vehicle';
+
                     }
 
-                if(empty($student)){
+                if(empty($vehicle)){
 
                     $vehicle = new Vehicle();
                 }
@@ -44,7 +44,8 @@ class VehicleServiceImpl implements VehicleService
 
                 throw new \Exception($e->getMessage());
 
-            return redirect()->back();
+            // return redirect()->back();
+            return redirect()->back()->with('success', "Record Insert Successfully!!");
             }
 
 
@@ -76,7 +77,14 @@ public function viewVehicle()
     */
 public function deleteVehicle($id)
 {
+    $vehicle = Vehicle::where('id',$id)->first();
     $vehicle->delete();
-    return redirect('/vehicle');
+    return redirect()->back()->with('success', "Record deleted Successfully!!");
 }
+
+  public function viewTable()
+ {
+  $vehicles=Vehicle::all();
+  return view('admin.reportvehicle',['vehicles'=>$vehicles]);
+ }
 }

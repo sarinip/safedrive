@@ -24,4 +24,10 @@ class PaymentController extends Controller
     {
         return $this->service->getPayment($id);
     }
+
+    //report table
+    public function viewTable()
+    {
+    return $this->service->viewTable();
+    }
 }

@@ -93,4 +93,10 @@ class StudentController extends Controller
     {
         //
     }
+
+    //report table
+    public function viewTable()
+    {
+    return $this->service->viewTable();
+    }
 }

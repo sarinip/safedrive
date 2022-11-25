@@ -10,4 +10,6 @@ interface PaymentService
     public function store(PaymentRequest $request);
 
     public function getPayment($id);
+
+    public function viewTable();
 }

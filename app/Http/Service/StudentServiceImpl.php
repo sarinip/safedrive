@@ -81,4 +81,10 @@ class StudentServiceImpl implements StudentService
     return view('student.profile', array('student'=>$student));
     }
 
+    //Report view table
+     public function viewTable()
+    {
+    $students=Student::all();
+    return view('admin.reportstudent',['students'=>$students]);
+    }
 }

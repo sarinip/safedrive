@@ -109,4 +109,8 @@ class ScheduleController extends Controller
     public function scheduleReject($id){
         return $this->service->scheduleReject($id);
     }
+
+    public function viewTable(){
+    return $this->service->viewTable();
+    }
 }

@@ -8,6 +8,11 @@
                     <h4 class="card-title">Vehicle Information</h4>
                     <form class="form-sample" method="post" action="{{ url('/vehicle/store') }}">
                         @csrf
+                        @if (session()->has('success'))
+                            <div class="alert alert-success">
+                                {{ session()->get('success') }}
+                            </div>
+                        @endif
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group row">
@@ -83,7 +88,7 @@
                                                 <div class="row">
                                                     <div class="col-md-12 text-right">
                                                         <div class="form-group">
-                                                            <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                                                            <button type="submit" class="btn btn-primary btn-text">Submit</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -139,33 +144,12 @@
                                                             {{ $vehicle->insurance_up_to }}
                                                         </td>
                                                         <td>
-                                                            <button type="button" class="btn btn-warning btn-rounded btn-icon">
-                                                                <a href="{{ url('instructors/vehicles/' . $vehicle->id) }}"><i
-                                                                        class="ti-pencil-alt"></i></a>
-
-                                                            </button>
-                                                            <form method="post" id="delete{{ $vehicle['id'] }}"
-                                                                action="{{ url('instructors/vehicles/' . $vehicle['id']) }}">
-                                                                @csrf
-                                                                <input type="hidden" name="_method" value="delete" />
-                                                                <button type="button" onclick="return clicked();"
-                                                                    class="btn btn-danger btn-rounded btn-icon">
-                                                                    <script type="text/javascript">
-                                                                        function clicked() {
-                                                                            if (confirm('Are you sure?')) {
-                                                                                delete {
-                                                                                    {
-                                                                                        $vehicle['id']
-                                                                                    }
-                                                                                }.submit();
-                                                                            } else {
-                                                                                return false;
-                                                                            }
-                                                                        }
-                                                                    </script>
-                                                                    <i class="ti-trash"></i>
-                                                                </button>
-                                                            </form>
+                                                            <a class="btn btn-warning btn-icon-text"
+                                                                href="{{ url('/vehicle/edit/' . $vehicle->id) }}"><i class="ti-pencil-alt"></i></a>
+                                                            <a type="button" class="btn btn-danger btn-icon-text"
+                                                                href="{{ url('/vehicle/delete/' . $vehicle->id) }}">
+                                                                <i class="ti-trash"></i>
+                                                            </a>
                                                         </td>
                                                     </tr>
                                                 @endforeach

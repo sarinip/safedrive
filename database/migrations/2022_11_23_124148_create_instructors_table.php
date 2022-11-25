@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('instructors', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->unsignedBigInteger('vehicle_id')->nullable();
             $table->string('fname')->nullable();
             $table->string('lname')->nullable();
             $table->date('dob');
@@ -29,7 +28,6 @@ return new class extends Migration
             $table->string('telephone');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('vehicle_id')->references('id')->on('vehicles');
 
         });
     }

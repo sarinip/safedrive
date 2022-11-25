@@ -21,31 +21,42 @@ class AuthController extends Controller
 
         $user = User::where('email', $request->email)->first();
 
-        if(is_null($user)){
+        if (is_null($user)) {
             return redirect()->back()->with('auth_error_message', "Email not found!!");
         }
 
         if (Auth::attempt($credentials)) {
 
-            $student = Student::where('user_id',$user->id)->first();
-            $instructor = Instructor::where('user_id',$user->id)->first();
+            $student = Student::where('user_id', $user->id)->first();
+            $instructor = Instructor::where('user_id', $user->id)->first();
 
             $request->session()->regenerate();
             $request->session()->push('user', $user);
 
-            if(!empty($student)){
+            if (!empty($student)) {
                 $request->session()->push('student_id', $student->id);
             }
 
-            if(!empty($instructor)){
+            if (!empty($instructor)) {
                 $request->session()->push('instructor_id', $instructor->id);
             }
 
-            return redirect()->route("dashboard");
+
+            if ($user->role == 'INSTRUCTOR') {
+                return redirect()->route("instructor.schedule");
+            }
+
+            if ($user->role == 'STUDENT') {
+                return redirect()->route("dashboard");
+            }
+
+            if ($user->role == 'ADMIN') {
+                return redirect()->route("admin.dashboard");
+            }
 
         }
 
-        return redirect()->back()->with('auth_error_message','Authentication failed !');
+        return redirect()->back()->with('auth_error_message', 'Authentication failed !');
 
     }
 
