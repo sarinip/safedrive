@@ -28,7 +28,7 @@
                     height: '768px',
                     locale: 'en',
                     aspectRatio: 1.8,
-                    editable: true, // enable draggable events
+                    editable: false, // enable draggable events
                     now: new Date(),
                     droppable: false,
                     scrollTime: '08:00', // undo default 6am scrollTime
