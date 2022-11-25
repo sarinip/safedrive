@@ -4,7 +4,7 @@
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Student Report</h4>
+                <h4 class="card-title">Payment Detail Report</h4>
                 <form class="form-sample" href={{ url('report/vehicle') }}>
                     <div class="card-body">
                         <table id="datatable" class="display expandable-table dataTable no-footer display" style="width: 100%;"
@@ -21,9 +21,9 @@
                                 @foreach ($payments as $payment)
                                     <tr>
                                         <td>{{ $payment->id }}</td>
-                                        <td>{{ $payment->fname }}{{ $student->lname }}</td>
-                                        <td>{{ $payment->dob }}</td>
-                                        <td>{{ $payment->nic }}</td>
+                                        <td>{{ $payment->student->fname }}{{ $student->student->lname }}</td>
+                                        <td>{{ $payment->amount }}</td>
+                                        <td>{{ $payment->created_at }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

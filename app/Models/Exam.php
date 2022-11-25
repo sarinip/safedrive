@@ -14,4 +14,9 @@ class Exam extends Model
     return $this->hasOne('App/Student', 'student_id', 'id');
 
     }
+
+    public function student()
+    {
+    return $this->belongsTo(Student::class);
+    }
 }
