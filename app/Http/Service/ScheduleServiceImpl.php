@@ -3,13 +3,22 @@
 namespace App\Http\Service;
 
 use App\Http\Requests\ScheduleRequest;
+use App\Models\Instructor;
 use App\Models\Schedule;
+use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ScheduleServiceImpl implements ScheduleService
 {
+
+    private EmailService $emailService;
+
+    public function __construct()
+    {
+        $this->emailService = new EmailServiceImpl();
+    }
 
     public function store(ScheduleRequest $request, User $user)
     {
@@ -31,6 +40,11 @@ class ScheduleServiceImpl implements ScheduleService
             $schedule->session_from_time = $request->timeslot;
             $schedule->status = 'PENDING';
             $schedule->save();
+
+            $student = Student::where('id', $schedule->student_id)->first();
+            $instructor = Instructor::where('id', $schedule->instructor_id)->first();
+
+            $this->emailService->sendNewScheduleEmail($schedule, $instructor, $student);
 
 
         } catch (\Exception $e) {
@@ -77,6 +91,11 @@ class ScheduleServiceImpl implements ScheduleService
 
         $schedule->save();
 
+        $student = Student::where('id', $schedule->student_id)->first();
+        $instructor = Instructor::where('id', $schedule->instructor_id)->first();
+
+        $this->emailService->sendScheduleStatusEmail($schedule, $instructor, $student);
+
         return redirect()->route("instructor.schedule");
 
     }
@@ -89,6 +108,11 @@ class ScheduleServiceImpl implements ScheduleService
 
         $schedule->save();
 
+        $student = Student::where('id', $schedule->student_id)->first();
+        $instructor = Instructor::where('id', $schedule->instructor_id)->first();
+
+        $this->emailService->sendScheduleStatusEmail($schedule, $instructor, $student);
+
         return redirect()->route("instructor.schedule");
     }
 
@@ -100,7 +124,7 @@ class ScheduleServiceImpl implements ScheduleService
         $timepattern = "'%l:%i %p'";
         $seperator = "' '";
 
-        return Schedule::where('instructor_id', session()->get('instructor_id')[0])->where('status', 'APPROVED')->select('session AS title',DB::raw('CAST(CONCAT(DATE_FORMAT(schedule_date, '.$datepattern.'),'.$seperator. ',STR_TO_DATE(session_from_time, '.$timepattern.'))AS DATETIME) start'),DB::raw('DATE_ADD(CAST(CONCAT(DATE_FORMAT(schedule_date, '.$datepattern.'), '.$seperator.',STR_TO_DATE(session_from_time, '.$timepattern.'))AS DATETIME),INTERVAL 60 MINUTE) end'),'status as description')->get();
+        return Schedule::where('instructor_id', session()->get('instructor_id')[0])->where('status', 'APPROVED')->select('session AS title', DB::raw('CAST(CONCAT(DATE_FORMAT(schedule_date, ' . $datepattern . '),' . $seperator . ',STR_TO_DATE(session_from_time, ' . $timepattern . '))AS DATETIME) start'), DB::raw('DATE_ADD(CAST(CONCAT(DATE_FORMAT(schedule_date, ' . $datepattern . '), ' . $seperator . ',STR_TO_DATE(session_from_time, ' . $timepattern . '))AS DATETIME),INTERVAL 60 MINUTE) end'), 'status as description')->get();
     }
 
     public static function getStudentScheduleData()
@@ -110,6 +134,6 @@ class ScheduleServiceImpl implements ScheduleService
         $timepattern = "'%l:%i %p'";
         $seperator = "' '";
 
-        return Schedule::where('student_id', session()->get('student_id')[0])->where('status', 'APPROVED')->select('session AS title',DB::raw('CAST(CONCAT(DATE_FORMAT(schedule_date, '.$datepattern.'),'.$seperator. ',STR_TO_DATE(session_from_time, '.$timepattern.'))AS DATETIME) start'),DB::raw('DATE_ADD(CAST(CONCAT(DATE_FORMAT(schedule_date, '.$datepattern.'), '.$seperator.',STR_TO_DATE(session_from_time, '.$timepattern.'))AS DATETIME),INTERVAL 60 MINUTE) end'),'status as description')->get();
+        return Schedule::where('student_id', session()->get('student_id')[0])->where('status', 'APPROVED')->select('session AS title', DB::raw('CAST(CONCAT(DATE_FORMAT(schedule_date, ' . $datepattern . '),' . $seperator . ',STR_TO_DATE(session_from_time, ' . $timepattern . '))AS DATETIME) start'), DB::raw('DATE_ADD(CAST(CONCAT(DATE_FORMAT(schedule_date, ' . $datepattern . '), ' . $seperator . ',STR_TO_DATE(session_from_time, ' . $timepattern . '))AS DATETIME),INTERVAL 60 MINUTE) end'), 'status as description')->get();
     }
 }

@@ -141,5 +141,11 @@ Route::group(['middleware' => ['auth']], function () {
         return (new \App\Http\Controllers\AuthController())->logout();
     });
 
+    Route::get('/core-dashboard', function () {
+        $studentdata = \App\Http\Service\ReportServiceimpl::getStudentRegistrationData();
+        $paymentdata = \App\Http\Service\ReportServiceimpl::getPaymentData();
+        return view('admin.index',array('studentdata'=>$studentdata, 'paymentdata' => $paymentdata));
+    });
+
 
 });

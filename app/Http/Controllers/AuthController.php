@@ -41,8 +41,6 @@ class AuthController extends Controller
                 $request->session()->push('instructor_id', $instructor->id);
             }
 
-
-
             return redirect()->route("dashboard");
 
         }
