@@ -9,11 +9,11 @@ class Exam extends Model
 {
     protected $guarded = [];
 
-    public function exam(){
+    // public function exam(){
 
-    return $this->hasOne('App/Student', 'student_id', 'id');
+    // return $this->hasMany('App/Student', 'student_id', 'id');
 
-    }
+    // }
 
     public function student()
     {

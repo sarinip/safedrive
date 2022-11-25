@@ -14,7 +14,7 @@ class ExamController extends Controller
 
     public function __construct()
     {
-    $this->service = new ExamServiceImpl();
+        $this->service = new ExamServiceImpl();
     }
 
     public function store(ExamRequest $request)
@@ -24,22 +24,23 @@ class ExamController extends Controller
 
     public function show($id)
     {
-    return $this->service->getExam($id);
+        return $this->service->getExam($id);
     }
 
-    public function destroy($id){
-    return $this->service->deleteExam($id);
+    public function destroy($id)
+    {
+        return $this->service->deleteExam($id);
     }
 
     //update form table
     public function showTable()
     {
-    return $this->service->viewExam();
+        return $this->service->viewExam();
     }
 
     //report table
     public function viewTable()
     {
-    return $this->service->viewTable();
+        return $this->service->viewTable();
     }
 }

@@ -27,12 +27,12 @@ Route::get('/student/register', function () {
     return view('student.register');
 });
 
- Route::get('/instructor/register', function () {
-     return view('instructor.register');
- });
- Route::post('/instructor/store', function (\App\Http\Requests\InstructorRequest $request) {
-     return (new \App\Http\Controllers\InstructorController())->store($request);
- });
+Route::get('/instructor/register', function () {
+    return view('instructor.register');
+});
+Route::post('/instructor/store', function (\App\Http\Requests\InstructorRequest $request) {
+    return (new \App\Http\Controllers\InstructorController())->store($request);
+});
 
 Route::post('/authentication', function (\Illuminate\Http\Request $request) {
     return (new \App\Http\Controllers\AuthController())->login($request);
@@ -86,9 +86,7 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
 
-// Instructor Routes
-
-
+    // Instructor Routes
     Route::get('/instructor/profile/{id}', function ($id) {
         return (new \App\Http\Controllers\InstructorController)->show($id);
     });
@@ -100,9 +98,9 @@ Route::group(['middleware' => ['auth']], function () {
 
     // Route::get('/instructor/profile/{id}', function ($id) {
     // return (new \App\Http\Controllers\VehicleController)->show($id);
-// });
+    // });
 
-// Payment Routes
+    // Payment Routes
     Route::get('/payment', function () {
         return view('student.payment');
     });
@@ -120,7 +118,7 @@ Route::group(['middleware' => ['auth']], function () {
         return (new \App\Http\Controllers\PaymentController())->show($id);
     });
 
-// Vehicle Routes
+    // Vehicle Routes
     Route::get('/vehicle', function () {
         return view('instructor.vehiclenew');
     });
@@ -130,7 +128,7 @@ Route::group(['middleware' => ['auth']], function () {
     })->name('vehicle.new');
 
     Route::post('/vehicle/store', function (\App\Http\Requests\VehicleRequest $request) {
-    return (new \App\Http\Controllers\VehicleController())->store($request);
+        return (new \App\Http\Controllers\VehicleController())->store($request);
     });
 
     Route::get('/vehicle/edit/{id}', function ($id) {
@@ -144,21 +142,22 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/core-dashboard', function () {
         $studentdata = \App\Http\Service\ReportServiceimpl::getStudentRegistrationData();
         $paymentdata = \App\Http\Service\ReportServiceimpl::getPaymentData();
-        return view('admin.index',array('studentdata'=>$studentdata, 'paymentdata' => $paymentdata));
+        return view('admin.index', array('studentdata' => $studentdata, 'paymentdata' => $paymentdata));
     })->name('admin.dashboard');
 
 
     // Exam Routes
-     Route::get('/exam', function () {
-     return view('admin.examnew');
+    Route::get('/exam', function () {
+        return view('amind.examnew');
+
     });
 
     Route::get('/exam/new', function () {
         return (new \App\Http\Controllers\ExamController())->showTable();
     })->name('exam.new');
 
-     Route::post('/exam/store', function (\App\Http\Requests\ExamRequest $request) {
-    return (new \App\Http\Controllers\ExamController())->store($request);
+    Route::post('/exam/store', function (\App\Http\Requests\ExamRequest $request) {
+        return (new \App\Http\Controllers\ExamController())->store($request);
     });
 
     Route::get('/exam/edit/{id}', function ($id) {
@@ -169,8 +168,7 @@ Route::group(['middleware' => ['auth']], function () {
         return (new \App\Http\Controllers\ExamController)->destroy($id);
     });
 
-
-        // Reports
+    // Reports
     Route::get('/report/classschedule', function () {
         return (new \App\Http\Controllers\ScheduleController())->viewTable();
     })->name('reportschedule');
@@ -197,10 +195,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     //log out
     Route::get('/logout', function () {
-    return (new \App\Http\Controllers\AuthController())->logout();
+        return (new \App\Http\Controllers\AuthController())->logout();
     });
-
-
 
 
 });
