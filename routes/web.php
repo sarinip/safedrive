@@ -103,7 +103,6 @@ Route::group(['middleware' => ['auth']], function () {
 
 // Payment Routes
     Route::get('/payment', function () {
-
         return view('student.payment');
     });
 
