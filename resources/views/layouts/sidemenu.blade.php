@@ -86,8 +86,14 @@
                 </a>
             </li>
         @endif
-        
+
         @if (session()->get('user')[0]->role == 'ADMIN')
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/core-dashboard') }}" aria-expanded="false" aria-controls="students">
+                        <i class="icon-head menu-icon"></i>
+                        <span class="menu-title">Dashboard</span>
+                    </a>
+                </li>
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#icons" aria-expanded="true" aria-controls="icons">
                     <i class="icon-paper  menu-icon"></i>

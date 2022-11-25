@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Hash;
 class StudentServiceImpl implements StudentService
 {
 
+
+
     public function store(StudentRequest $request): \Illuminate\Http\RedirectResponse
     {
         // TODO: Implement store() method.
@@ -56,6 +58,8 @@ class StudentServiceImpl implements StudentService
             $student->telephone = $request->telephone;
 
             $student->save();
+
+
 
 
         }catch (\Exception $e){

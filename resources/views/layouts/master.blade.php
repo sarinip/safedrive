@@ -31,7 +31,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('/css/fullcalender.min.css') }}">
     <!-- endinject -->
-    <link rel="shortcut icon" href="{{ asset('/images/favicon.png') }}" />
+    <link rel="shortcut icon" href="{{asset('/images/favicon.png')}}" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src=//code.jquery.com/jquery-3.5.1.js></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
 
 
 
@@ -96,6 +100,11 @@
     <script src="{{ asset('/vendors/select2/select2.min.js') }}"></script>
     <!-- End plugin js for this page -->
     <!-- inject:js -->
+{{--    <script src="{{asset('/js/off-canvas.js')}}"></script>--}}
+    <script src="{{asset('/js/hoverable-collapse.js')}}"></script>
+    <script src="{{asset('/js/template.js')}}"></script>
+    <script src="{{asset('/js/settings.js')}}"></script>
+    <script src="{{asset('/js/todolist.js')}}"></script>
     <script src="{{ asset('/js/off-canvas.js') }}"></script>
     <script src="{{ asset('/js/hoverable-collapse.js') }}"></script>
     <script src="{{ asset('/js/template.js') }}"></script>
@@ -109,7 +118,7 @@
     <script src="{{ asset('/js/fullcalender.min.js') }}"></script>
     <!-- End custom js for this page-->
     <!-- Notification js-->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <!-- datatable js-->
     <script>
@@ -124,7 +133,7 @@
     </script>
 
 
-    <script src=//code.jquery.com/jquery-3.5.1.js></script>
+
     <script src=//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js></script>
     <script src=//cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js></script>
     <script src=//cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js></script>
@@ -135,7 +144,24 @@
     <script src=//cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js></script>
     <script src=//cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js></script>
     <script src=//cdn.datatables.net/buttons/1.7.1/js/buttons.colVis.min.js></script>
+{{--    <script src=//cdnjs.com/libraries/Chart.js></script>--}}
 
+
+    <!-- Plugin js for this page -->
+{{--    <script src="{{asset('/js/chart.js')}}"></script>--}}
+    <script src="{{asset('/js/dataTables.select.min.js')}}"></script>
+
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+{{--    <script src="{{asset('/js/off-canvas.js')}}"></script>--}}
+    <script src="{{asset('/js/hoverable-collapse.js')}}"></script>
+    <script src="{{asset('/js/template.js')}}"></script>
+    <script src="{{asset('/js/settings.js')}}"></script>
+    <script src="{{asset('/js/todolist.js')}}"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="{{asset('/js/dashboard.js')}}"></script>
+    <script src="{{asset('/js/db.js')}}"></script>
 
     <script src="{{ asset('/js/vendor.bundle.base.js') }}"></script>
 
@@ -158,8 +184,6 @@
     <script src="{{ asset('/js/Chart.roundedBarCharts.js') }}"></script>
     <script src="{{ asset('/js/db.js') }}"></script>
     <!-- End custom js for this page-->
-
-
 
 </body>
 
