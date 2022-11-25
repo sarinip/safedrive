@@ -32,4 +32,15 @@ class VehicleRequest extends FormRequest
             'insurance_up_to' => ['required'],
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'reg_no.required' => 'Please fill the register number!!',
+//            'vorname.required' => 'Vorname ist erforderlich!',
+//            'nachname.required' => 'Nachname ist erforderlich!',
+//            'telefonnummer.required' => 'Telefonnummer ist erforderlich!',
+//            'nachricht.required' => 'Nachricht ist erforderlich!',
+        ];
+    }
 }
