@@ -24,10 +24,10 @@ class ExamRequest extends FormRequest
     public function rules()
     {
         return [
-            'student_id' => ['required', 'string'],
-            'exam_type' => ['required'],
+            'studentid' => ['required'],
+            'examtype' => ['required'],
             'date' => ['required'],
-            'time' => ['required', 'unique:instructors,nic'],
+            'time' => ['required'],
             'status' => ['required'],
         ];
     }
