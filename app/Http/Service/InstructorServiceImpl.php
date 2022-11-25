@@ -68,7 +68,7 @@ class InstructorServiceImpl implements InstructorService
     public function viewTable()
     {
         $instructors=Instructor::all();
-        return view('admin.reportpayment',['instructors'=>$instructors]);
+        return view('admin.reportinstructor',['instructors'=>$instructors]);
     }
 
 

@@ -80,7 +80,7 @@ class StudentServiceImpl implements StudentService
     //Report view table
      public function viewTable()
     {
-    $students=Students::all();
+    $students=Student::all();
     return view('admin.reportstudent',['students'=>$students]);
     }
 }

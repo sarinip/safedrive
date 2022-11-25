@@ -84,7 +84,7 @@ public function deleteVehicle($id)
 
   public function viewTable()
  {
-  $vehicles=Vehicles::all();
+  $vehicles=Vehicle::all();
   return view('admin.reportvehicle',['vehicles'=>$vehicles]);
  }
 }

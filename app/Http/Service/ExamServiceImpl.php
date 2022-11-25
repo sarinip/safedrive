@@ -2,10 +2,10 @@
 
 namespace App\Http\Service;
 
-use App\Http\Requests\ExamRequest
+use App\Http\Requests\ExamRequest;
 use App\Models\Exam;
 use App\Models\Student;
-use Illuminate\Contracts\Hashing\Hasher
+use Illuminate\Contracts\Hashing\Hasher;
 use Illuminate\Support\Facades\Hash;
 
 class ExamServiceImpl implements ExamService

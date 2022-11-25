@@ -157,4 +157,20 @@ Route::get('/report/vehicle', function () {
     return (new \App\Http\Controllers\VehicleController())->viewTable();
 })->name('reportvehicle');
 
+Route::get('/report/student', function () {
+    return (new \App\Http\Controllers\StudentController())->viewTable();
+})->name('reportstudent');
+
+Route::get('/report/instructor', function () {
+    return (new \App\Http\Controllers\InstructorController())->viewTable();
+})->name('reportinstructor');
+
+Route::get('/report/payment', function () {
+    return (new \App\Http\Controllers\PaymentController())->viewTable();
+})->name('reportpayment');
+
+Route::get('/report/exam', function () {
+    return (new \App\Http\Controllers\ExamController())->viewTable();
+})->name('reportexam');
+
 });

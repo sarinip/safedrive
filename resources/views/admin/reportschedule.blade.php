@@ -5,7 +5,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Class Schedule Detail Report</h4>
-                <form class="form-sample" href={{ url('report/vehicle') }}>
+                <form class="form-sample" href={{ url('report/schedule') }}>
                     <div class="card-body">
                         <table id="datatable" class="display expandable-table dataTable no-footer display" style="width: 100%;"
                             role="grid">

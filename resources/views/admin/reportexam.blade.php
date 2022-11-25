@@ -5,7 +5,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Exams Detail Report</h4>
-                <form class="form-sample" href={{ url('report/vehicle') }}>
+                <form class="form-sample" href={{ url('report/exam') }}>
                     <div class="card-body">
                         <table id="datatable" class="display expandable-table dataTable no-footer display" style="width: 100%;"
                             role="grid">
@@ -33,12 +33,12 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Full name</th>
-                                    <th>Date of birth</th>
-                                    <th>NIC</th>
-                                    <th>Address</th>
-                                    <th>Telephone</th>
+                                    <th>Sudent ID</th>
+                                    <th>Stunet Name</th>
+                                    <th>Exam Type</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Status</th>
                                 </tr>
                             </tfoot>
                         </table>
