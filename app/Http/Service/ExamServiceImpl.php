@@ -4,19 +4,16 @@ namespace App\Http\Service;
 
 use App\Http\Requests\ExamRequest;
 use App\Models\Exam;
-use App\Models\Student;
-use Illuminate\Contracts\Hashing\Hasher;
-use Illuminate\Support\Facades\Hash;
 
 class ExamServiceImpl implements ExamService
 {
 
-    public function store(ExamRequest $request) {
+    public function store(ExamRequest $request)
+    {
         // TODO: Implement store() method.
+
         $path = 'exam.new';
-
         try {
-
             $exam = null;
 
             if (!empty($request->id)) {
@@ -34,13 +31,12 @@ class ExamServiceImpl implements ExamService
             $exam->status = $request->status;
 
             $exam->save();
-
             return redirect()->back()->with('success', "Record saved Successfully!!");
 
         } catch (\Exception $e) {
             throw new \Exception($e->getMessage());
-
         }
+
 
         return redirect()->route($path);
     }

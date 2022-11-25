@@ -27,6 +27,13 @@ Route::get('/student/register', function () {
     return view('student.register');
 });
 
+Route::get('/instructor/register', function () {
+    return view('instructor.register');
+});
+Route::post('/instructor/store', function (\App\Http\Requests\InstructorRequest $request) {
+    return (new \App\Http\Controllers\InstructorController())->store($request);
+});
+
 Route::post('/authentication', function (\Illuminate\Http\Request $request) {
     return (new \App\Http\Controllers\AuthController())->login($request);
 });
@@ -79,15 +86,7 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
 
-// Instructor Routes
-    Route::get('/instructor/register', function () {
-        return view('instructor.register');
-    });
-
-    Route::post('/instructor/store', function (\App\Http\Requests\InstructorRequest $request) {
-        return (new \App\Http\Controllers\InstructorController())->store($request);
-    });
-
+    // Instructor Routes
     Route::get('/instructor/profile/{id}', function ($id) {
         return (new \App\Http\Controllers\InstructorController)->show($id);
     });
@@ -99,11 +98,10 @@ Route::group(['middleware' => ['auth']], function () {
 
     // Route::get('/instructor/profile/{id}', function ($id) {
     // return (new \App\Http\Controllers\VehicleController)->show($id);
-// });
+    // });
 
-// Payment Routes
+    // Payment Routes
     Route::get('/payment', function () {
-
         return view('student.payment');
     });
 
@@ -112,7 +110,7 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     Route::get('/reciept', function () {
-        return view('student.reciept');
+        return ('student.reciept');
     })->name('reciept');
 
 
@@ -120,7 +118,7 @@ Route::group(['middleware' => ['auth']], function () {
         return (new \App\Http\Controllers\PaymentController())->show($id);
     });
 
-// Vehicle Routes
+    // Vehicle Routes
     Route::get('/vehicle', function () {
         return view('instructor.vehiclenew');
     });
@@ -151,6 +149,7 @@ Route::group(['middleware' => ['auth']], function () {
     // Exam Routes
     Route::get('/exam', function () {
         return view('amind.examnew');
+
     });
 
     Route::get('/exam/new', function () {
@@ -168,7 +167,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/exam/delete/{id}', function ($id) {
         return (new \App\Http\Controllers\ExamController)->destroy($id);
     });
-
 
     // Reports
     Route::get('/report/classschedule', function () {

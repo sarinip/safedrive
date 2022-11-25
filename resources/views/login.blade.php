@@ -34,9 +34,9 @@
                                 <div class="my-2 d-flex justify-content-between align-items-center">
                                 </div>
                                 <div class="text-center mt-4 font-weight-light">
-                                    Don't have an account? <a href="{{ url('/student/register') }} "
+                                    Don't have an account? <a href="{{ url('/student/register') }}"
                                         class=" text-primary">Create
-                                        your student account</a><br><a href="{{ url('/instructor/register') }} "
+                                        your student account</a><br><a href="{{ url('/instructor/register') }}"
                                         class=" text-primary">Create your instructor account</a>
                                 </div>
                             </form>

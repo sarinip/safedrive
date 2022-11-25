@@ -12,4 +12,6 @@ interface PaymentService
     public function getPayment($id);
 
     public function viewTable();
+
+    public function viewPaymet();
 }

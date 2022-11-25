@@ -9,12 +9,12 @@ class PaymentServiceImpl implements PaymentService
 {
 
     public function store(PaymentRequest $request): \Illuminate\Http\RedirectResponse
+
         {
-        $payment=null;
         $path = 'reciept';
 
             $payment = new Payment();
-            $payment->student_id =$request->studentid;
+            $payment->student_id =session()->get('student_id')[0];
             $payment->amount = $request->amount;
             $payment->card_name= $request->cardname;
             $payment->card_number= $request->cardnumber;
@@ -23,16 +23,33 @@ class PaymentServiceImpl implements PaymentService
 
             $payment->save();
 
-        return redirect()->route($path);
+        return redirect('/reciept/'.$payment->id);
         }
 
 
-    public function getPayment($id)
+        public function getPayment($id)
         {
       // TODO: Implement getPayment() method.
 
             $payment = Payment::where('id',$id)->first();
             return view('student.reciept', array('payment'=>$payment));
+        }
+
+        public function viewPaymet()
+        {
+            $payments= Payment::all();
+            return view('student.dashboard', array('payments'=>$payments));
+        }
+            /**
+        * Remove the specified resource from storage.
+        *  @param int $id
+        * @return Response
+        */
+        public function deletePayment($id)
+        {
+            $payment = Payment::where('id',$id)->first();
+            $payment->delete();
+            return redirect()->back()->with('success', "Record deleted Successfully!!");
         }
 
         public function viewTable()

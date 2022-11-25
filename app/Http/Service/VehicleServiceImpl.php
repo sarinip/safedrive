@@ -65,23 +65,23 @@ class VehicleServiceImpl implements VehicleService
     * @param int $id
     * @return Response
      */
-public function viewVehicle()
-{
-    $vehicles= Vehicle::all();
-    return view('instructor.vehiclenew', array('vehicles'=>$vehicles));
-}
+    public function viewVehicle()
+    {
+        $vehicles= Vehicle::all();
+        return view('instructor.vehiclenew', array('vehicles'=>$vehicles));
+    }
         /**
     * Remove the specified resource from storage.
     *  @param int $id
     * @return Response
     */
-public function deleteVehicle($id)
-{
-    $vehicle = Vehicle::where('id',$id)->first();
-    $vehicle->delete();
-    return redirect()->back()->with('success', "Record deleted Successfully!!");
-}
-
+    public function deleteVehicle($id)
+    {
+        $vehicle = Vehicle::where('id',$id)->first();
+        $vehicle->delete();
+        return redirect()->back()->with('success', "Record deleted Successfully!!");
+    }
+    
   public function viewTable()
  {
   $vehicles=Vehicle::all();
