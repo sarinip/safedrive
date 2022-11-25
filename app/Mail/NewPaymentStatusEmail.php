@@ -18,7 +18,7 @@ class NewPaymentStatusEmail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($data)
     {
         $this->data = $data;
     }
@@ -58,5 +58,10 @@ class NewPaymentStatusEmail extends Mailable
     public function attachments()
     {
         return [];
+    }
+
+    public function build()
+    {
+        return $this->from('sample@ivoryia.com','Safe Drive')->subject('New Payment Email')->view('emails.new_payment_status_email_template')->with('data', $this->data);
     }
 }
