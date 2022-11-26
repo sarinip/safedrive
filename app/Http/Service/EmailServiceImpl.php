@@ -2,6 +2,7 @@
 
 namespace App\Http\Service;
 
+use App\Mail\NewPaymentStatusEmail;
 use App\Mail\NewScheduleEmail;
 use App\Mail\NewScheduleStatusEmail;
 use App\Models\Instructor;
@@ -25,7 +26,7 @@ class EmailServiceImpl implements EmailService
             'instructor_name' => $instructor->fname . ' ' . $instructor->lname,
         );
 
-        $user = User::where('id',$instructor->user_id)->first();
+        $user = User::where('id', $instructor->user_id)->first();
 
         Mail::to($user->email)->bcc('sarini.piyawardana@gmail.com')->send(new NewScheduleEmail($data));
 
@@ -43,20 +44,20 @@ class EmailServiceImpl implements EmailService
             'status' => $schedule->status,
         );
 
-        $user = User::where('id',$student->user_id)->first();
+        $user = User::where('id', $student->user_id)->first();
 
         Mail::to($user->email)->bcc('sarini.piyawardana@gmail.com')->send(new NewScheduleStatusEmail($data));
     }
 
     public function sendPaymentStatusEmail(Payment $payment, Student $student)
     {
-    // TODO: Implement sendPaymentStatusEmail() method.
-    $data = array(
-        'id' => $payment->id,
-        'amount' => $payment->amount,
-        'created_at' => $payment->created_at,
+        // TODO: Implement sendPaymentStatusEmail() method.
+        $data = array(
+            'id' => $payment->id,
+            'amount' => $payment->amount,
+            'created_at' => $payment->created_at,
         );
-    $user = User::where('id',$student->user_id)->first();
-    Mail::to($user->email)->bcc('sarini.piyawardana@gmail.com')->send(new NewScheduleStatusEmail($data));
+        $user = User::where('id', $student->user_id)->first();
+        Mail::to($user->email)->bcc('sarini.piyawardana@gmail.com')->send(new NewPaymentStatusEmail($data));
     }
 }
