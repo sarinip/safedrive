@@ -81,7 +81,7 @@ class VehicleServiceImpl implements VehicleService
         $vehicle->delete();
         return redirect()->back()->with('success', "Record deleted Successfully!!");
     }
-    
+
   public function viewTable()
  {
   $vehicles=Vehicle::all();

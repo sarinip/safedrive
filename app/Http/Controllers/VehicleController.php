@@ -18,6 +18,7 @@ class VehicleController extends Controller
     public function __construct()
     {
         $this->service = new VehicleServiceImpl();
+
     }
 
     /**

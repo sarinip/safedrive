@@ -49,6 +49,12 @@ class ExamServiceImpl implements ExamService
         return view('admin.examupdate', array('exam' => $exam));
     }
 
+    public function viewExamStudent()
+    {
+    $exams= Exam::all();
+    return view('student.dashboard', array('exams'=>$exams));
+    }
+
     public function viewExam()
     {
         $exams = Exam::all();

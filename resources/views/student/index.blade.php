@@ -29,45 +29,43 @@
                 </div>
             </div>
         </div>
-        {{-- <div class="col-md-6 grid-margin stretch-card"> --}}
-        {{-- <div class="card"> --}}
-        {{-- <div class="card-body"> --}}
-        {{-- <div class="chartjs-size-monitor"> --}}
-        {{-- <div class="chartjs-size-monitor-expand"> --}}
-        {{-- <div class=""></div> --}}
-        {{-- </div> --}}
-        {{-- <div class="chartjs-size-monitor-shrink"> --}}
-        {{-- <div class=""></div> --}}
-        {{-- </div> --}}
-        {{-- </div> --}}
-        {{-- <h4 class="card-title">Exams</h4> --}}
-        {{-- <div class="table-responsive"> --}}
-        {{-- <table class="table table-striped table-borderless"> --}}
-        {{-- <thead> --}}
-        {{-- <tr> --}}
-        {{-- <th>Exam</th> --}}
-        {{-- <th>Date</th> --}}
-        {{-- <th>Time</th> --}}
-        {{-- <th>Status</th> --}}
-        {{-- </tr> --}}
-        {{-- </thead> --}}
-        {{-- <tbody> --}}
-        {{-- @foreach ($exams as $exam) --}}
-        {{-- <tr> --}}
-        {{-- <td>{{ $exam->exam_type }}</td> --}}
-        {{-- <td class="font-weight-bold">{{ $exam->date }}</td> --}}
-        {{-- <td>{{ $exam->time }}</td> --}}
-        {{-- <td class="font-weight-medium"> --}}
-        {{-- <div class="badge badge-success">{{ $exam->status }}</div> --}}
-        {{-- </td> --}}
-        {{-- </tr> --}}
-        {{-- @endforeach --}}
-        {{-- </tbody> --}}
-        {{-- </table> --}}
-        {{-- </div> --}}
-        {{-- </div> --}}
-        {{-- </div> --}}
-        {{-- </div> --}}
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="chartjs-size-monitor">
+                        <div class="chartjs-size-monitor-expand">
+                            <div class=""></div>
+                        </div>
+                        <div class="chartjs-size-monitor-shrink">
+                            <div class=""></div>
+                        </div>
+                    </div>
+                    <p class="card-title mb-0">Exam Details</p>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-borderless">
+                            <thead>
+                                <th>Exam Type</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Status</th>
+                            </thead>
+                            <tbody>
+                                @foreach ($exams as $exam)
+                                    <tr>
+                                        <td>{{ $exam->exam_type }}</td>
+                                        <td>{{ $exam->date }}</td>
+                                        <td>{{ $exam->time }}</td>
+                                        <td class="font-weight-medium">
+                                            <div class="badge badge-info">{{ $exam->status }}</div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="row">
@@ -121,36 +119,29 @@
                             <div class=""></div>
                         </div>
                     </div>
-                    <p class="card-title">Payment Details</p>
-                    <div class="table-responsive">
-                        <table class="table table-striped table-borderless">
-                            <thead>
-                                <tr>
-                                    <th>Product</th>
-                                    <th>Price</th>
-                                    <th>Date</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($payments as $payment)
+                    <div class="chartjs-size-monitor-shrink">
+                        <p class="card-title mb-0">Payment Details</p>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-borderless">
+                                <thead>
                                     <tr>
-                                        <td>{{ $payment->id }}</td>
-                                        <td>{{ $payment->amount }}</td>
-                                        <td>{{ $payment->created_at }}</td>
+                                        <th>ID</th>
+                                        <th>Paid Amount</th>
+                                        <th>Date</th>
                                     </tr>
-                                    <tr>
-                                        <td>Display Advertising</td>
-                                        <td class="font-weight-bold">$551</td>
-                                        <td>28 Sep 2018</td>
-                                        <td class="font-weight-medium">
-                                            <div class="badge badge-warning">Pending</div>
-                                        </td>
-                                    </tr>
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach ($payments as $payment)
+                                        <tr>
+                                            <td>{{ $payment->id }}</td>
+                                            <td>{{ $payment->Amount }}</td>
+                                            <td class="font-weight-bold">{{ $payment->created_at }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    @endsection
+        @endsection

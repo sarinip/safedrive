@@ -25,6 +25,11 @@ class PaymentController extends Controller
         return $this->service->getPayment($id);
     }
 
+    public function dashView()
+    {
+    return $this->service->viewPaymet();
+    }
+
     //report table
     public function viewTable()
     {

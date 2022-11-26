@@ -43,4 +43,9 @@ class ExamController extends Controller
     {
         return $this->service->viewTable();
     }
+
+     public function viewExamStudent(){
+
+         return $this->service->viewExamStudent();
+     }
 }

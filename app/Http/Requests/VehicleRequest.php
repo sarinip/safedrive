@@ -25,10 +25,10 @@ class VehicleRequest extends FormRequest
     {
         return [
             'reg_no' => ['required'],
-            'owner_name' => ['required' 'string','max:255'],
+            'owner_name' => ['required','string','max:255'],
             'reg_date' => ['required','date'],
-            'class' => ['required' 'string','max:200'],
-            'model' => ['required' 'string','max:200'],
+            'class' => ['required','string','max:200'],
+            'model' => ['required','string','max:200'],
             'insurance_up_to' => ['required','date'],
         ];
     }

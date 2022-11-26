@@ -12,7 +12,7 @@
                             <thead>
                                 <tr>
                                     <th>Sudent ID</th>
-                                    <th>Stunet Name</th>
+                                    <th>Student Name</th>
                                     <th>Exam Type</th>
                                     <th>Date</th>
                                     <th>Time</th>
