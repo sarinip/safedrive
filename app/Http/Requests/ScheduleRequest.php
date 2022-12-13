@@ -27,7 +27,7 @@ class ScheduleRequest extends FormRequest
             'instructor' => ['required','integer'],
             'schedulesession' => ['required'],
             'scheduledate' => ['required','date'],
-            'timeslot' => ['required','time'],
+            'timeslot' => ['required'],
 
         ];
     }

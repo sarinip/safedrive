@@ -6,8 +6,14 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Vehicle Information</h4>
-                    <div class="form-sample" method="post" action="{{ url('vehicle/store') }}">
+                    <form class="form-sample" method="post" action="{{ url('vehicle/store') }}">
                         @csrf
+                        @if (session()->has('success'))
+                            <input type="hidden" name="id" value="{{ $vehicle['id'] }}" />
+                            <div class="alert alert-success">
+                                {{ session()->get('success') }}
+                            </div>
+                        @endif
                         <input type="hidden" name="id" value="{{ $vehicle['id'] }}" />
                         <div class="row">
                             <div class="col-md-6">
@@ -95,9 +101,9 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </form>
                         @endsection

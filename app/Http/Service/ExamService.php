@@ -19,5 +19,4 @@ interface ExamService
 
     public function viewTable();
 
-    public function viewExamStudent();
 }

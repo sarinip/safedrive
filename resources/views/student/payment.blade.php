@@ -19,30 +19,26 @@
                             @endif
                             <form class="pt-3" method="post" action="{{ url('/payment/store') }}">
                                 @csrf
-                                {{-- <div class="form-group"> --}}
-                                {{-- <input type="text" class="form-control form-control-lg" id="txtStudentID" --}}
-                                {{-- placeholder="Student ID" name="studentid" required> --}}
-                                {{-- @error('studentid') --}}
-                                {{-- <div class="alert alert-danger">{{ $message }}</div> --}}
-                                {{-- @endif --}}
-                                {{-- </div> --}}
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg" id="txtAmount"
-                                        placeholder="Amount LKR" name="amount" required>
+                                    <label for="floatingInput">Amount</label>
+                                    <input type="text" class="form-control form-control-lg" id="txtAmount" name="amount"
+                                        required autofocus>
                                     @error('amount')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                         @endif
                                     </div>
                                     <div class="form-group">
+                                        <label for="floatingInput">Name on Card</label>
                                         <input type="text" class="form-control form-control-lg" id="txtCardName"
-                                            placeholder="Name on Card" name="cardname" required>
+                                            name="cardname" required>
                                         @error('cardname')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                             @endif
                                         </div>
                                         <div class="form-group">
+                                            <label for="floatingInput">Card Number</label>
                                             <input type="text" class="form-control form-control-lg" id="txtCardNo"
-                                                placeholder="Card Number" name="cardnumber" required>
+                                                name="cardnumber" required>
                                             @error('cardnumber')
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                                 @endif
@@ -50,8 +46,9 @@
                                             <div class="row">
                                                 <div class="col-lg-6 ">
                                                     <div class="form-group">
-                                                        <input type="texy" class="form-control form-control-lg" id="txtExpDate"
-                                                            placeholder="Expiry Date (MM/YY)" name="expdate" required>
+                                                        <label for="floatingInput">Expiry Date</label>
+                                                        <input type="text" class="form-control form-control-lg" id="txtExpDate"
+                                                            placeholder="MM/YY" name="expdate" required>
                                                         @error('expdate')
                                                             <div class="alert alert-danger">{{ $message }}</div>
                                                             @endif
@@ -59,8 +56,9 @@
                                                     </div>
                                                     <div class="col-lg-6 ">
                                                         <div class="form-group">
+                                                            <label for="floatingInput">CVV</label>
                                                             <input type="text" class="form-control form-control-lg" id="txtcvv"
-                                                                placeholder="CVV" name="cvv" required>
+                                                                name="cvv" required>
                                                             @error('cvv')
                                                                 <div class="alert alert-danger">{{ $message }}</div>
                                                                 @endif
@@ -69,7 +67,7 @@
                                                     </div>
                                                     <div class="mt-3">
                                                         <button class=" btn btn-block btn-success btn-lg font-weight-medium auth-form-btn"
-                                                            type="submit">PAY></button>
+                                                            type="submit">PAY >></button>
                                                     </div>
                                                 </form>
                                             </div>

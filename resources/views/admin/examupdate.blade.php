@@ -6,8 +6,14 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Exam Information</h4>
-                    <div class="form-sample" method="post" action="{{ url('exam/store') }}">
+                    <form class="form-sample" method="post" action="{{ url('exam/store') }}">
                         @csrf
+                        @if (session()->has('success'))
+                            <input type="hidden" name="id" value="{{ $exam['id'] }}" />
+                            <div class="alert alert-success">
+                                {{ session()->get('success') }}
+                            </div>
+                        @endif
                         <input type="hidden" name="id" value="{{ $exam['id'] }}" />
                         <div class="form-sample">
                             <div class="row">
@@ -74,7 +80,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

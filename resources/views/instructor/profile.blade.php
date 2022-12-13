@@ -2,28 +2,28 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-3 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body text-center" method="post" action="{{ url('instructor/profile') }}">
-                    <form class=" form-sample">
-                        <div class="form-group">
-                            <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle text-center"
-                                style="width: 150px;" alt="Avatar" />
-                        </div>
-                        {{-- <div class="input-group "> --}}
-                        {{-- <div class="input-group"> --}}
-                        {{-- <input type="text" class="form-control" placeholder="No file choose" --}}
-                        {{-- aria-label="Recipient' s username"> --}}
-                        {{-- <div class="input-group-append"> --}}
-                        {{-- <button class="btn btn-sm btn-primary" type="button">Upload</button> --}}
-                        {{-- </div> --}}
-                        {{-- </div> --}}
-                        {{-- </div> --}}
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-9 grid-margin stretch-card">
+        {{-- <div class="col-md-3 grid-margin stretch-card"> --}}
+        {{-- <div class="card"> --}}
+        {{-- <div class="card-body text-center" method="post" action="{{ url('instructor/profile') }}"> --}}
+        {{-- <form class=" form-sample"> --}}
+        {{-- <div class="form-group"> --}}
+        {{-- <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle text-center" --}}
+        {{-- style="width: 150px;" alt="Avatar" /> --}}
+        {{-- </div> --}}
+        {{-- <div class="input-group "> --}}
+        {{-- <div class="input-group"> --}}
+        {{-- <input type="text" class="form-control" placeholder="No file choose" --}}
+        {{-- aria-label="Recipient' s username"> --}}
+        {{-- <div class="input-group-append"> --}}
+        {{-- <button class="btn btn-sm btn-primary" type="button">Upload</button> --}}
+        {{-- </div> --}}
+        {{-- </div> --}}
+        {{-- </div> --}}
+        {{-- </form> --}}
+        {{-- </div> --}}
+        {{-- </div> --}}
+        {{-- </div> --}}
+        <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Personal Details</h4>
@@ -131,14 +131,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-12 text-right">
-                                <div class="form-group">
-                                    <button type="submit" id="submit" class="btn btn-primary mr-2">Submit</button>
-                                    <button class="btn btn-light" id="cancel">Cancel</button>
-                                </div>
-                            </div>
-                        </div>
+                        {{-- <div class="row"> --}}
+                        {{-- <div class="col-md-12 text-right"> --}}
+                        {{-- <div class="form-group"> --}}
+                        {{-- <button type="submit" id="submit" class="btn btn-primary mr-2">Submit</button> --}}
+                        {{-- <button class="btn btn-light" id="cancel">Cancel</button> --}}
+                        {{-- </div> --}}
+                        {{-- </div> --}}
+                        {{-- </div> --}}
                     </form>
                 </div>
             </div>

@@ -45,11 +45,11 @@ class VehicleServiceImpl implements VehicleService
                 throw new \Exception($e->getMessage());
 
             // return redirect()->back();
-            return redirect()->back()->with('success', "Record Insert Successfully!!");
+            return redirect()->back();
             }
 
 
-            return redirect()->route($path);
+            return redirect()->route($path)->with('success', "Record Insert Successfully!!");
     }
 
     public function getVehicle($id)

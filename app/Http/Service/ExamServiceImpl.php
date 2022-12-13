@@ -31,14 +31,16 @@ class ExamServiceImpl implements ExamService
             $exam->status = $request->status;
 
             $exam->save();
-            return redirect()->back()->with('success', "Record saved Successfully!!");
+
 
         } catch (\Exception $e) {
             throw new \Exception($e->getMessage());
+
+                return redirect()->back();
         }
 
 
-        return redirect()->route($path);
+        return redirect()->route($path)->with('success', "Record saved Successfully!!");
     }
 
     public function getExam($id)
