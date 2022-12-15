@@ -48,7 +48,7 @@ Route::group(['middleware' => ['auth']], function () {
         $exams = \App\Models\Exam::where('student_id', session()->get('student_id')[0])->get();
         $schedules = \App\Models\Schedule::where('student_id', session()->get('student_id')[0])->get();
         $payments = \App\Models\Payment::where('student_id', session()->get('student_id')[0])->get();
-        return view('student.index', array('schedules' => $schedules),array('payments' => $payments),array('exams' => $exams));
+        return view('student.index', array('schedules' => $schedules),array('payments' => $payments,'exams' => $exams));
     })->name('dashboard');
 
     Route::get('/student/appointment', function () {
