@@ -13,5 +13,5 @@ interface PaymentService
 
     public function viewTable();
 
-    public function viewPaymet();
+    public function viewPayment();
 }
