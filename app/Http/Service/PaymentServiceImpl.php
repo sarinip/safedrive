@@ -50,7 +50,7 @@ class PaymentServiceImpl implements PaymentService
         return view('student.reciept', array('payment' => $payment));
     }
 
-    public function viewPaymet()
+    public function viewPayment()
     {
         $payments = Payment::all();
         return view('student.dashboard', array('payments' => $payments));

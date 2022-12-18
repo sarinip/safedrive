@@ -141,6 +141,27 @@ Route::group(['middleware' => ['auth']], function () {
         return (new \App\Http\Controllers\VehicleController)->destroy($id);
     });
 
+    // Package Routes
+    Route::get('/package', function () {
+        return view('admin.packagenew');
+    });
+
+    Route::get('/package/new', function () {
+        return (new \App\Http\Controllers\PackageController())->showTable();
+    })->name('package.new');
+
+    Route::post('/package/store', function (\App\Http\Requests\PackageRequest $request) {
+        return (new \App\Http\Controllers\PackageController())->store($request);
+    });
+
+    Route::get('/package/edit/{id}', function ($id) {
+        return (new \App\Http\Controllers\PackageController)->show($id);
+    });
+
+    Route::get('/package/delete/{id}', function ($id) {
+        return (new \App\Http\Controllers\PackageController)->destroy($id);
+    });
+
     Route::get('/core-dashboard', function () {
         $studentdata = \App\Http\Service\ReportServiceimpl::getStudentRegistrationData();
         $paymentdata = \App\Http\Service\ReportServiceimpl::getPaymentData();

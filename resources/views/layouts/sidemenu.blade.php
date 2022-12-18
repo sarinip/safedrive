@@ -86,11 +86,18 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="{{ url('/package/new') }}" aria-expanded="false" aria-controls="students">
+                    <i class="icon-head menu-icon"></i>
+                    <span class="menu-title">Packages</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="{{ url('/exam/new') }}" aria-expanded="false" aria-controls="students">
                     <i class="icon-head menu-icon"></i>
                     <span class="menu-title">Exams</span>
                 </a>
             </li>
+
             <li class="nav-item">
                 <a class="nav-link" href="{{ url('/report/student') }}" aria-expanded="false" aria-controls="students">
                     <i class="icon-head menu-icon"></i>
