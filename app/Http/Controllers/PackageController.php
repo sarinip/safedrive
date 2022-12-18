@@ -11,7 +11,7 @@ use App\Models\Package;
 
 class PackageController extends Controller
 {
-    private VehicleService $service;
+    private PackageService $service;
 
     public function __construct()
     {
