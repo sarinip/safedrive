@@ -14,4 +14,6 @@ interface PaymentService
     public function viewTable();
 
     public function viewPayment();
+
+    public function deletePayment($id);
 }

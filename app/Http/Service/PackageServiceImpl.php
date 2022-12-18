@@ -7,7 +7,7 @@ use App\Models\Package;
 use App\Models\Student;
 use App\Models\Vehicle;
 
-class PaymentServiceImpl implements PaymentService
+class PackageServiceImpl implements PackageService
 {
 
     private $email_service;
@@ -20,7 +20,7 @@ class PaymentServiceImpl implements PaymentService
         $this->email_service = new EmailServiceImpl();
     }
 
-    public function store(PaymentRequest $request): \Illuminate\Http\RedirectResponse
+    public function store(PackageRequest $request): \Illuminate\Http\RedirectResponse
     {
 
         $path = 'package.new';
@@ -58,8 +58,8 @@ class PaymentServiceImpl implements PaymentService
 
     public function viewPackage()
     {
-        $package = Package::all();
-        return view('admin.packagenew', array('package' => $package));
+        $packages = Package::all();
+        return view('admin.packagenew', array('package' => $packages));
     }
 
     /**
@@ -74,9 +74,9 @@ class PaymentServiceImpl implements PaymentService
         return redirect()->back()->with('success', "Record deleted Successfully!!");
     }
 
-    // public function viewTable()
-    // {
-    //     $package = Package::all();
-    //     return view('admin.reportpackage', ['packages' => $packages]);
-    // }
+    public function viewTable()
+    {
+        $packages = Package::all();
+        return view('admin.reportpackage', ['packages' => $packages]);
+    }
 }

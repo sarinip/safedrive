@@ -27,6 +27,13 @@ Route::get('/student/register', function () {
     return view('student.register');
 });
 
+
+//Subscription
+Route::get('/subscription', function () {
+    return view('student.packageselect');
+ });
+
+
 Route::get('/instructor/register', function () {
     return view('instructor.register');
 });
@@ -215,6 +222,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/report/exam', function () {
         return (new \App\Http\Controllers\ExamController())->viewTable();
     })->name('reportexam');
+
+
 
     //log out
     Route::get('/logout', function () {
