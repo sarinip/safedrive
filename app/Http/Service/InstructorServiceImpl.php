@@ -71,5 +71,20 @@ class InstructorServiceImpl implements InstructorService
         return view('admin.reportinstructor',['instructors'=>$instructors]);
     }
 
+      public function viewInstructor()
+    {
+        $instructors = Instructor::all();
+        return view('admin.instructorenew', array('instructor' => $instructors));
+    }
+
+
+    public function deleteInstructor($id)
+    {
+        $instructors = Instructor::where('id', $id)->first();
+        $instructors->delete();
+        return redirect()->back()->with('success', "Record deleted Successfully!!");
+    }
+
+
 
 }

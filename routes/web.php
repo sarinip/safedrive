@@ -98,16 +98,32 @@ Route::group(['middleware' => ['auth']], function () {
     // Instructor Routes
     Route::get('/instructor/profile/{id}', function ($id) {
         return (new \App\Http\Controllers\InstructorController)->show($id);
+    })->name('instructor.profile');
+
+    Route::get('/instructor', function () {
+        return view('instructor.instructornew');
+    });
+
+    Route::get('/instructor/new', function () {
+        return (new \App\Http\Controllers\InstructorController())->showTable();
+    })->name('instructor.new');
+
+    Route::post('/instructor/store', function (\App\Http\Requests\InstructorRequest $request) {
+        return (new \App\Http\Controllers\InstructorController())->store($request);
+    });
+
+    Route::get('/instructor/edit/{id}', function ($id) {
+        return (new \App\Http\Controllers\InstructorController)->show($id);
+    });
+
+    Route::get('/instructor/delete/{id}', function ($id) {
+        return (new \App\Http\Controllers\InstructorController)->destroy($id);
     });
 
     Route::get('/instructor/schedule', function () {
         $schedules = \App\Models\Schedule::where('instructor_id', session()->get('instructor_id')[0])->get();
         return view('instructor.approval', array('schedules' => $schedules));
     })->name('instructor.schedule');
-
-    // Route::get('/instructor/profile/{id}', function ($id) {
-    // return (new \App\Http\Controllers\VehicleController)->show($id);
-    // });
 
     // Payment Routes
     Route::get('/payment', function () {

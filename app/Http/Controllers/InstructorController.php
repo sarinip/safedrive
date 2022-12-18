@@ -54,15 +54,20 @@ class InstructorController extends Controller
      * @param \App\Models\Instructor $instructor
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Instructor $instructor)
-    {
-        //
+     public function destroy($id){
+
+        return $this->service->deleteInstructor($id);
     }
 
 
     public function show($id)
     {
         return $this->service->getInstructor($id);
+    }
+
+    public function showTable()
+    {
+     return $this->service->viewInstructor();
     }
 
     //report table
