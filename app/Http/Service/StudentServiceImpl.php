@@ -12,7 +12,6 @@ class StudentServiceImpl implements StudentService
 {
 
 
-
     public function store(StudentRequest $request): \Illuminate\Http\RedirectResponse
     {
         // TODO: Implement store() method.
@@ -21,21 +20,20 @@ class StudentServiceImpl implements StudentService
         try {
 
             $student = null;
-            $user=null;
+            $user = null;
 
-            if(!empty($request->id)){
-                $student = Student::where('id',$request->id)->first();
-                $user = User::where('id',$student->user_id)->first();
+            if (!empty($request->id)) {
+                $student = Student::where('id', $request->id)->first();
+                $user = User::where('id', $student->user_id)->first();
                 $path = '/student/profile';
             }
 
 
-
-            if(empty($student)){
+            if (empty($student)) {
                 $newPassword = Hash::make($request->password);
 
                 $user = new User();
-                $user->name  = $request->fname;
+                $user->name = $request->fname;
                 $user->email = $request->email;
                 $user->password = $newPassword;
                 $user->role = "STUDENT";
@@ -45,7 +43,7 @@ class StudentServiceImpl implements StudentService
                 $student = new Student();
             }
 
-            $student->user_id= $user->id;
+            $student->user_id = $user->id;
             $student->fname = $request->fname;
             $student->lname = $request->lname;
             $student->dob = $request->dob;
@@ -60,9 +58,7 @@ class StudentServiceImpl implements StudentService
             $student->save();
 
 
-
-
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
 
             throw new \Exception($e->getMessage());
 
@@ -77,14 +73,14 @@ class StudentServiceImpl implements StudentService
     {
         // TODO: Implement getStudent() method.
 
-    $student = Student::where('id',$id)->first();
-    return view('student.profile', array('student'=>$student));
+        $student = Student::where('id', $id)->first();
+        return view('student.profile', array('student' => $student));
     }
 
     //Report view table
-     public function viewTable()
+    public function viewTable()
     {
-    $students=Student::all();
-    return view('admin.reportstudent',['students'=>$students]);
+        $students = Student::all();
+        return view('admin.reportstudent', ['students' => $students]);
     }
 }

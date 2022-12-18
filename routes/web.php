@@ -200,5 +200,10 @@ Route::group(['middleware' => ['auth']], function () {
         return (new \App\Http\Controllers\AuthController())->logout();
     });
 
+    Route::get('/theory-class/create', function () {
+        $instructors = \App\Models\Instructor::orderBy('id', 'DESC')->get();
+        return view('theory-class.create', array('instructors' => $instructors));
+    });
+
 
 });
