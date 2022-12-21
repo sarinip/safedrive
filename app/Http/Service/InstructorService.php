@@ -12,4 +12,8 @@ interface InstructorService
     public function getInstructor($id);
 
     public function viewTable();
+
+    public function viewInstructor();
+
+    public function deleteInstructor($id);
 }

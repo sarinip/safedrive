@@ -32,7 +32,9 @@ class InstructorServiceImpl implements InstructorService
                 $user->email = $request->email;
                 $user->password = $newPassword;
                 $user->role = "INSTRUCTOR";
+
                 $user->save();
+                
                 $instructor = new Instructor();
             }
             $instructor->user_id = $user->id;
@@ -70,6 +72,21 @@ class InstructorServiceImpl implements InstructorService
         $instructors=Instructor::all();
         return view('admin.reportinstructor',['instructors'=>$instructors]);
     }
+
+      public function viewInstructor()
+    {
+        $instructors = Instructor::all();
+        return view('admin.instructornew', array('instructor' => $instructors));
+    }
+
+
+    public function deleteInstructor($id)
+    {
+        $instructors = Instructor::where('id', $id)->first();
+        $instructors->delete();
+        return redirect()->back()->with('success', "Record deleted Successfully!!");
+    }
+
 
 
 }
