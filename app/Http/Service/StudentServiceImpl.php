@@ -15,7 +15,7 @@ class StudentServiceImpl implements StudentService
     public function store(StudentRequest $request): \Illuminate\Http\RedirectResponse
     {
         // TODO: Implement store() method.
-        $path = 'login';
+        $path = 'subscription';
 
         try {
 
@@ -37,6 +37,7 @@ class StudentServiceImpl implements StudentService
                 $user->email = $request->email;
                 $user->password = $newPassword;
                 $user->role = "STUDENT";
+                $user->status = 'PENDING';
 
                 $user->save();
 
@@ -55,8 +56,9 @@ class StudentServiceImpl implements StudentService
             $student->postcode = $request->postcode;
             $student->telephone = $request->telephone;
 
-            $student->save();
 
+            $student->save();
+            session()->push('reg_student_id', $student->id);
 
         } catch (\Exception $e) {
 

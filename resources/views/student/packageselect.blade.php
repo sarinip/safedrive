@@ -67,12 +67,24 @@
                             </div>
                             <h4>Subscription Plans</h4>
                             {{-- <h6 class="font-weight-light">Select your subscription here.</h6> --}}
-                            <div class="table-responsive">
-                                <table class="table table-striped">
-                                    <thead>
+                            <form action="{{ url('/package/subscribe') }}" method="POST">
+                                @csrf
+
+                                @if (session()->has('error_message'))
+                                    <div class="alert alert-danger">
+                                        {{ session()->get('error_message') }}
+                                    </div>
+                                @endif
+
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
                                         <tr>
                                             <th>
                                                 Package Name
+                                            </th>
+                                            <th>
+                                                Vehicle Type
                                             </th>
                                             <th>
                                                 Hours
@@ -84,27 +96,52 @@
                                                 Select
                                             </th>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                Herman Beck
-                                            </td>
-                                            <td>
-                                                10h
-                                            </td>
-                                            <td>
-                                               LKR 10,000
-                                            </td>
-                                            <td>
-                                                <input class="form-check-input " type="checkbox" value=""
-                                                    id="flexCheckDefault">
+                                        </thead>
+                                        <tbody>
+                                        @foreach($packages as $package)
+                                            <tr>
+                                                <td>
+                                                    {{ $package->package_name }}
+                                                </td>
+                                                <td>
+                                                    {{ $package->vehicle_type }}
+                                                </td>
+                                                <td>
+                                                    {{ $package->hours }}h
+                                                </td>
+                                                <td>
+                                                    LKR {{ $package->price }}
+                                                </td>
+                                                <td>
+                                                    <input class="form-check-input " name="packages" type="checkbox"
+                                                           value="{{ $package->id }}"
+                                                           id="flexCheckDefault">
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                        <tfoot>
+                                        <tr colspan="5">
+                                            <td class="d-flex justify-content-end">
+
+                                                <div class="row">
+                                                    <div class="form-group">
+                                                        <button type="submit" id="btnConfirm"
+                                                                class=" btn btn-primary mr-2">Confirm
+                                                        </button>
+                                                        <button id="btnCancel" type="reset" class="btn btn-light">
+                                                            Cancel
+                                                        </button>
+                                                    </div>
+                                                </div>
+
                                             </td>
                                         </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-            @endsection
+@endsection

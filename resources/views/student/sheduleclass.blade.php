@@ -17,7 +17,7 @@
                         @endif
                         <div class="form-group row">
 
-                            <label Id="lblIndtructor" class="col-sm-3 col-form-label">Instructor Name</label>
+                            <label id="lblIndtructor" class="col-sm-3 col-form-label">Instructor Name</label>
                             <div class="col-sm-9">
                                 <select id="dpdIndtructor" name="instructor" class="form-control"
                                     onchange="getInstructorName();">

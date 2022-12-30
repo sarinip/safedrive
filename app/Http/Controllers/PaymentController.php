@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Requests\PaymentRequest;
 use App\Http\Service\PaymentService;
 use App\Http\Service\PaymentServiceImpl;
@@ -10,10 +11,11 @@ use App\Models\Payment;
 class PaymentController extends Controller
 {
     private PaymentService $service;
-        public function __construct()
- {
-     $this->service = new PaymentServiceImpl();
- }
+
+    public function __construct()
+    {
+        $this->service = new PaymentServiceImpl();
+    }
 
     public function store(PaymentRequest $request)
     {
@@ -27,12 +29,12 @@ class PaymentController extends Controller
 
     public function dashView()
     {
-    return $this->service->viewPaymet();
+        return $this->service->viewPaymet();
     }
 
     //report table
     public function viewTable()
     {
-    return $this->service->viewTable();
+        return $this->service->viewTable();
     }
 }

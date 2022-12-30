@@ -53,7 +53,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                             </div>
                         </div>
 
@@ -73,7 +73,7 @@
         <!-- <div class="row"> -->
         <div class=" col-lg-12 grid-margin stretch-card card">
             <div class="card-body">
-                <h4 class="card-title">Exam Details</h4>
+                <h4 class="card-title">Package Details</h4>
                 <div class="table-responsive pt-3">
                     <table class="table table-bordered">
                         <thead>

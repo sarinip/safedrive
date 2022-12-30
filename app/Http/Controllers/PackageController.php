@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Service\PackageSelectService;
+use App\Http\Service\PackageSelectServiceImpl;
+use App\Models\StudentPackage;
 use Illuminate\Http\Request;
 use App\Http\Service\PackageService;
 use App\Http\Service\PackageServiceImpl;
@@ -13,31 +16,15 @@ class PackageController extends Controller
 {
     private PackageService $service;
 
+    private PackageSelectService $packageSelectService;
+
     public function __construct()
     {
         $this->service = new PackageServiceImpl();
+        $this->packageSelectService = new PackageSelectServiceImpl();
 
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -61,37 +48,8 @@ class PackageController extends Controller
         return $this->service->getPackage($id);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \App\Models\Package $student
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Package $package)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Package $student
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Package $package)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param \App\Models\Package $student
-     * @return \Illuminate\Http\Response
-     */
-
-    public function destroy($id){
 
         return $this->service->deletePackage($id);
     }
@@ -99,12 +57,22 @@ class PackageController extends Controller
     //update form table
     public function showTable()
     {
-     return $this->service->viewPackage();
+        return $this->service->viewPackage();
     }
 
     //report table
     public function viewTable()
     {
-    return $this->service->viewTable();
+        return $this->service->viewTable();
+    }
+
+    public function subscribe(Request $request): \Illuminate\Http\RedirectResponse
+    {
+        return $this->packageSelectService->subscribe($request);
+    }
+
+    public static function getSubscribeAmount()
+    {
+        return StudentPackage::getPackageAmount();
     }
 }

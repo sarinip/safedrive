@@ -13,7 +13,7 @@ class TheoryClassRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,12 +24,12 @@ class TheoryClassRequest extends FormRequest
     public function rules()
     {
         return [
-            'instru' => ['required'],
-            'owner_name' => ['required','string','max:255'],
-            'reg_date' => ['required','date'],
-            'class' => ['required','string','max:200'],
-            'model' => ['required','string','max:200'],
-            'insurance_up_to' => ['required','date'],
+            'instructor' => ['required'],
+            'classname' => ['required'],
+            'classdate' => ['required','date'],
+            'classfrom' => ['required','date_format:H:i'],
+            'classto' => ['required','date_format:H:i','after:classfrom'],
+            'headcount' => ['required','numeric'],
         ];
     }
 }

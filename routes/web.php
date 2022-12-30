@@ -30,8 +30,9 @@ Route::get('/student/register', function () {
 
 //Subscription
 Route::get('/subscription', function () {
-    return view('student.packageselect');
- });
+    $packages = \App\Models\Package::all();
+    return view('student.packageselect',array('packages'=>$packages));
+})->name('subscription');
 
 
 Route::get('/instructor/register', function () {
@@ -55,7 +56,7 @@ Route::group(['middleware' => ['auth']], function () {
         $exams = \App\Models\Exam::where('student_id', session()->get('student_id')[0])->get();
         $schedules = \App\Models\Schedule::where('student_id', session()->get('student_id')[0])->get();
         $payments = \App\Models\Payment::where('student_id', session()->get('student_id')[0])->get();
-        return view('student.index', array('schedules' => $schedules),array('payments' => $payments,'exams' => $exams));
+        return view('student.index', array('schedules' => $schedules), array('payments' => $payments, 'exams' => $exams));
     })->name('dashboard');
 
     Route::get('/student/appointment', function () {
@@ -166,7 +167,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     // Package Routes
     Route::get('/package', function () {
-        return view('admin.packagenew');
+        $packages = \App\Models\Package::all();
+        return view('admin.packagenew', array('packages' => $packages));
     });
 
     Route::get('/package/new', function () {
@@ -240,7 +242,6 @@ Route::group(['middleware' => ['auth']], function () {
     })->name('reportexam');
 
 
-
     //log out
     Route::get('/logout', function () {
         return (new \App\Http\Controllers\AuthController())->logout();
@@ -251,5 +252,37 @@ Route::group(['middleware' => ['auth']], function () {
         return view('theory-class.create', array('instructors' => $instructors));
     });
 
+    Route::post('/theory-class/store', function (\App\Http\Requests\TheoryClassRequest $request) {
+        return (new \App\Http\Controllers\TheoryClassController())->store($request);
+    });
 
+    Route::get('/theory-class/list', function () {
+        $classes = \App\Models\TheoryClass::all();
+        return view('theory-class.list', array('classes' => $classes));
+    })->name('theory.list');
+
+    Route::get('/theory-class/edit/{id}', function ($id) {
+        $class = \App\Models\TheoryClass::where('id', $id)->first();
+        $instructors = \App\Models\Instructor::orderBy('id', 'DESC')->get();
+        return view('theory-class.update', array('class' => $class, 'instructors' => $instructors));
+    });
+
+    Route::get('/theory-class/remove/{id}', function ($id) {
+        return (new \App\Http\Controllers\TheoryClassController())->destroy($id);
+    });
+
+    Route::get('/theory-class/student-view', function () {
+        $id = session()->get('student_id')[0];
+        $classes = \App\Models\TheoryClass::getActiveClasses($id);
+        return view('student.classattend', array('classes' => $classes));
+    })->name('theory.class.attend');
+
+
+    Route::get('/theory-class/reserve/{id}', function ($id) {
+        return (new \App\Http\Controllers\TheoryClassController())->bookClass($id);
+    });
+
+    Route::post('/package/subscribe', function (\Illuminate\Http\Request $request) {
+        return (new \App\Http\Controllers\PackageController())->subscribe($request);
+    });
 });

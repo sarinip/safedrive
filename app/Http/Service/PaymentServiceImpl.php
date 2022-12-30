@@ -5,6 +5,7 @@ namespace App\Http\Service;
 use App\Http\Requests\PaymentRequest;
 use App\Models\Payment;
 use App\Models\Student;
+use App\Models\User;
 
 class PaymentServiceImpl implements PaymentService
 {
@@ -35,6 +36,9 @@ class PaymentServiceImpl implements PaymentService
         $payment->save();
 
         $student = Student::where('id', $payment->student_id)->first();
+        $user = User::where('id', $student->user_id)->first();
+        $user->status = 'PAID';
+        $user->save();
 
         $this->email_service->sendPaymentStatusEmail($payment, $student);
 

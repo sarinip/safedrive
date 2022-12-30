@@ -59,7 +59,7 @@ class PackageServiceImpl implements PackageService
     public function viewPackage()
     {
         $packages = Package::all();
-        return view('admin.packagenew', array('package' => $packages));
+        return view('admin.packagenew', array('packages' => $packages));
     }
 
     /**

@@ -24,12 +24,11 @@ class PaymentRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'studentid' => ['required'],
-            'amount' => ['required','numeric','max:255'],
-            'cardname' => ['required','string'],
-            'cardnumber' => ['required','numeric','max:255'],
-            'expdate' => ['required','string'],
-            'cvv' => ['required','numeric','max:200'],
+            'amount' => ['required'],
+            'cardname' => ['required', 'string'],
+            'cardnumber' => ['required', 'numeric', 'digits:16'],
+            'expdate' => ['required'],
+            'cvv' => ['required', 'numeric', 'digits:3'],
         ];
     }
 }
