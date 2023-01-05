@@ -33,6 +33,7 @@ class PackageServiceImpl implements PackageService
         $package->package_name = $request->package_name;
         $package->price = $request->amount;
         $package->hours = $request->hours;
+        $package->vehicle_type = $request->vehicle_type;
 
 
         $package->save();

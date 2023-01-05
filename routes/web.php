@@ -38,9 +38,10 @@ Route::get('/subscription', function () {
 Route::get('/instructor/register', function () {
     return view('instructor.register');
 });
-Route::post('/instructor/store', function (\App\Http\Requests\InstructorRequest $request) {
-    return (new \App\Http\Controllers\InstructorController())->store($request);
-});
+
+// Route::post('/instructor/store', function (\App\Http\Requests\InstructorRequest $request) {
+//     return (new \App\Http\Controllers\InstructorController())->store($request);
+// });
 
 Route::post('/authentication', function (\Illuminate\Http\Request $request) {
     return (new \App\Http\Controllers\AuthController())->login($request);

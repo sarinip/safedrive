@@ -26,7 +26,8 @@ class PackageRequest extends FormRequest
         return [
               'package_name' => ['required', 'string','max:255'],
               'price' => ['required', 'string'],
-              'fnamhourse' => ['required'],
+              'hours' => ['required'],
+              'vehicle_type' => ['required'],
         ];
     }
 }

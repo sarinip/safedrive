@@ -12,4 +12,9 @@ class Instructor extends Model
     public function instructor(){
         return $this->hasMany('App/Vehicle', 'vehicle_id', 'id');
 }
+
+ public function user(){
+        return $this->belongsTo(User::class);
+}
+
 }
