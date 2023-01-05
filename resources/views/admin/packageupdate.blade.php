@@ -18,9 +18,6 @@
                         <div class="form-sample">
                             <div class="row">
                                 <div class="col-md-6">
-
-
-
                                     <div class="form-group row">
                                         <label class="col-sm-3 col-form-label">Package Name</label>
                                         <div class="col-sm-9">
@@ -49,15 +46,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                {{-- <div class="col-md-6"> --}}
-                                {{-- <div class="form-group row"> --}}
-                                {{-- <label class="col-sm-3 col-form-label">Exam Time</label> --}}
-                                {{-- <div class="col-sm-9"> --}}
-                                {{-- <input type="time" class="form-control" name="time" --}}
-                                {{-- value="{{ $exam['time'] }}" /> --}}
-                                {{-- </div> --}}
-                                {{-- </div> --}}
-                                {{-- </div> --}}
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Vehicle Type</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="text" name="vehicle_type"
+                                                value="{{ $package['vehicle_type'] }}" />
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="row">

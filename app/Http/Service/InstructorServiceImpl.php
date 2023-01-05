@@ -87,7 +87,7 @@ class InstructorServiceImpl implements InstructorService
       public function viewInstructor()
     {
         $instructors = Instructor::all();
-        return view('admin.instructornew', array('instructor' => $instructors));
+        return view('admin.instructornew', array('instructors' => $instructors));
     }
 
 
