@@ -34,7 +34,7 @@ class InstructorServiceImpl implements InstructorService
                 $user->role = "INSTRUCTOR";
 
                 $user->save();
-                
+
                 $instructor = new Instructor();
             }
             $instructor->user_id = $user->id;
@@ -76,7 +76,7 @@ class InstructorServiceImpl implements InstructorService
       public function viewInstructor()
     {
         $instructors = Instructor::all();
-        return view('admin.instructornew', array('instructor' => $instructors));
+        return view('admin.instructornew', array('instructors' => $instructors));
     }
 
 
