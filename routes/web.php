@@ -31,7 +31,7 @@ Route::get('/student/register', function () {
 //Subscription
 Route::get('/subscription', function () {
     $packages = \App\Models\Package::all();
-    return view('student.packageselect',array('packages'=>$packages));
+    return view('student.packageselect', array('packages' => $packages));
 })->name('subscription');
 
 
@@ -51,6 +51,10 @@ Route::post('/student/store', function (\App\Http\Requests\StudentRequest $reque
     return (new \App\Http\Controllers\StudentController)->store($request);
 });
 
+Route::post('/package/subscribe', function (\App\Http\Requests\PackageSelectRequest $request) {
+    return (new \App\Http\Controllers\PackageController())->subscribe($request);
+});
+
 Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/dashboard', function () {
@@ -62,7 +66,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/student/appointment', function () {
         $instructors = \App\Models\Instructor::orderBy('id', 'DESC')->get();
-        return view('student.sheduleclass', array('instructors' => $instructors));
+        $packages = \App\Models\StudentPackage::getStudentPackages();
+        return view('student.sheduleclass', array('instructors' => $instructors, 'packages' => $packages));
     });
 
     Route::post('/schedule/store', function (\App\Http\Requests\ScheduleRequest $request) {
@@ -110,9 +115,9 @@ Route::group(['middleware' => ['auth']], function () {
         return (new \App\Http\Controllers\InstructorController())->showTable();
     })->name('instructor.new');
 
-    Route::post('/instructor/store', function (\App\Http\Requests\InstructorRequest $request) {
-        return (new \App\Http\Controllers\InstructorController())->store($request);
-    });
+//    Route::post('/instructor/store', function (\App\Http\Requests\InstructorRequest $request) {
+//        return (new \App\Http\Controllers\InstructorController())->store($request);
+//    });
 
     Route::get('/instructor/edit/{id}', function ($id) {
         return (new \App\Http\Controllers\InstructorController)->show($id);
@@ -283,7 +288,5 @@ Route::group(['middleware' => ['auth']], function () {
         return (new \App\Http\Controllers\TheoryClassController())->bookClass($id);
     });
 
-    Route::post('/package/subscribe', function (\Illuminate\Http\Request $request) {
-        return (new \App\Http\Controllers\PackageController())->subscribe($request);
-    });
+
 });

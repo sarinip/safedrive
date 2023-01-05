@@ -67,7 +67,7 @@
                             </div>
                             <h4>Subscription Plans</h4>
                             {{-- <h6 class="font-weight-light">Select your subscription here.</h6> --}}
-                            <form action="{{ url('/package/subscribe') }}" method="POST">
+                            <form method="post" action="{{ url('/package/subscribe') }}" >
                                 @csrf
 
                                 @if (session()->has('error_message'))
@@ -113,7 +113,7 @@
                                                     LKR {{ $package->price }}
                                                 </td>
                                                 <td>
-                                                    <input class="form-check-input " name="packages" type="checkbox"
+                                                    <input class="form-check-input " name="packages{{ $package->id }}" type="checkbox"
                                                            value="{{ $package->id }}"
                                                            id="flexCheckDefault">
                                                 </td>

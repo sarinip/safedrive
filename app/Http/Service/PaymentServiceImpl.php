@@ -40,6 +40,10 @@ class PaymentServiceImpl implements PaymentService
         $user->status = 'PAID';
         $user->save();
 
+
+        session()->remove('user');
+        session()->push('user', $user);
+
         $this->email_service->sendPaymentStatusEmail($payment, $student);
 
         return redirect('/reciept/' . $payment->id);

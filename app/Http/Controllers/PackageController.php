@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PackageSelectRequest;
 use App\Http\Service\PackageSelectService;
 use App\Http\Service\PackageSelectServiceImpl;
 use App\Models\StudentPackage;
@@ -66,7 +67,7 @@ class PackageController extends Controller
         return $this->service->viewTable();
     }
 
-    public function subscribe(Request $request): \Illuminate\Http\RedirectResponse
+    public function subscribe(PackageSelectRequest $request): \Illuminate\Http\RedirectResponse
     {
         return $this->packageSelectService->subscribe($request);
     }
