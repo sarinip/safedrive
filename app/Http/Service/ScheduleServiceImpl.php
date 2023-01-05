@@ -4,8 +4,10 @@ namespace App\Http\Service;
 
 use App\Http\Requests\ScheduleRequest;
 use App\Models\Instructor;
+use App\Models\Package;
 use App\Models\Schedule;
 use App\Models\Student;
+use App\Models\StudentPackage;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -26,14 +28,17 @@ class ScheduleServiceImpl implements ScheduleService
 
         try {
 
-            $schedule = Schedule::where('student_id', $user->id)->where('instructor_id', $request->instructor)->where('schedule_date', $request->scheduledate)->where('session', $request->schedulesession)->where('session_from_time', $request->timeslot)->first();
+            $student_id = session()->get('student_id')[0];
 
-            if (!empty($schedule)) {
+            $instructor_count = Schedule::where('instructor_id', $request->instructor)->where('schedule_date', $request->scheduledate)->where('session_from_time', $request->timeslot)->count();
+            $schdule_count = Schedule::where('student_id', $student_id)->where('schedule_date', $request->scheduledate)->where('session_from_time', $request->timeslot)->count();
+
+            if ($instructor_count > 0 || $schdule_count > 0) {
                 return redirect()->back()->with('schedule_error_message', "This Time Slot Already Booked!!");
             }
 
             $schedule = new Schedule();
-            $schedule->student_id = session()->get('student_id')[0];
+            $schedule->student_id = $student_id;
             $schedule->instructor_id = $request->instructor;
             $schedule->session = $request->schedulesession;
             $schedule->schedule_date = $request->scheduledate;
@@ -60,25 +65,24 @@ class ScheduleServiceImpl implements ScheduleService
     public function getScheduleCount(Request $request)
     {
         // TODO: Implement getScheduleCount() method.
-        $search_query = Schedule::where('status', 'APPROVED');
 
-        if (!empty($request->instructor)) {
-            $search_query->where('instructor_id', $request->instructor);
-        }
+        $res = [];
+
+        $package = StudentPackage::leftJoin('packages', 'student_packages.package_id', '=', 'packages.id')->where('student_packages.student_id', session()->get('student_id')[0])->where('packages.vehicle_type', $request->schedulesession)->select('packages.hours')->first();
+
+        $search_query = Schedule::where('status', 'APPROVED');
 
         if (!empty($request->schedulesession)) {
             $search_query->where('session', $request->schedulesession);
         }
 
-        if (!empty($request->scheduledate)) {
-            $search_query->where('schedule_date', $request->scheduledate);
-        }
+        $coverage = (float)$search_query->count() / 2;
+        $remain = (float)$package->hours - $coverage;
 
-        if (!empty($request->timeslot)) {
-            $search_query->where('session_from_time', $request->timeslot);
-        }
+        array_push($res, $remain);
+        array_push($res, $coverage);
 
-        return $search_query->count();
+        return $res;
 
 
     }

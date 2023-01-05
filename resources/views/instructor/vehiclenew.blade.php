@@ -55,7 +55,7 @@
                                                 <div class="col-sm-9">
                                                     <select class="form-control" name="class">
                                                         <option>Select</option>
-                                                        <option>Car / Van </option>
+                                                        <option>Car/Van </option>
                                                         <option>Car (Auto)</option>
                                                         <option>Heavy Vehicle</option>
                                                         <option>Three wheeler</option>

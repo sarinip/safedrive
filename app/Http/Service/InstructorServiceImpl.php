@@ -5,17 +5,24 @@ namespace App\Http\Service;
 use App\Http\Requests\InstructorRequest;
 use App\Models\Instructor;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Contracts\Hashing\Hasher;
 
 
 class InstructorServiceImpl implements InstructorService
 {
-    public function store(InstructorRequest $request): \Illuminate\Http\RedirectResponse
+    /**
+     * @throws \Exception
+     */
+    public function store(InstructorRequest $request)
     {
         $path = 'login';
 
+        DB::beginTransaction();
+
         try {
+
             $instructor = null;
             $user = null;
             if (!empty($request->id)) {
@@ -34,9 +41,10 @@ class InstructorServiceImpl implements InstructorService
                 $user->role = "INSTRUCTOR";
 
                 $user->save();
-                
+
                 $instructor = new Instructor();
             }
+
             $instructor->user_id = $user->id;
             $instructor->fname = $request->fname;
             $instructor->lname = $request->lname;
@@ -51,7 +59,10 @@ class InstructorServiceImpl implements InstructorService
 
             $instructor->save();
 
+            DB::commit();
+
         } catch (\Exception $e) {
+            DB::rollBack();
             throw new \Exception($e->getMessage());
             return redirect()->back();
         }

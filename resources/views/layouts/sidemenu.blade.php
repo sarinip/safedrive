@@ -12,9 +12,11 @@
     <ul class="nav">
 
         @if (session()->get('user')[0]->role == 'STUDENT')
-            @if (session()->get('user')[0]->status != 'PENDING')
+
+            @if (session()->get('user')[0]->status == 'PAID')
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/dashboard') }}" aria-expanded="false" aria-controls="students">
+                    <a class="nav-link" href="{{ url('/dashboard') }}" ari
+                       a-expanded="false" aria-controls="students">
                         <i class="icon-head menu-icon"></i>
                         <span class="menu-title">Dashboard</span>
                     </a>
@@ -48,12 +50,17 @@
                     </a>
                 </li>
             @endif
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/payment') }}" aria-expanded="false" aria-controls="students">
-                    <i class="icon-head menu-icon"></i>
-                    <span class="menu-title">Payments</span>
-                </a>
-            </li>
+
+
+            @if (session()->get('user')[0]->status == 'PENDING')
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/payment') }}" aria-expanded="false" aria-controls="students">
+                        <i class="icon-head menu-icon"></i>
+                        <span class="menu-title">Payments</span>
+                    </a>
+                </li>
+            @endif
+
         @endif
 
         @if (session()->get('user')[0]->role == 'INSTRUCTOR')
