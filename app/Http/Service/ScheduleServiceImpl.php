@@ -80,7 +80,7 @@ class ScheduleServiceImpl implements ScheduleService
 
         $package = StudentPackage::leftJoin('packages', 'student_packages.package_id', '=', 'packages.id')->where('student_packages.student_id', session()->get('student_id')[0])->where('packages.vehicle_type', $request->schedulesession)->select('packages.hours')->first();
 
-        $search_query = Schedule::where('status', 'APPROVED')->where('student_id', session()->get('student_id')[0]);
+        $search_query = Schedule::where('status','!=', 'REJECTED')->where('student_id', session()->get('student_id')[0]);
 
         if (!empty($request->schedulesession)) {
             $search_query->where('session', $request->schedulesession);
@@ -142,8 +142,10 @@ class ScheduleServiceImpl implements ScheduleService
 
         $data = TheoryClass::where('instructor_id', session()->get('instructor_id')[0])->select('class_name AS title', DB::raw('CAST(CONCAT(DATE_FORMAT(class_date, ' . $datepattern . '),' . $seperator . ',STR_TO_DATE(class_from_time, ' . $timepattern . '))AS DATETIME) start'), DB::raw('DATE_ADD(CAST(CONCAT(DATE_FORMAT(class_date, ' . $datepattern . '), ' . $seperator . ',STR_TO_DATE(class_to_time, ' . $timepattern . '))AS DATETIME),INTERVAL 60 MINUTE) end'), 'class_head_count as description')->get();
 
-        if (!empty($data)) {
+        if (!empty($res)) {
             $res = array_merge($res, $data);
+        } else {
+            $res = $data;
         }
 
         return $res;
@@ -160,8 +162,10 @@ class ScheduleServiceImpl implements ScheduleService
 
         $data = TheoryClassStudent::join("theory_classes", "theory_classes.id", "=", "theory_class_students.class_id")->where('theory_class_students.student_id', session()->get('student_id')[0])->select('theory_classes.class_name AS title', DB::raw('CAST(CONCAT(DATE_FORMAT(theory_classes.class_date, ' . $datepattern . '),' . $seperator . ',STR_TO_DATE(theory_classes.class_from_time, ' . $timepattern . '))AS DATETIME) start'), DB::raw('DATE_ADD(CAST(CONCAT(DATE_FORMAT(theory_classes.class_date, ' . $datepattern . '), ' . $seperator . ',STR_TO_DATE(theory_classes.class_to_time, ' . $timepattern . '))AS DATETIME),INTERVAL 60 MINUTE) end'), 'class_head_count as description')->get();
 
-        if (!empty($data)) {
+        if (!empty($res)) {
             $res = array_merge($res, $data);
+        } else {
+            $res = $data;
         }
 
         return $res;
