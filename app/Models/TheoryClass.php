@@ -22,4 +22,6 @@ class TheoryClass extends Model
         return TheoryClass::where('theory_classes.class_date', '>', $now)->get();
     }
 
+
+
 }

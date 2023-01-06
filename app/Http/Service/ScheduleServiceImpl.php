@@ -8,7 +8,9 @@ use App\Models\Package;
 use App\Models\Schedule;
 use App\Models\Student;
 use App\Models\StudentPackage;
+use App\Models\TheoryClass;
 use App\Models\User;
+use App\Models\Vehicle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -31,10 +33,17 @@ class ScheduleServiceImpl implements ScheduleService
             $student_id = session()->get('student_id')[0];
 
             $instructor_count = Schedule::where('instructor_id', $request->instructor)->where('schedule_date', $request->scheduledate)->where('session_from_time', $request->timeslot)->count();
-            $schdule_count = Schedule::where('student_id', $student_id)->where('schedule_date', $request->scheduledate)->where('session_from_time', $request->timeslot)->count();
+            $schdeule_count = Schedule::where('student_id', $student_id)->where('schedule_date', $request->scheduledate)->where('session_from_time', $request->timeslot)->count();
 
-            if ($instructor_count > 0 || $schdule_count > 0) {
+            if ($instructor_count > 0 || $schdeule_count > 0) {
                 return redirect()->back()->with('schedule_error_message', "This Time Slot Already Booked!!");
+            }
+
+            $vehicle_count = Vehicle::where('class', $request->schedulesession)->count();
+            $schedule_vehicle_count = Schedule::where('schedule_date', $request->scheduledate)->where('session_from_time', $request->timeslot)->where('session', $request->schedulesession)->count();
+
+            if ($vehicle_count <= $schedule_vehicle_count) {
+                return redirect()->back()->with('schedule_error_message', "Vehicle capacity exceed!!");
             }
 
             $schedule = new Schedule();
@@ -70,7 +79,7 @@ class ScheduleServiceImpl implements ScheduleService
 
         $package = StudentPackage::leftJoin('packages', 'student_packages.package_id', '=', 'packages.id')->where('student_packages.student_id', session()->get('student_id')[0])->where('packages.vehicle_type', $request->schedulesession)->select('packages.hours')->first();
 
-        $search_query = Schedule::where('status', 'APPROVED');
+        $search_query = Schedule::where('status', 'APPROVED')->where('student_id', session()->get('student_id')[0]);
 
         if (!empty($request->schedulesession)) {
             $search_query->where('session', $request->schedulesession);
@@ -137,6 +146,11 @@ class ScheduleServiceImpl implements ScheduleService
         $datepattern = "'%y-%m-%d'";
         $timepattern = "'%l:%i %p'";
         $seperator = "' '";
+
+        $res = Schedule::where('student_id', session()->get('student_id')[0])->where('status', 'APPROVED')->select('session AS title', DB::raw('CAST(CONCAT(DATE_FORMAT(schedule_date, ' . $datepattern . '),' . $seperator . ',STR_TO_DATE(session_from_time, ' . $timepattern . '))AS DATETIME) start'), DB::raw('DATE_ADD(CAST(CONCAT(DATE_FORMAT(schedule_date, ' . $datepattern . '), ' . $seperator . ',STR_TO_DATE(session_from_time, ' . $timepattern . '))AS DATETIME),INTERVAL 60 MINUTE) end'), 'status as description')->get();
+
+        $data = TheoryClass::where('student_id', session()->get('student_id')[0])->where('status', 'APPROVED')->select('session AS title', DB::raw('CAST(CONCAT(DATE_FORMAT(schedule_date, ' . $datepattern . '),' . $seperator . ',STR_TO_DATE(session_from_time, ' . $timepattern . '))AS DATETIME) start'), DB::raw('DATE_ADD(CAST(CONCAT(DATE_FORMAT(schedule_date, ' . $datepattern . '), ' . $seperator . ',STR_TO_DATE(session_from_time, ' . $timepattern . '))AS DATETIME),INTERVAL 60 MINUTE) end'), 'status as description')->get();
+
 
         return Schedule::where('student_id', session()->get('student_id')[0])->where('status', 'APPROVED')->select('session AS title', DB::raw('CAST(CONCAT(DATE_FORMAT(schedule_date, ' . $datepattern . '),' . $seperator . ',STR_TO_DATE(session_from_time, ' . $timepattern . '))AS DATETIME) start'), DB::raw('DATE_ADD(CAST(CONCAT(DATE_FORMAT(schedule_date, ' . $datepattern . '), ' . $seperator . ',STR_TO_DATE(session_from_time, ' . $timepattern . '))AS DATETIME),INTERVAL 60 MINUTE) end'), 'status as description')->get();
     }

@@ -1014,12 +1014,9 @@
             type: 'POST',
             async: false,
             data: request,
-            before: function () {
-                $("#usage").empty();
-                $("#btnConfirm").removeAttr("disabled");
-            },
             success: function (res) {
                 $("#usage").empty();
+                $("#btnConfirm").attr("disabled",false);
                 // $("#usage").html(res.data);
                 if(res.data[0] == 0){
                     $("#btnConfirm").attr("disabled",true);
@@ -1072,7 +1069,7 @@
             },
             error(e) {
                 $("#usage").empty();
-                $("#btnConfirm").removeAttr("disabled");
+                $("#btnConfirm").attr("disabled",false);
                 console.log(e);
 
             }
