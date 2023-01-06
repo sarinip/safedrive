@@ -88,12 +88,12 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/instructor/calenderview', function () {
         $schedules = \App\Http\Service\ScheduleServiceImpl::getInstructorScheduleData();
-        return view('instructor.calender', array('schedules' => $schedules->toJson()));
+        return view('instructor.calender', array('schedules' => $schedules));
     });
 
     Route::get('/student/calenderview', function () {
         $schedules = \App\Http\Service\ScheduleServiceImpl::getStudentScheduleData();
-        return view('instructor.calender', array('schedules' => $schedules->toJson()));
+        return view('instructor.calender', array('schedules' => $schedules));
     });
 
 
