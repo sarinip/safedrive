@@ -110,4 +110,10 @@ class TheoryClassServiceImpl implements TheoryClassService
         // TODO: Implement isReserved() method.
        return  TheoryClassStudent::where('student_id',session()->get('student_id')[0])->where('class_id',$id)->exsist();
     }
+
+    public function viewTable()
+    {
+        $theoryclasses = Theoryclass::all();
+        return view('admin.reporttheoryclass', ['theoryclasses' => $theoryclasses]);
+    }
 }

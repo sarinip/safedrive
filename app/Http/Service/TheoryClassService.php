@@ -16,5 +16,7 @@ interface TheoryClassService
 
     public function isReserved($id);
 
+     public function viewTable();
+
 
 }

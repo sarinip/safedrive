@@ -20,69 +20,70 @@
                             <form class="pt-3" method="post" action="{{ url('/payment/store') }}">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="floatingInput">Amount</label>
+                                    <label for="floatingInput">Amount LKR</label>
                                     <input type="text" class="form-control form-control-lg" id="txtAmount"
-                                           value="{{ \App\Http\Controllers\PackageController::getSubscribeAmount() }}" name="amount">
+                                        value="{{ \App\Http\Controllers\PackageController::getSubscribeAmount() }}"
+                                        name="amount" readonly>
                                     @error('amount')
                                         <div class="alert alert-danger">{{ $message }}</div>
-                                    @endif
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="floatingInput">Name on Card</label>
-                                    <input type="text" class="form-control form-control-lg" id="txtCardName"
-                                           name="cardname" required>
-                                    @error('cardname')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                    @endif
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="floatingInput">Card Number</label>
-                                    <input type="text" class="form-control form-control-lg" id="txtCardNo"
-                                           name="cardnumber" required>
-                                    @error('cardnumber')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                    @endif
-                                </div>
-
-                                <div class="row">
-
-                                    <div class="col-lg-6 ">
-                                        <div class="form-group">
-                                            <label for="floatingInput">Expiry Date</label>
-                                            <input type="text" class="form-control form-control-lg" id="txtExpDate"
-                                                   placeholder="MM/YY" name="expdate" required>
-                                            @error('expdate')
-                                                <div class="alert alert-danger">{{ $message }}</div>
-                                            @endif
-                                        </div>
+                                        @endif
                                     </div>
 
-                                    <div class="col-lg-6 ">
-                                        <div class="form-group">
-                                            <label for="floatingInput">CVV</label>
-                                            <input type="text" class="form-control form-control-lg" id="txtcvv"
-                                                   name="cvv" required>
-                                            @error('cvv')
-                                                <div class="alert alert-danger">{{ $message }}</div>
+                                    <div class="form-group">
+                                        <label for="floatingInput">Name on Card</label>
+                                        <input type="text" class="form-control form-control-lg" id="txtCardName"
+                                            name="cardname" required>
+                                        @error('cardname')
+                                            <div class="alert alert-danger">{{ $message }}</div>
                                             @endif
                                         </div>
-                                    </div>
 
+                                        <div class="form-group">
+                                            <label for="floatingInput">Card Number</label>
+                                            <input type="text" class="form-control form-control-lg" id="txtCardNo"
+                                                name="cardnumber" required>
+                                            @error('cardnumber')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                                @endif
+                                            </div>
+
+                                            <div class="row">
+
+                                                <div class="col-lg-6 ">
+                                                    <div class="form-group">
+                                                        <label for="floatingInput">Expiry Date</label>
+                                                        <input type="text" class="form-control form-control-lg" id="txtExpDate"
+                                                            placeholder="MM/YY" name="exp_date" required>
+                                                        @error('exp_date')
+                                                            <div class="alert alert-danger">{{ $message }}</div>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-6 ">
+                                                        <div class="form-group">
+                                                            <label for="floatingInput">CVV</label>
+                                                            <input type="text" class="form-control form-control-lg" id="txtcvv"
+                                                                name="cvv" required>
+                                                            @error('cvv')
+                                                                <div class="alert alert-danger">{{ $message }}</div>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="mt-3">
+                                                        <button class=" btn btn-block btn-success btn-lg font-weight-medium auth-form-btn"
+                                                            type="submit">PAY >>
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="mt-3">
-                                    <button class=" btn btn-block btn-success btn-lg font-weight-medium auth-form-btn"
-                                            type="submit">PAY >>
-                                    </button>
-                                </div>
-                            </form>
+                                <!-- content-wrapper ends -->
+                            </div>
+                            <!-- page-body-wrapper ends -->
                         </div>
-                    </div>
-                </div>
-            </div>
-            <!-- content-wrapper ends -->
-        </div>
-        <!-- page-body-wrapper ends -->
-    </div>
-@endsection
+                    @endsection

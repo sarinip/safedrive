@@ -36,8 +36,7 @@
                                 <div class="text-center mt-4 font-weight-light">
                                     Don't have an account? <a href="{{ url('/student/register') }}"
                                         class=" text-primary">Create
-                                        your student account</a><br><a href="{{ url('/instructor/register') }}"
-                                        class=" text-primary">Create your instructor account</a>
+                                        your student account</a>
                                 </div>
                             </form>
                         </div>

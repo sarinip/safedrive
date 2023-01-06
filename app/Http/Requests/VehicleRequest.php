@@ -24,7 +24,7 @@ class VehicleRequest extends FormRequest
     public function rules()
     {
         return [
-            'reg_no' => ['required'],
+            'reg_no' => ['required', 'regex:/^([A-Z]{2}[0-9]{4})$/'],
             'owner_name' => ['required','string','max:255'],
             'reg_date' => ['required','date'],
             'class' => ['required','string','max:200'],

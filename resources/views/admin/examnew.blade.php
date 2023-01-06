@@ -70,10 +70,12 @@
                                                 <div class="form-group row ">
                                                     <label class="col-sm-3 col-form-label">Vehicle Class</label>
                                                     <div class="col-sm-9">
-                                                        <select class="form-control" name="class"  id="vehicleclass">
+                                                        <select class="form-control" name="class">
                                                             <option>Select</option>
-                                                            <option>Dual Purpose</option>
-                                                            <option>Light Vehicle</option>
+                                                            <option>Car / Van </option>
+                                                            <option>Car (Auto)</option>
+                                                            <option>Three wheeler</option>
+                                                            <option>Motorbike</option>
                                                             <option>Heavy Vehicle</option>
                                                         </select>
                                                         @error('class')

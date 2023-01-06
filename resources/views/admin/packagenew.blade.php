@@ -37,7 +37,6 @@
                                                     @endif
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
                                     <div class="row">
@@ -57,7 +56,14 @@
                                                 <div class="form-group row">
                                                     <label class="col-sm-3 col-form-label">Vehicle Type</label>
                                                     <div class="col-sm-9">
-                                                        <input class="form-control" type="text" name="vehicle_type" />
+                                                        <select class="form-control" name="vehicle_type">
+                                                            <option>Select</option>
+                                                            <option>Car / Van </option>
+                                                            <option>Car (Auto)</option>
+                                                            <option>Three wheeler</option>
+                                                            <option>Motorbike</option>
+                                                            <option>Heavy Vehicle</option>
+                                                        </select>
                                                         @error('vehicle_type')
                                                             <div class="alert alert-danger">{{ $message }}
                                                             </div>
@@ -98,7 +104,7 @@
                                             @foreach ($packages as $package)
                                                 <tr>
                                                     <td>{{ $package->id }}</td>
-                                                    <td>{{ $package->name }}</td>
+                                                    <td>{{ $package->package_name }}</td>
                                                     <td>{{ $package->price }}</td>
                                                     <td>{{ $package->hours }}</td>
                                                     <td>{{ $package->vehicle_type }}</td>

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('package_name');
             $table->integer('hours');
             $table->integer('price');
-            $table->integer('vehicle_type');
+            $table->string('vehicle_type');
             $table->timestamps();
         });
     }

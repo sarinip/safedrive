@@ -217,7 +217,7 @@
                                                                             <tbody>
                                                                                 @foreach ($instructors as $instructor)
                                                                                     <tr>
-                                                                                        <td>{{ $instructor->instructor_id }}</td>
+                                                                                        <td>{{ $instructor->id }}</td>
                                                                                         <td>{{ $instructor->fname }}{{ $instructor->lname }}</td>
                                                                                         <td>{{ $instructor->nic }}</td>
                                                                                         <td>{{ $instructor->address1 }}{{ $instructor->address2 }}{{ $instructor->city }}{{ $instructor->postcode }}
@@ -225,13 +225,13 @@
                                                                                         <td>{{ $instructor->user->email }}</td>
                                                                                         <td>{{ $instructor->telephone }}</td>
                                                                                         <td>
-                                                                                            <a class="btn btn-warning btn-icon-text"
+                                                                                            {{-- <a class="btn btn-warning btn-icon-text"
                                                                                                 href="{{ url('/instructor/edit/' . $instructor->id) }}"><i
-                                                                                                    class="ti-pencil-alt"></i>
-                                                                                                <a type="button" class="btn btn-danger btn-icon-text"
-                                                                                                    href="{{ url('/instructor/delete/' . $instructor->id) }}">
-                                                                                                    <i class="ti-trash"></i>
-                                                                                                </a>
+                                                                                                    class="ti-pencil-alt"></i> --}}
+                                                                                            <a type="button" class="btn btn-danger btn-icon-text"
+                                                                                                href="{{ url('/instructor/delete/' . $instructor->id) }}">
+                                                                                                <i class="ti-trash"></i>
+                                                                                            </a>
                                                                                         </td>
                                                                                     </tr>
                                                                                 @endforeach

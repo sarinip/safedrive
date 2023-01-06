@@ -29,9 +29,16 @@ class PackageServiceImpl implements PackageService
 
         $package = null;
 
-        $package = new Package();
+            if (!empty($request->id)) {
+                $package = Package::where('id', $request->id)->first();
+            }
+
+            if (empty($package)) {
+                $package = new Package();
+            }
+
         $package->package_name = $request->package_name;
-        $package->price = $request->amount;
+        $package->price = $request->price;
         $package->hours = $request->hours;
         $package->vehicle_type = $request->vehicle_type;
 

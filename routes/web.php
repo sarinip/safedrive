@@ -39,9 +39,9 @@ Route::get('/instructor/register', function () {
     return view('instructor.register');
 });
 
-// Route::post('/instructor/store', function (\App\Http\Requests\InstructorRequest $request) {
-//     return (new \App\Http\Controllers\InstructorController())->store($request);
-// });
+Route::post('/instructor/store', function (\App\Http\Requests\InstructorRequest $request) {
+    return (new \App\Http\Controllers\InstructorController())->store($request);
+});
 
 Route::post('/authentication', function (\Illuminate\Http\Request $request) {
     return (new \App\Http\Controllers\AuthController())->login($request);
@@ -223,29 +223,33 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     // Reports
-    Route::get('/report/classschedule', function () {
+    Route::get('/report/practical_class', function () {
         return (new \App\Http\Controllers\ScheduleController())->viewTable();
-    })->name('reportschedule');
+    })->name('report.practicalclass');
+
+     Route::get('/report/theory_class', function () {
+        return (new \App\Http\Controllers\TheoryClassController())->viewTable();
+    })->name('report.theoryclass');
 
     Route::get('/report/vehicle', function () {
         return (new \App\Http\Controllers\VehicleController())->viewTable();
-    })->name('reportvehicle');
+    })->name('report.vehicle');
 
     Route::get('/report/student', function () {
         return (new \App\Http\Controllers\StudentController())->viewTable();
-    })->name('reportstudent');
+    })->name('report.student');
 
     Route::get('/report/instructor', function () {
         return (new \App\Http\Controllers\InstructorController())->viewTable();
-    })->name('reportinstructor');
+    })->name('report.instructor');
 
     Route::get('/report/payment', function () {
         return (new \App\Http\Controllers\PaymentController())->viewTable();
-    })->name('reportpayment');
+    })->name('report.payment');
 
     Route::get('/report/exam', function () {
         return (new \App\Http\Controllers\ExamController())->viewTable();
-    })->name('reportexam');
+    })->name('report.exam');
 
 
     //log out

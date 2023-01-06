@@ -144,7 +144,6 @@ class ScheduleServiceImpl implements ScheduleService
     public function viewTable()
     {
         $schedules = Schedule::all();
-        return view('admin.reportschedule', ['schedules' => $schedules]);
+        return view('admin.reportpracticalclass', ['schedules' => $schedules]);
     }
 }
-

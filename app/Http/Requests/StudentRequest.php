@@ -27,7 +27,7 @@ class StudentRequest extends FormRequest
             'fname' => ['required', 'string','max:255'],
             'lname' => ['required', 'string','max:255'],
             'dob' => ['required','date','before:today - 18 years'],
-            'nic' => ['required', 'unique:students,nic','max:255'],
+            'nic' => ['required', 'unique:students,nic','regex:/^[0-9]{9}V$/'],
             'addressNo' => ['required'],
             'address1' => ['required'],
             'city' => ['required','max:255'],
