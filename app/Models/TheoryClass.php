@@ -23,5 +23,4 @@ class TheoryClass extends Model
     }
 
 
-
 }

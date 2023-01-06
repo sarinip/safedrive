@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('instructor_id')->nullable();
+//            $table->unsignedBigInteger('instructor_id')->nullable();
             $table->string('reg_no');
             $table->string('owner_name');
             $table->date('reg_date');
@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('model');
             $table->string('insurance_up_to');
             $table->timestamps();
-            $table->foreign('instructor_id')->references('id')->on('vehicles');
+//            $table->foreign('instructor_id')->references('id')->on('vehicles');
         });
     }
 
