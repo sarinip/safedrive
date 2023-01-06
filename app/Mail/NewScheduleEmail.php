@@ -65,6 +65,6 @@ class NewScheduleEmail extends Mailable
 
     public function build()
     {
-        return $this->from('sample@ivoryia.com','Safe Drive')->subject('New Schedule Email')->view('emails.new_schedule_email_template')->with('data', $this->data);
+        return $this->from('4safedrive@gmail.com','Safe Drive')->subject('New Schedule Email')->view('emails.new_schedule_email_template')->with('data', $this->data);
     }
 }
