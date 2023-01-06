@@ -26,16 +26,22 @@ class StudentRequest extends FormRequest
         return [
             'fname' => ['required', 'string','max:255'],
             'lname' => ['required', 'string','max:255'],
-            'dob' => ['required','date'],
-            'nic' => ['required', 'unique:students,nic','max:255'],
+            'dob' => ['required','date','before:today - 18 years'],
+            'nic' => ['required', 'unique:students,nic','regex:/^[0-9]{9}V$/'],
             'addressNo' => ['required'],
             'address1' => ['required'],
-            'address2' => ['string'],
             'city' => ['required','max:255'],
             'postcode' => ['required','max:255'],
             'telephone' => ['required','numeric'],
             'email' => ['required', 'email', 'unique:users,email'],
             'password' => ['required', 'confirmed','min:6'],
+        ];
+    }
+
+        public function messages()
+    {
+        return [
+            'dob.before' => 'The date of birth must be 18 or older.',
         ];
     }
 }

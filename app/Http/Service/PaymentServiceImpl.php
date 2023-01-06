@@ -30,7 +30,7 @@ class PaymentServiceImpl implements PaymentService
         $payment->amount = $request->amount;
         $payment->card_name = $request->cardname;
         $payment->card_number = $request->cardnumber;
-        $payment->exp_date = $request->cardnumber;
+        $payment->exp_date = $request->exp_date;
         $payment->cvv = $request->cvv;
 
         $payment->save();

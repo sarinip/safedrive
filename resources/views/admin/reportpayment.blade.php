@@ -22,7 +22,7 @@
                                     <tr>
                                         <td>{{ $payment->id }}</td>
                                         <td>{{ $payment->student->fname }}{{ $payment->student->lname }}</td>
-                                        <td>{{ $payment->amount }}</td>
+                                        <td>{{ $payment->Amount }}</td>
                                         <td>{{ $payment->created_at }}</td>
                                     </tr>
                                 @endforeach

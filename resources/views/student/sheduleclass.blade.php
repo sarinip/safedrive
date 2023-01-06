@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">
-                        Schedule a lesson
+                        Schedule your practical lesson
                     </h4>
                     <form class="forms-sample" action="{{ url('schedule/store') }}" method="POST">
                         @csrf

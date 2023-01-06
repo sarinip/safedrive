@@ -16,7 +16,7 @@
                         @endif
 
                         @if (session()->has('error_message'))
-                            <div class="alert alert-success">
+                            <div class="alert alert-warning">
                                 {{ session()->get('error_message') }}
                             </div>
                         @endif

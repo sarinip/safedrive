@@ -30,41 +30,41 @@
             </div>
         </div>
         <div class="col-md-6 grid-margin stretch-card">
-            {{-- <div class="card"> --}}
-            {{-- <div class="card-body"> --}}
-            {{-- <div class="chartjs-size-monitor"> --}}
-            {{-- <div class="chartjs-size-monitor-expand"> --}}
-            {{-- <div class=""></div> --}}
-            {{-- </div> --}}
-            {{-- <div class="chartjs-size-monitor-shrink"> --}}
-            {{-- <div class=""></div> --}}
-            {{-- </div> --}}
-            {{-- </div> --}}
-            {{-- <p class="card-title mb-0">Exam Details</p> --}}
-            {{-- <div class="table-responsive"> --}}
-            {{-- <table class="table table-striped table-borderless"> --}}
-            {{-- <thead> --}}
-            {{-- <th>Exam Type</th> --}}
-            {{-- <th>Date</th> --}}
-            {{-- <th>Time</th> --}}
-            {{-- <th>Status</th> --}}
-            {{-- </thead> --}}
-            {{-- <tbody> --}}
-            {{-- @foreach ($exams as $exam) --}}
-            {{-- <tr> --}}
-            {{-- <td>{{ $exam->exam_type }}</td> --}}
-            {{-- <td>{{ $exam->date }}</td> --}}
-            {{-- <td>{{ $exam->time }}</td> --}}
-            {{-- <td class="font-weight-medium"> --}}
-            {{-- <div class="badge badge-info">{{ $exam->status }}</div> --}}
-            {{-- </td> --}}
-            {{-- </tr> --}}
-            {{-- @endforeach --}}
-            {{-- </tbody> --}}
-            {{-- </table> --}}
-            {{-- </div> --}}
-            {{-- </div> --}}
-            {{-- </div> --}}
+            <div class="card">
+                <div class="card-body">
+                    <div class="chartjs-size-monitor">
+                        <div class="chartjs-size-monitor-expand">
+                            <div class=""></div>
+                        </div>
+                        <div class="chartjs-size-monitor-shrink">
+                            <div class=""></div>
+                        </div>
+                    </div>
+                    <p class="card-title">Exam Details</p>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-borderless">
+                            <thead>
+                                <th>Exam Type</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Status</th>
+                            </thead>
+                            <tbody>
+                                @foreach ($exams as $exam)
+                                    <tr>
+                                        <td>{{ $exam->exam_type }}</td>
+                                        <td>{{ $exam->date }}</td>
+                                        <td>{{ $exam->time }}</td>
+                                        <td class="font-weight-medium">
+                                            <div class="badge badge-info">{{ $exam->status }}</div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -80,7 +80,7 @@
                             <div class=""></div>
                         </div>
                     </div>
-                    <p class="card-title">Shedule classes</p>
+                    <p class="card-title">Practical Classes</p>
                     <div class="table-responsive">
                         <table class="table table-striped table-borderless">
                             <thead>
@@ -120,7 +120,7 @@
                         </div>
                     </div>
                     <div class="chartjs-size-monitor-shrink">
-                        <p class="card-title mb-0">Payment Details</p>
+                        <p class="card-title">Payment Details</p>
                         <div class="table-responsive">
                             <table class="table table-striped table-borderless">
                                 <thead>

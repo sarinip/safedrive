@@ -54,5 +54,9 @@ class TheoryClassController extends Controller
         return TheoryClassStudent::where('student_id', session()->get('student_id')[0])->where('class_id', $id)->exists();
     }
 
+    public function viewTable()
+    {
+    return $this->service->viewTable();
+    }
 
 }

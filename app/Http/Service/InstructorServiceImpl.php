@@ -17,7 +17,7 @@ class InstructorServiceImpl implements InstructorService
      */
     public function store(InstructorRequest $request)
     {
-        $path = 'login';
+        $path = 'instructor.new';
 
         DB::beginTransaction();
 

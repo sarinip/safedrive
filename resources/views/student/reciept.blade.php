@@ -9,7 +9,7 @@
                         <div class="auth-form-light text-left py-5 px-4 px-sm-5">
                             <h2 class="text-center text-primary">Thank You!</h2>
                             <h4 class="text-center">Payment done Successfully</h4>
-                            <h5 class="text-center"><span class="text-black">Invoice No: SD</span>
+                            <h5 class="text-center"><span class="text-black">Invoice No: </span>
                                 <span class="text-black" name="invoiceno">{{ $payment['id'] }}
                                 </span>
                             </h5>
@@ -26,7 +26,6 @@
                                     href="{{ url('/dashboard') }}">Home</a>
                             </div>
                             <div class="text-center" style="margin-top: 50px;">
-                                <a><u class="text-info">Print Reciept</u></a>
                                 <p>Copyright © 2022. Driving School Management System. All rights reserved.</p>
                             </div>
                         </div>
