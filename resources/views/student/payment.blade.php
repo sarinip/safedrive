@@ -53,8 +53,8 @@
                                                     <div class="form-group">
                                                         <label for="floatingInput">Expiry Date</label>
                                                         <input type="text" class="form-control form-control-lg" id="txtExpDate"
-                                                            placeholder="MM/YY" name="exp_date" required>
-                                                        @error('exp_date')
+                                                            placeholder="MM/YY" name="expdate" required>
+                                                        @error('expdate')
                                                             <div class="alert alert-danger">{{ $message }}</div>
                                                             @endif
                                                         </div>
