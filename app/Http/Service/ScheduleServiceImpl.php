@@ -138,7 +138,7 @@ class ScheduleServiceImpl implements ScheduleService
         $timepattern = "'%l:%i %p'";
         $seperator = "' '";
 
-        $res = Schedule::where('student_id', session()->get('instructor_id')[0])->where('status', 'APPROVED')->select('session AS title', DB::raw('CAST(CONCAT(DATE_FORMAT(schedule_date, ' . $datepattern . '),' . $seperator . ',STR_TO_DATE(session_from_time, ' . $timepattern . '))AS DATETIME) start'), DB::raw('DATE_ADD(CAST(CONCAT(DATE_FORMAT(schedule_date, ' . $datepattern . '), ' . $seperator . ',STR_TO_DATE(session_from_time, ' . $timepattern . '))AS DATETIME),INTERVAL 30 MINUTE) end'), 'status as description')->get();
+        $res = Schedule::where('instructor_id', session()->get('instructor_id')[0])->where('status', 'APPROVED')->select('session AS title', DB::raw('CAST(CONCAT(DATE_FORMAT(schedule_date, ' . $datepattern . '),' . $seperator . ',STR_TO_DATE(session_from_time, ' . $timepattern . '))AS DATETIME) start'), DB::raw('DATE_ADD(CAST(CONCAT(DATE_FORMAT(schedule_date, ' . $datepattern . '), ' . $seperator . ',STR_TO_DATE(session_from_time, ' . $timepattern . '))AS DATETIME),INTERVAL 30 MINUTE) end'), 'status as description')->get();
 
         $data = TheoryClass::where('instructor_id', session()->get('instructor_id')[0])->select('theory_classes.class_name AS title', DB::raw('CAST(CONCAT(DATE_FORMAT(theory_classes.class_date, ' . $datepattern . '),' . $seperator . ',STR_TO_DATE(theory_classes.class_from_time, ' . $timepattern . '))AS DATETIME) start'), DB::raw('CAST(CONCAT(DATE_FORMAT(theory_classes.class_date, ' . $datepattern . '),' . $seperator . ',STR_TO_DATE(theory_classes.class_to_time, ' . $timepattern . '))AS DATETIME)  end'), 'class_head_count as description')->get();
 
