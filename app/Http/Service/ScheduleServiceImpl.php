@@ -135,7 +135,7 @@ class ScheduleServiceImpl implements ScheduleService
     {
         // TODO: Implement getInstructorScheduleData() method.
         $datepattern = "'%y-%m-%d'";
-        $timepattern = "'%l:%i %p'";
+        $timepattern = "'%T'";
         $seperator = "' '";
 
         $res = Schedule::where('instructor_id', session()->get('instructor_id')[0])->where('status', 'APPROVED')->select('session AS title', DB::raw('CAST(CONCAT(DATE_FORMAT(schedule_date, ' . $datepattern . '),' . $seperator . ',STR_TO_DATE(session_from_time, ' . $timepattern . '))AS DATETIME) start'), DB::raw('DATE_ADD(CAST(CONCAT(DATE_FORMAT(schedule_date, ' . $datepattern . '), ' . $seperator . ',STR_TO_DATE(session_from_time, ' . $timepattern . '))AS DATETIME),INTERVAL 30 MINUTE) end'), 'status as description')->get();
@@ -148,6 +148,8 @@ class ScheduleServiceImpl implements ScheduleService
             $res = $data;
         }
 
+        throw new \Exception("Test");
+
         return json_encode($res);
     }
 
@@ -155,7 +157,7 @@ class ScheduleServiceImpl implements ScheduleService
     {
         // TODO: Implement getStudentScheduleData() method.
         $datepattern = "'%y-%m-%d'";
-        $timepattern = "'%l:%i %p'";
+        $timepattern = "'%T'";
         $seperator = "' '";
 
         $res = Schedule::where('student_id', session()->get('student_id')[0])->where('status', 'APPROVED')->select('session AS title', DB::raw('CAST(CONCAT(DATE_FORMAT(schedule_date, ' . $datepattern . '),' . $seperator . ',STR_TO_DATE(session_from_time, ' . $timepattern . '))AS DATETIME) start'), DB::raw('DATE_ADD(CAST(CONCAT(DATE_FORMAT(schedule_date, ' . $datepattern . '), ' . $seperator . ',STR_TO_DATE(session_from_time, ' . $timepattern . '))AS DATETIME),INTERVAL 30 MINUTE) end'), 'status as description')->get();
