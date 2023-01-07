@@ -131,7 +131,7 @@ class ScheduleServiceImpl implements ScheduleService
     }
 
 
-    public static function getInstructorScheduleData()
+    public function getInstructorScheduleData()
     {
         // TODO: Implement getInstructorScheduleData() method.
         $datepattern = "'%y-%m-%d'";
@@ -153,7 +153,7 @@ class ScheduleServiceImpl implements ScheduleService
         return json_encode($res);
     }
 
-    public static function getStudentScheduleData()
+    public function getStudentScheduleData()
     {
         // TODO: Implement getStudentScheduleData() method.
         $datepattern = "'%y-%m-%d'";

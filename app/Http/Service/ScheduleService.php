@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 interface ScheduleService
 {
 
-    public function store(ScheduleRequest $request,User $user);
+    public function store(ScheduleRequest $request, User $user);
 
     public function getScheduleCount(Request $request);
 
@@ -17,9 +17,9 @@ interface ScheduleService
 
     public function scheduleReject($id);
 
-    public static function getInstructorScheduleData();
+    public function getInstructorScheduleData();
 
-    public static function getStudentScheduleData();
+    public function getStudentScheduleData();
 
     public function viewTable();
 

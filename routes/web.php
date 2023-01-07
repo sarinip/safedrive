@@ -87,12 +87,12 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     Route::get('/instructor/calenderview', function () {
-        $schedules = \App\Http\Service\ScheduleServiceImpl::getInstructorScheduleData();
+        $schedules = (new \App\Http\Service\ScheduleServiceImpl)->getInstructorScheduleData();
         return view('instructor.calender', array('schedules' => $schedules));
     });
 
     Route::get('/student/calenderview', function () {
-        $schedules = \App\Http\Service\ScheduleServiceImpl::getStudentScheduleData();
+        $schedules = (new \App\Http\Service\ScheduleServiceImpl)->getStudentScheduleData();
         return view('instructor.calender', array('schedules' => $schedules));
     });
 
@@ -227,7 +227,7 @@ Route::group(['middleware' => ['auth']], function () {
         return (new \App\Http\Controllers\ScheduleController())->viewTable();
     })->name('report.practicalclass');
 
-     Route::get('/report/theory_class', function () {
+    Route::get('/report/theory_class', function () {
         return (new \App\Http\Controllers\TheoryClassController())->viewTable();
     })->name('report.theoryclass');
 
